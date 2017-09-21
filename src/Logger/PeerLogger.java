@@ -16,7 +16,6 @@ public class PeerLogger {
         try{
             logger = new FileWriter("log_peer_"+peerID+".log");
 
-
         }catch(Exception e) {}
     }
 
@@ -32,7 +31,7 @@ public class PeerLogger {
 
     private void printToFile(String phrase){
         try {
-            logger.write(phrase);
+            logger.write(phrase + "\n");
             logger.flush();
         } catch (IOException e) {
             e.printStackTrace();
