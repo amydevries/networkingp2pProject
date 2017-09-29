@@ -22,6 +22,7 @@ public class CommonSocket {
         }
     }
 
+    /*
     public CommonSocket(int port){
         try {
             serverSocket = new ServerSocket(port);
@@ -32,7 +33,7 @@ public class CommonSocket {
             e.printStackTrace();
         }
     }
-
+*/
     public void close(){
         try {
             socket.close();
@@ -50,7 +51,7 @@ public class CommonSocket {
             e.printStackTrace();
         }
     }
-
+/*
     public void write(byte[] bytes){
         try {
             printWriter.write();
@@ -59,5 +60,5 @@ public class CommonSocket {
             e.printStackTrace();
         }
     }
-
+*/
 }

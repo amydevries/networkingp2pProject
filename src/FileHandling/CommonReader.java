@@ -4,14 +4,20 @@ import java.util.ArrayList;
 
 public class CommonReader extends ConfigurationReader {
 
-    public int numberPreferedNeighbors;
-    public int unchokingInterval;
-    public int optimisticUnchokingInterval;
-    public String fileName;
-    public int fileSize;
-    public int pieceSize;
+    private int numberPreferredNeighbors;
+    private int unchokingInterval;
+    private int optimisticUnchokingInterval;
+    private String fileName;
+    private int fileSize;
+    private int pieceSize;
 
     private String nameOfFileReadingFrom = "Common.cfg";
+
+    public CommonReader(){}
+
+    public CommonReader(String fileName){
+        nameOfFileReadingFrom = fileName;
+    }
 
     @Override
     protected String getNameOfFileReadingFrom() {
@@ -37,7 +43,7 @@ public class CommonReader extends ConfigurationReader {
     }
 
     private void checkAndSetNumberPreferedNeighbors(String[] splited){
-        if(splited[0].equals("NumberOfPreferredNeighbors")) numberPreferedNeighbors = Integer.parseInt(splited[1]);
+        if(splited[0].equals("NumberOfPreferredNeighbors")) numberPreferredNeighbors = Integer.parseInt(splited[1]);
     }
 
     private void checkAndSetUnchokingInterval(String[] splited){
@@ -58,5 +64,29 @@ public class CommonReader extends ConfigurationReader {
 
     private void checkAndSetPieceSize(String[] splited){
         if(splited[0].equals("PieceSize")) pieceSize = Integer.parseInt(splited[1]);
+    }
+
+    public int getNumberPreferredNeighbors() {
+        return numberPreferredNeighbors;
+    }
+
+    public int getUnchokingInterval() {
+        return unchokingInterval;
+    }
+
+    public int getOptimisticUnchokingInterval() {
+        return optimisticUnchokingInterval;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public int getFileSize() {
+        return fileSize;
+    }
+
+    public int getPieceSize() {
+        return pieceSize;
     }
 }

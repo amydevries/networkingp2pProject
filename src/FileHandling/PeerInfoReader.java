@@ -1,12 +1,24 @@
 package FileHandling;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 // TODO: Im unsure how the peerinfo file works and how were gonna set up peers so i havent done a lot with this
 
 public class PeerInfoReader extends ConfigurationReader {
 
-    private String nameOfFileReadingFrom = "Common.cfg";
+    private String nameOfFileReadingFrom = "PeerInfo.cfg";
+
+    private Vector<Integer> peerIDs = new Vector<Integer>();
+    private Vector<String> peerHostNames =  new Vector<String>();;
+    private Vector<Integer> peerPorts =  new Vector<Integer>();;
+    private Vector<Integer> peerFullFileOrNot =  new Vector<Integer>();;
+
+    public PeerInfoReader(){}
+
+    public PeerInfoReader(String fileName){
+        nameOfFileReadingFrom = fileName;
+    }
 
     @Override
     protected String getNameOfFileReadingFrom() {
@@ -23,6 +35,25 @@ public class PeerInfoReader extends ConfigurationReader {
     }
 
     private void getPeerInfo(String[] splited){
+        peerIDs.add(Integer.parseInt(splited[0]));
+        peerHostNames.add(splited[1]);
+        peerPorts.add(Integer.parseInt(splited[2]));
+        peerFullFileOrNot.add(Integer.parseInt(splited[3]));
+    }
 
+    public int getPeerIDS(int index) {
+        return peerIDs.get(index);
+    }
+
+    public String getPeerHostNames(int index) {
+        return peerHostNames.get(index);
+    }
+
+    public int getPeerPorts(int index) {
+        return peerPorts.get(index);
+    }
+
+    public int getPeerFullFileOrNot(int index) {
+        return peerFullFileOrNot.get(index);
     }
 }

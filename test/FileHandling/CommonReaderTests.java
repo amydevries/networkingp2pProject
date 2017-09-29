@@ -46,18 +46,18 @@ public class CommonReaderTests {
     @Test
     public void test01_testAllTheStuff(){
         // Arrange
-        CommonReader reader = new CommonReader();
+        CommonReader reader = new CommonReader(testFileName);
 
         // Act
         reader.parse();
 
         // Assert
-        assertTrue(reader.numberPreferedNeighbors == 2);
-        assertTrue(reader.unchokingInterval == 5);
-        assertTrue(reader.optimisticUnchokingInterval == 15);
-        assertTrue(reader.fileName.equals("TheFile.dat"));
-        assertTrue(reader.fileSize == 10000232);
-        assertTrue(reader.pieceSize == 32768);
+        assertTrue(reader.getNumberPreferredNeighbors() == 2);
+        assertTrue(reader.getUnchokingInterval() == 5);
+        assertTrue(reader.getOptimisticUnchokingInterval() == 15);
+        assertTrue(reader.getFileName().equals("TheFile.dat"));
+        assertTrue(reader.getFileSize() == 10000232);
+        assertTrue(reader.getPieceSize() == 32768);
 
     }
 }
