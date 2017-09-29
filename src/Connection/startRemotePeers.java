@@ -19,7 +19,7 @@ import java.util.*;
  * The StartRemotePeers class begins remote peer processes.
  * It reads configuration file PeerInfo.cfg and starts remote peer processes.
  */
-public class StartRemotePeers {
+public class startRemotePeers {
 
     /**
      * @param args

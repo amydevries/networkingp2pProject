@@ -3,8 +3,6 @@ package FileHandling;
 import java.util.ArrayList;
 import java.util.Vector;
 
-// TODO: Im unsure how the peerinfo file works and how were gonna set up peers so i havent done a lot with this
-
 public class PeerInfoReader extends ConfigurationReader {
 
     private String nameOfFileReadingFrom = "PeerInfo.cfg";
