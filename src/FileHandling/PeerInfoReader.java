@@ -9,6 +9,8 @@ public class PeerInfoReader extends ConfigurationReader {
 
     private String nameOfFileReadingFrom = "PeerInfo.cfg";
 
+    private int numberOfPeers;
+
     private Vector<Integer> peerIDs = new Vector<Integer>();
     private Vector<String> peerHostNames =  new Vector<String>();;
     private Vector<Integer> peerPorts =  new Vector<Integer>();;
@@ -27,6 +29,7 @@ public class PeerInfoReader extends ConfigurationReader {
 
     @Override
     protected void getValues(ArrayList<String> lines) {
+        numberOfPeers = lines.size();
         for(int i = 0; i < lines.size(); i++){
             String currentLine = lines.get(i);
             String[] splited = currentLine.split("\\s+");
@@ -55,5 +58,9 @@ public class PeerInfoReader extends ConfigurationReader {
 
     public int getPeerFullFileOrNot(int index) {
         return peerFullFileOrNot.get(index);
+    }
+
+    public int getNumberOfPeers() {
+        return numberOfPeers;
     }
 }

@@ -63,7 +63,7 @@ public class PeerInfoReaderTests {
     @Test
     public void test02_readsHostNamesProperly(){
         // Arrange
-        PeerInfoReader reader = new PeerInfoReader();
+        PeerInfoReader reader = new PeerInfoReader(testFileName);
 
         // Act
         reader.parse();
@@ -80,7 +80,7 @@ public class PeerInfoReaderTests {
     @Test
     public void test03_readsPeerPortsProperly(){
         // Arrange
-        PeerInfoReader reader = new PeerInfoReader();
+        PeerInfoReader reader = new PeerInfoReader(testFileName);
 
         // Act
         reader.parse();
@@ -97,7 +97,7 @@ public class PeerInfoReaderTests {
     @Test
     public void test04_readsPeerFullFileOrNotProperly(){
         // Arrange
-        PeerInfoReader reader = new PeerInfoReader();
+        PeerInfoReader reader = new PeerInfoReader(testFileName);
 
         // Act
         reader.parse();
@@ -109,5 +109,17 @@ public class PeerInfoReaderTests {
         assertTrue(reader.getPeerFullFileOrNot(3) == 0);
         assertTrue(reader.getPeerFullFileOrNot(4) == 0);
         assertTrue(reader.getPeerFullFileOrNot(5) == 0);
+    }
+
+    @Test
+    public void test05_getNumberOfPeersProperly(){
+        // Arrange
+        PeerInfoReader reader = new PeerInfoReader(testFileName);
+
+        // Act
+        reader.parse();
+
+        // Assert
+        assertTrue(reader.getNumberOfPeers() == 6);
     }
 }
