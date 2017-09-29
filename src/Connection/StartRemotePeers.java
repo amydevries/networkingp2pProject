@@ -21,8 +21,6 @@ import java.util.*;
  */
 public class StartRemotePeers {
 
-    public Vector<RemotePeerInfo> peerInfoVector;
-
     /**
      * @param args
      */
