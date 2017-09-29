@@ -30,6 +30,7 @@ public class StartRemotePeers {
         try {
             PeerInfoReader peerInfoReader = new PeerInfoReader();
             peerInfoReader.parse();
+
             int numPeers = peerInfoReader.getNumberOfPeers();
             // get current path
             String path = System.getProperty("user.dir");
