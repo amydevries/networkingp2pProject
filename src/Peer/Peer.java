@@ -1,54 +1,54 @@
 package Peer;
 
+import Connection.Neighbors;
+import Connection.SocketClient;
+import Connection.SocketServer;
 import FileHandling.PeerInfoReader;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Peer {
+public class Peer extends Thread{
+
+    static private List<Thread> threads = new ArrayList<Thread>();
+    private List<Neighbors> socketClients = new ArrayList<Neighbors>();
 
     private PeerInfo peerInfo;
     private PeerInfoReader peerInfoReader;
-    public Peer(int peerID){
+    private SocketServer socketServer;
+
+    public Peer(int myID){
         peerInfoReader = new PeerInfoReader();
         peerInfoReader.parse();
 
-        getPeerInfo(peerID);
-        startConnections(peerID);
+        getPeerInfo(myID);
+        startConnections(myID);
+        startServer(peerInfo.getPort());
+
+        threads.add(this);
+        this.start();
     }
 
-    private void getPeerInfo(int peerID){
+    private void getPeerInfo(int myID){
         for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
-            if(peerID == peerInfoReader.getPeerIDS(i)){
+            if(myID == peerInfoReader.getPeerIDS(i)){
                 peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i),
                         peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i));
             }
         }
     }
 
-    private void startConnections(int peerID){
+    private void startConnections(int myID){
         for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
-            if(peerID == peerInfoReader.getPeerIDS(i)) break;
-            new Handler(peerInfoReader.getPeerHostNames(i),peerInfoReader.getPeerIDS(i)).start();
+            if(myID == peerInfoReader.getPeerIDS(i)) break;
+            SocketClient temp = new SocketClient(peerInfoReader.getPeerHostNames(i),peerInfoReader.getPeerIDS(i));
+            temp.start();
+            socketClients.add(temp);
         }
     }
 
-    /**
-     * A handler thread class.  Handlers are spawned from the listening
-     * loop and are responsible for dealing with a single client's requests.
-     */
-    private static class Handler extends Thread {
-        String hostName;
-        int port;
-
-        public Handler(String hostName, int port) {
-            this.hostName = hostName;
-            this.port = port;
-        }
-
-
-
+    private void startServer(int port){
+        socketServer = new SocketServer(port);
     }
+
 }

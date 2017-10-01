@@ -6,7 +6,7 @@ import java.nio.*;
 import java.nio.channels.*;
 import java.util.*;
 
-public class SocketClient extends Thread{
+public class SocketClient extends Thread implements Neighbors{
 
     Socket socket;           //socket connect to the server
     ObjectOutputStream out;         //stream write to the socket
@@ -14,7 +14,7 @@ public class SocketClient extends Thread{
     String host;
     int port;
 
-    public void SocketClient(String host, int port) {
+    public SocketClient(String host, int port) {
         this.host = host;
         this.port = port;
         this.start();
