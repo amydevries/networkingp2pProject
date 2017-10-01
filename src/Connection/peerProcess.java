@@ -1,6 +1,7 @@
 package Connection;
 
 import FileHandling.PeerInfoReader;
+import Peer.Peer;
 
 import static java.lang.System.exit;
 
@@ -12,21 +13,7 @@ public class peerProcess {
 
         int peerID = Integer.parseInt(args[0]);
 
-        PeerInfoReader peerInfoReader = new PeerInfoReader();
-        peerInfoReader.parse();
+        Peer peer = new Peer(peerID);
 
-        for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
-            if(peerID == peerInfoReader.getPeerIDS(i)) break;
-
-        }
-
-    }
-
-    private void startPeers(int peerID, PeerInfoReader peerInfoReader){
-        for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
-            if(peerID == peerInfoReader.getPeerIDS(i)) break;
-
-            SampleClient sampleClient = new SampleClient();
-        }
     }
 }
