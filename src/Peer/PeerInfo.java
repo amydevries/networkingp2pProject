@@ -1,5 +1,7 @@
 package Peer;
 
+import FileHandling.PeerInfoReader;
+
 public class PeerInfo {
 
     private int peerID;
@@ -14,6 +16,20 @@ public class PeerInfo {
         this.fileFinished = fileFinished;
     }
 
+    public PeerInfo(int myID){
+        PeerInfoReader peerInfoReader = new PeerInfoReader();
+        peerInfoReader.parse();
+
+        for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
+            if(myID == peerInfoReader.getPeerIDS(i)){
+                this.peerID = peerInfoReader.getPeerIDS(i);
+                this.hostID = peerInfoReader.getPeerHostNames(i);
+                this.port = peerInfoReader.getPeerPorts(i);
+                this.fileFinished = peerInfoReader.getPeerFullFileOrNot(i);
+                break;
+            }
+        }
+    }
 
     public int getPeerID() {
         return peerID;

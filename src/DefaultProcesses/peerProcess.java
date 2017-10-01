@@ -1,10 +1,6 @@
-package Connection;
+package DefaultProcesses;
 
-import FileHandling.PeerInfoReader;
 import Peer.Peer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static java.lang.System.exit;
 

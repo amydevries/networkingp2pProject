@@ -3,7 +3,9 @@ package Peer;
 import java.nio.ByteBuffer;
 
 public class PeerMessage{
-      public byte[] createActualMessage(int length, int messageType, byte[] messagePayload, String type){
+
+
+    public byte[] createActualMessage(int length, int messageType, byte[] messagePayload, String type){
 
         //determine the message type code
         switch(type){
@@ -40,6 +42,7 @@ public class PeerMessage{
         shakeMsgBuffer.put(ByteBuffer.allocate(18));
         shakeMsgBuffer.putInt(peerID);
         handshakeMsg = shakeMsgBuffer.array();
+
         return handshakeMsg;
     }
 

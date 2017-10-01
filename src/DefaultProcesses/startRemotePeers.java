@@ -1,4 +1,4 @@
-package Connection;
+package DefaultProcesses;
 
 /*
  *
@@ -10,10 +10,6 @@ package Connection;
  */
 
 import FileHandling.PeerInfoReader;
-import peerbase.PeerInfo;
-
-import java.io.*;
-import java.util.*;
 
 /*
  * The StartRemotePeers class begins remote peer processes.
