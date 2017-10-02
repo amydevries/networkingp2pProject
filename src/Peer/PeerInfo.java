@@ -2,6 +2,8 @@ package Peer;
 
 import FileHandling.PeerInfoReader;
 
+import java.util.Hashtable;
+
 public class PeerInfo {
 
     private int peerID;
@@ -26,9 +28,25 @@ public class PeerInfo {
                 this.hostID = peerInfoReader.getPeerHostNames(i);
                 this.port = peerInfoReader.getPeerPorts(i);
                 this.fileFinished = peerInfoReader.getPeerFullFileOrNot(i);
-                break;
+
             }
         }
+    }
+
+    public Hashtable<Integer,PeerInfo> getNeighborPeers(int myID){
+        PeerInfoReader peerInfoReader = new PeerInfoReader();
+        peerInfoReader.parse();
+        Hashtable<Integer,PeerInfo> neighbors = new Hashtable<Integer, PeerInfo>();
+
+        for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
+            if(myID == peerInfoReader.getPeerIDS(i)) break;
+            if(myID != peerInfoReader.getPeerIDS(i)){
+                PeerInfo peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i)
+                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i));
+                neighbors.put(peerInfoReader.getPeerIDS(i), peerInfo);
+            }
+        }
+        return neighbors;
     }
 
     public int getPeerID() {

@@ -28,8 +28,8 @@ public class PeerConnection {
         iSocket.write(bytes);
     }
 
-    public byte[] receiveData(){
-        //return iSocket.read();
-        return null;
+    public PeerMessage receiveData(){
+            PeerMessage msg = new PeerMessage(iSocket);
+            return msg;
     }
 }

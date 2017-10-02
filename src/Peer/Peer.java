@@ -1,22 +1,30 @@
 package Peer;
 
 import Factory.SocketFactory;
+import Handlers.IHandler;
+import Singleton.StorageSingleton;
 import Sockets.BasicSocket;
 import FileHandling.PeerInfoReader;
 
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Peer extends Thread{
 
     private PeerInfo peerInfo;
     private boolean shutdown;
+    StorageSingleton storageSingleton = StorageSingleton.getInstance();
+    private Hashtable<Integer,PeerInfo> peers = storageSingleton.getPeers();
+    private Hashtable<String, IHandler> handlers = storageSingleton.getHandlers();
 
 
     public Peer(int myID){
         peerInfo = new PeerInfo(myID);
+
+        peers = peerInfo.getNeighborPeers(myID);
 
         try{
             ServerSocket serverSocket = SocketFactory.getSocketFactory().makeServerSocket(peerInfo.getPort());
@@ -36,6 +44,18 @@ public class Peer extends Thread{
 
         shutdown = true;
     }
+
+    public PeerInfo getPeer(int peerID){
+        for (int key : peers.keySet())
+            if (peerInfo.getPeerID() == peerID)
+                return peers.get(key);
+        return null;
+    }
+
+    public Hashtable<String, IHandler> getHandlers() {
+        return handlers;
+    }
+
 
 /*
     private void startConnections(int myID){
