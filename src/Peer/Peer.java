@@ -1,7 +1,7 @@
 package Peer;
 
 import Factory.SocketFactory;
-import Handlers.IHandler;
+import Handlers.*;
 import Singleton.StorageSingleton;
 import Sockets.BasicSocket;
 import FileHandling.PeerInfoReader;
@@ -14,17 +14,35 @@ import java.util.List;
 
 public class Peer extends Thread{
 
+    public static Integer CHOKEMESSAGE = 0;
+    public static Integer UNCHOKEMESSAGE = 1;
+    public static Integer INTERESTEDMESSAGE = 2;
+    public static Integer NOTINTERESTEDMESSAGE = 3;
+    public static Integer HAVEMESSAGE = 4;
+    public static Integer BITFIELDMESSAGE = 5;
+    public static Integer REQUESTMESSAGE = 6;
+    public static Integer PIECEMESSAGE = 7;
+
     private PeerInfo peerInfo;
     private boolean shutdown;
     StorageSingleton storageSingleton = StorageSingleton.getInstance();
     private Hashtable<Integer,PeerInfo> peers = storageSingleton.getPeers();
-    private Hashtable<String, IHandler> handlers = storageSingleton.getHandlers();
+    private Hashtable<Integer, IHandler> handlers = storageSingleton.getHandlers();
 
 
     public Peer(int myID){
         peerInfo = new PeerInfo(myID);
 
         peers = peerInfo.getNeighborPeers(myID);
+
+        handlers.put(CHOKEMESSAGE,new ChokeHandler());
+        handlers.put(UNCHOKEMESSAGE,new UnChokeHandler());
+        handlers.put(INTERESTEDMESSAGE,new InterestedHandler());
+        handlers.put(NOTINTERESTEDMESSAGE, new NotInterestedHandler());
+        handlers.put(HAVEMESSAGE,new HaveHandler());
+        handlers.put(BITFIELDMESSAGE, new BitFieldHandler());
+        handlers.put(REQUESTMESSAGE, new RequestHandler());
+        handlers.put(PIECEMESSAGE, new PieceHandler());
 
         try{
             ServerSocket serverSocket = SocketFactory.getSocketFactory().makeServerSocket(peerInfo.getPort());
@@ -52,7 +70,7 @@ public class Peer extends Thread{
         return null;
     }
 
-    public Hashtable<String, IHandler> getHandlers() {
+    public Hashtable<Integer, IHandler> getHandlers() {
         return handlers;
     }
 
