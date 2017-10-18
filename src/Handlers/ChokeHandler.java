@@ -15,3 +15,11 @@ public class ChokeHandler implements IHandler {
 
     }
 }
+
+public class ChokeHandler implements IHandler{
+
+    public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage){
+
+    };
+
+};
