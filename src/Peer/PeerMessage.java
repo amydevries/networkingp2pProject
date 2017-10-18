@@ -25,7 +25,7 @@ public class PeerMessage{
         return data;
     }
 
-    public PeerMessage(ISocket socket) throws IOException{
+    public PeerMessage(ISocket socket) throws IOException {
         header = new byte[4];
         type = new byte[1];
         peerId  = new byte[4];
@@ -43,7 +43,7 @@ public class PeerMessage{
 
                 socket.read(header_cont);  // TODO: chech that we read 14 bytes and if not throw the exception
                 String header_cont_str = new String(header_cont, Charset.forName("US-ASCII"));
-                if(header_cont_str.equals("FILESHARINGPROJ")) {
+                if(header_cont_str.equals("ILESHARINGPROJ")) {
                     // TODO: throw excepetion
                     return;
                 }
@@ -60,7 +60,7 @@ public class PeerMessage{
             length = byteArrayToInt(header);
             socket.read(type);
 
-            data = new byte [length];
+            data = new byte[length];
 
             if (length > 0) {
                 if (socket.read(data) != length) {
@@ -68,6 +68,7 @@ public class PeerMessage{
                             "Unexpected message data length");
                 }
 
+            }
         }
     }
 
