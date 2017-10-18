@@ -29,7 +29,12 @@ public class PeerConnection {
     }
 
     public PeerMessage receiveData(){
-            PeerMessage msg = new PeerMessage(iSocket);
-            return msg;
+        PeerMessage msg = null;
+        try {
+            msg = new PeerMessage(iSocket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return msg;
     }
 }

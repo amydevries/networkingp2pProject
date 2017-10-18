@@ -1,8 +1,8 @@
 package Handlers;
 
-import Peer.Peer;
-import Peer.PeerConnection;
-import Peer.PeerMessage;
+        import Peer.Peer;
+        import Peer.PeerConnection;
+        import Peer.PeerMessage;
 
 public class ChokeHandler implements IHandler {
 
@@ -15,11 +15,3 @@ public class ChokeHandler implements IHandler {
 
     }
 }
-
-public class ChokeHandler implements IHandler{
-
-    public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage){
-
-    };
-
-};
