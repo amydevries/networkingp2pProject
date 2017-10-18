@@ -3,12 +3,15 @@ package Peer;
 import Sockets.ISocket;
 
 import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.io.IOException;
 
 public class PeerMessage{
 
     private byte[] header;
     private byte[] type;
     private byte[] data;
+    private byte[] peerId;
 
     public byte[] getHeader() {
         return header;
@@ -22,43 +25,50 @@ public class PeerMessage{
         return data;
     }
 
-    public PeerMessage(ISocket socket){
+    public PeerMessage(ISocket socket) throws IOException{
         header = new byte[4];
         type = new byte[1];
-        int length;
-        if(Integer.toString(socket.read(header)).equals("P2PF")){
+        peerId  = new byte[4];
 
-        }else{
+        int length;
+
+        socket.read(header);
+        String header_str = new String(header, Charset.forName("US-ASCII"));
+
+        if (header_str.equals("P2PF")) {
+                byte [] header_cont = new byte[14];
+                byte [] zeros = new byte[10];
+
+                peerId = new byte[4];
+
+                socket.read(header_cont);  // TODO: chech that we read 14 bytes and if not throw the exception
+                String header_cont_str = new String(header_cont, Charset.forName("US-ASCII"));
+                if(header_cont_str.equals("FILESHARINGPROJ")) {
+                    // TODO: throw excepetion
+                    return;
+                }
+                socket.read(zeros);
+
+                for (int i = 0; i < 10; i++) {
+                    if (zeros[i] != 0) {
+                        // TODO: throw exception
+                    }
+                }
+
+                socket.read(peerId);
+        } else {
             length = byteArrayToInt(header);
             socket.read(type);
-            switch (byteArrayToInt(type)) {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    data = new byte[4];
-                    socket.read(data);
-                    break;
-                case 5:
-                    data = new byte[2];
-                    socket.read(data);
-                    break;
-                case 6:
-                    data = new byte[4];
-                    socket.read(data);
-                    break;
-                case 7:
-                    data = new byte[length - 1];
-                    socket.read(data);
-                    break;
-            }
-        }
 
+            data = new byte [length];
+
+            if (length > 0) {
+                if (socket.read(data) != length) {
+                    throw new IOException("EOF in PeerMessage constructor: " +
+                            "Unexpected message data length");
+                }
+
+        }
     }
 
 
