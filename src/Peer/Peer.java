@@ -35,14 +35,14 @@ public class Peer extends Thread{
 
         peers = peerInfo.getNeighborPeers(myID);
 
-        handlers.put(CHOKEMESSAGE,new ChokeHandler());
-        handlers.put(UNCHOKEMESSAGE,new UnChokeHandler());
-        handlers.put(INTERESTEDMESSAGE,new InterestedHandler());
-        handlers.put(NOTINTERESTEDMESSAGE, new NotInterestedHandler());
-        handlers.put(HAVEMESSAGE,new HaveHandler());
-        handlers.put(BITFIELDMESSAGE, new BitFieldHandler());
-        handlers.put(REQUESTMESSAGE, new RequestHandler());
-        handlers.put(PIECEMESSAGE, new PieceHandler());
+        handlers.put(CHOKEMESSAGE,new ChokeHandler(this));
+        handlers.put(UNCHOKEMESSAGE,new UnChokeHandler(this));
+        handlers.put(INTERESTEDMESSAGE,new InterestedHandler(this));
+        handlers.put(NOTINTERESTEDMESSAGE, new NotInterestedHandler(this));
+        handlers.put(HAVEMESSAGE,new HaveHandler(this));
+        handlers.put(BITFIELDMESSAGE, new BitFieldHandler(this));
+        handlers.put(REQUESTMESSAGE, new RequestHandler(this));
+        handlers.put(PIECEMESSAGE, new PieceHandler(this));
 
         try{
             ServerSocket serverSocket = SocketFactory.getSocketFactory().makeServerSocket(peerInfo.getPort());
