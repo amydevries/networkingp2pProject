@@ -26,7 +26,7 @@ public class Peer extends Thread{
     private PeerInfo peerInfo;
     private boolean shutdown;
     StorageSingleton storageSingleton = StorageSingleton.getInstance();
-    private Hashtable<Integer,PeerInfo> peers = storageSingleton.getPeers();
+    private Hashtable<Integer, PeerInfo> peers = storageSingleton.getPeers();
     private Hashtable<Integer, IHandler> handlers = storageSingleton.getHandlers();
 
 
