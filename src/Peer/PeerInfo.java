@@ -1,8 +1,13 @@
 package Peer;
 
 import FileHandling.PeerInfoReader;
+import Logger.PeerLogger;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Hashtable;
+import java.util.logging.Logger;
 
 public class PeerInfo {
 
@@ -10,12 +15,15 @@ public class PeerInfo {
     private String hostID;
     private int port;
     private int fileFinished;
+    private PeerLogger logger;
+    private File peerLog;
 
-    public PeerInfo(int peerID, String hostID, int port, int fileFinished){
+    public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog){
         this.peerID = peerID;
         this.hostID = hostID;
         this.port = port;
         this.fileFinished = fileFinished;
+        this.peerLog = peerLog;
     }
 
     public PeerInfo(int myID){
@@ -28,7 +36,9 @@ public class PeerInfo {
                 this.hostID = peerInfoReader.getPeerHostNames(i);
                 this.port = peerInfoReader.getPeerPorts(i);
                 this.fileFinished = peerInfoReader.getPeerFullFileOrNot(i);
-
+                //setup the file writer for the peer and create the log file
+                logger.setup(this.peerID);
+                this.peerLog = new File("log_peer_" + this.peerID + ".log");
             }
         }
     }
@@ -42,7 +52,7 @@ public class PeerInfo {
             if(myID == peerInfoReader.getPeerIDS(i)) break;
             if(myID != peerInfoReader.getPeerIDS(i)){
                 PeerInfo peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i)
-                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i));
+                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i), peerInfoReader.getPeerLogs(i));
                 neighbors.put(peerInfoReader.getPeerIDS(i), peerInfo);
             }
         }
@@ -80,4 +90,8 @@ public class PeerInfo {
     public void setFileFinished(int fileFinished) {
         this.fileFinished = fileFinished;
     }
+
+    public File getPeerLog() { return peerLog; }
+
+    public void setPeerLog() { this.peerLog = peerLog; }
 }

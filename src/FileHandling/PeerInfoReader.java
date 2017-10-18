@@ -1,5 +1,6 @@
 package FileHandling;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -13,6 +14,7 @@ public class PeerInfoReader extends ConfigurationReader {
     private Vector<String> peerHostNames =  new Vector<String>();;
     private Vector<Integer> peerPorts =  new Vector<Integer>();;
     private Vector<Integer> peerFullFileOrNot =  new Vector<Integer>();;
+    private Vector<File> peerLogs = new Vector<File>();;
 
     public PeerInfoReader(){}
 
@@ -25,6 +27,7 @@ public class PeerInfoReader extends ConfigurationReader {
         return nameOfFileReadingFrom;
     }
 
+    //getting values from file
     @Override
     protected void getValues(ArrayList<String> lines) {
         numberOfPeers = lines.size();
@@ -35,6 +38,7 @@ public class PeerInfoReader extends ConfigurationReader {
         }
     }
 
+    //adding to vectors based on what was read from file
     private void getPeerInfo(String[] splited){
         peerIDs.add(Integer.parseInt(splited[0]));
         peerHostNames.add(splited[1]);
@@ -61,4 +65,6 @@ public class PeerInfoReader extends ConfigurationReader {
     public int getNumberOfPeers() {
         return numberOfPeers;
     }
+
+    public File getPeerLogs(int index){ return peerLogs.get(index); }
 }
