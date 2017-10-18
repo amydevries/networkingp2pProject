@@ -13,7 +13,7 @@ public class PeerHandler extends Thread {
     private ISocket iSocket;
     StorageSingleton storageSingleton = StorageSingleton.getInstance();
     private Hashtable<Integer,PeerInfo> peers = storageSingleton.getPeers();
-    private Hashtable<String, IHandler> handlers = storageSingleton.getHandlers();
+    private Hashtable<Integer, IHandler> handlers = storageSingleton.getHandlers();
 
     public PeerHandler(Socket socket){
         iSocket = SocketFactory.getSocketFactory().makeSocket(socket);

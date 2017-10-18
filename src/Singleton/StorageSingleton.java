@@ -9,7 +9,7 @@ public class StorageSingleton {
 
 
     private Hashtable<Integer,PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
-    private Hashtable<String, IHandler> handlers = new Hashtable<String, IHandler>();
+    private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
 
     public static final StorageSingleton instance = new StorageSingleton();
 
@@ -27,11 +27,11 @@ public class StorageSingleton {
         this.peers = peers;
     }
 
-    public Hashtable<String, IHandler> getHandlers() {
+    public Hashtable<Integer, IHandler> getHandlers() {
         return handlers;
     }
 
-    public void setHandlers(Hashtable<String, IHandler> handlers) {
+    public void setHandlers(Hashtable<Integer, IHandler> handlers) {
         this.handlers = handlers;
     }
 }
