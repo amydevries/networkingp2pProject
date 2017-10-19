@@ -8,12 +8,16 @@ import java.io.IOException;
 
 public class PeerConnection {
 
+    // peer connection now remembers what peer it is acting as a connection for so we can more easily access bitfield/other information
+    // idk if this is necessary it might need to be removed later
+    private Peer parentPeer;
     private PeerInfo peerInfo;
     private ISocket iSocket;
     private PeerLogger peerLogger = new PeerLogger();
 
-    public PeerConnection(PeerInfo peerInfo){
-        this.peerInfo = peerInfo;
+    public PeerConnection(Peer parentPeer, PeerInfo receivingPeerInfo){
+        this.parentPeer = parentPeer;
+        this.peerInfo = receivingPeerInfo;
         try {
             iSocket = SocketFactory.getSocketFactory().makeSocket(peerInfo.getHostID(), peerInfo.getPort());
 
@@ -28,8 +32,8 @@ public class PeerConnection {
         }
     }
 
-    public PeerConnection(PeerInfo peerInfo, ISocket iSocket){
-        this.peerInfo = peerInfo;
+    public PeerConnection(Peer parentPeer, ISocket iSocket){
+        this.parentPeer = parentPeer;
         this.iSocket = iSocket;
     }
 
@@ -55,4 +59,8 @@ public class PeerConnection {
     }
 
     public PeerInfo getPeerInfo() { return peerInfo; }
+
+    public Peer getParentPeer() {
+        return parentPeer;
+    }
 }

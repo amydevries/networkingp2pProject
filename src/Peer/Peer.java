@@ -1,8 +1,37 @@
+// were not currently reading from the peerInfo file to start connections that is one of the first things we need to work on
+// also have to work on creating the data structure for the bitfield
+
+// read through peer info file
+// start connections with all previous peers
+// send handshake to peer
+// set peerInfo in peerConnection to the connected peer???
+// after handshake send bitfield message if the peer has some data, we could always send an empty bitfield
+// the receiving peer can then set in the peerConnection or in the peerInfo for the peerConnection what bytes the connected peer has
+// for a bitfield message if the receiving peer is missing bits that the sending peer has it sends an interested message
+// if a peer receives an "interested" message it puts the peer it received it from in a list of possible peers to send to
+
+// if the peer doesnt have a complete file
+// every p seconds the peer calculates the download rates for the peers in its interested section and sends data to the highest k
+// calculate download rate by keeping track of th number of bytes from each peer during the interval
+// unchoke those peers with the highest rate that are also on the interested list
+// if a neighbor is already unchoked no reason to send it an unchoked message
+// send choke message to all neighbors that missed the cut this time that were unchoked before
+
+// if the peer has a complete file
+// randomly select from the neighbors that are interested
+
+// randomly select an interested neighbor and unchoke them every m where m is the optimisticUnchokingInterval
+
+// when a peer finishes receiving a piece it updates its bitfield and it checking its neighbors bitfields to see if it should send them interested or not interested messages
+
+// when a peer is unchoked it sends a request message for a piece that it doesnt have but the peer who unchoked it has and it hasnt requested from other neighbor
+
+// a piece message contains the actual piece that a peer is sending to its neighbor
+
 package Peer;
 
 import Factory.SocketFactory;
 import Handlers.*;
-import Singleton.StorageSingleton;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -21,9 +50,9 @@ public class Peer extends Thread{
 
     private PeerInfo peerInfo;
     private boolean shutdown;
-    StorageSingleton storageSingleton = StorageSingleton.getInstance();
-    private Hashtable<Integer, PeerInfo> peers = storageSingleton.getPeers();
-    private Hashtable<Integer, IHandler> handlers = storageSingleton.getHandlers();
+
+    private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
+    private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
 
 
     public Peer(int myID){
@@ -40,7 +69,6 @@ public class Peer extends Thread{
         handlers.put(REQUESTMESSAGE, new RequestMessageHandler(this));
         handlers.put(PIECEMESSAGE, new PieceMessageHandler(this));
 
-
     }
 
     public void runFileSharing(){
@@ -51,7 +79,7 @@ public class Peer extends Thread{
                 try{
                     Socket clientSocket = serverSocket.accept();
 
-                    PeerHandler peerHandler = new PeerHandler(clientSocket);
+                    PeerHandler peerHandler = new PeerHandler(this, clientSocket);
                     peerHandler.start();
 
                 }catch (Exception e){}
@@ -64,34 +92,9 @@ public class Peer extends Thread{
         shutdown = true;
     }
 
-    // were not currently reading from the peerInfo file to start connections that is one of the first things we need to work on
-    // read through peer info file
-    // start connections with all previous peers
-    // send handshake to peer
-    // set peerInfo in peerConnection to the connected peer???
-    // after handshake send bitfield message if the peer has some data, we could always send an empty bitfield
-    // the receiving peer can then set in the peerConnection or in the peerInfo for the peerConnection what bytes the connected peer has
-    // for a bitfield message if the receiving peer is missing bits that the sending peer has it sends an interested message
-    // if a peer receives an "interested" message it puts the peer it received it from in a list of possible peers to send to
-
-    // if the peer doesnt have a complete file
-    // every p seconds the peer calculates the download rates for the peers in its interested section and sends data to the highest k
-    // calculate download rate by keeping track of th number of bytes from each peer during the interval
-    // unchoke those peers with the highest rate that are also on the interested list
-    // if a neighbor is already unchoked no reason to send it an unchoked message
-    // send choke message to all neighbors that missed the cut this time that were unchoked before
-
-    // if the peer has a complete file
-    // randomly select from the neighbors that are interested
-
-    // randomly select an interested neighbor and unchoke them every m where m is the optimisticUnchokingInterval
-
-    // when a peer finishes receiving a piece it updates its bitfield and it checking its neighbors bitfields to see if it should send them interested or not interested messages
-
-    // when a peer is unchoked it sends a request message for a piece that it doesnt have but the peer who unchoked it has and it hasnt requested from other neighbor
-
-    // a piece message contains the actual piece that a peer is sending to its neighbor
-
+    public PeerInfo getPeerInfo(){
+        return peerInfo;
+    }
 
     public PeerInfo getPeer(int peerID){
         for (int key : peers.keySet())
@@ -104,14 +107,16 @@ public class Peer extends Thread{
         return handlers;
     }
 
+    // TODO: everything about this
     public PeerMessage sendToPeer(int peerID, int messageType, byte[] messageData){
         PeerInfo receivingPeerInfo = peers.get(peerID);
 
         return connectAndSend(receivingPeerInfo, messageType, messageData);
     }
 
+    // TODO: this, idk what im doing yet
     public PeerMessage connectAndSend(PeerInfo receivingPeerInfo, int messageType, byte[] messageData){
-        PeerConnection peerConnection = new PeerConnection(receivingPeerInfo);
+        PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
 
         PeerMessage messageToSend = new PeerMessage(messageType, messageData);
 

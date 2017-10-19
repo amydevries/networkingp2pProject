@@ -7,6 +7,7 @@ import Peer.PeerMessage;
 
 public class PieceMessageHandler implements IHandler{
 
+    // handler has a reference to the parent peer
     private Peer peer;
     private PeerLogger peerLogger = new PeerLogger();
 
@@ -28,6 +29,6 @@ public class PieceMessageHandler implements IHandler{
 
         // look through our neighbors and if they no longer have intersting pieces send them a not interested message
 
-        // send a have message to all neighbors letting them know that we just got a new piece 
+        // send a have message to all neighbors letting them know that we just got a new piece
     }
 }
