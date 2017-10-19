@@ -39,6 +39,7 @@ import java.util.Hashtable;
 
 public class Peer extends Thread{
 
+    public static Integer HANDSHAKEMESSAGE = 99;
     public static Integer CHOKEMESSAGE = 0;
     public static Integer UNCHOKEMESSAGE = 1;
     public static Integer INTERESTEDMESSAGE = 2;
@@ -51,6 +52,10 @@ public class Peer extends Thread{
     private PeerInfo peerInfo;
     private boolean shutdown;
 
+    // peers we are interested and not interested in
+    private Hashtable<Integer, PeerInfo> interestedPeers = new Hashtable<Integer, PeerInfo>();
+    private Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
+
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
     private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
 
@@ -60,6 +65,7 @@ public class Peer extends Thread{
 
         peers = peerInfo.getNeighborPeers(myID);
 
+        handlers.put(HANDSHAKEMESSAGE,new HandshakeMessageHandler(this));
         handlers.put(CHOKEMESSAGE,new ChokeMessageHandler(this));
         handlers.put(UNCHOKEMESSAGE,new UnChokeMessageHandler(this));
         handlers.put(INTERESTEDMESSAGE,new InterestedMessageHandler(this));
@@ -78,6 +84,9 @@ public class Peer extends Thread{
             while(!shutdown){
                 try{
                     Socket clientSocket = serverSocket.accept();
+
+                    // start the connections to all the peers that come before in the PeerInfo.cfg
+                    initiateConnections();
 
                     PeerHandler peerHandler = new PeerHandler(this, clientSocket);
                     peerHandler.start();
@@ -105,6 +114,41 @@ public class Peer extends Thread{
 
     public Hashtable<Integer, IHandler> getHandlers() {
         return handlers;
+    }
+
+
+    /**
+     *
+     *
+     *  UNSURE ABOUT ALL OF THIS
+     *
+     *  right now im trying to decide between having the handshake message inside of the handler
+     *  or having all the initial handshakes that a peer can send happen here
+     *
+     *  if its in the handler that makes it easier to have all of the connections in one hashtable for the handler
+     *
+     *  but im not sure which is better and with everything being multithreaded how everything will interact
+     *
+     *
+     */
+
+
+
+    public void initiateConnections(){
+        // loop through all peers
+        for(int key: peers.keySet()){
+            // send handshake message to each of them
+            PeerMessage returnMessage = sendToPeer(peers.get(key), PeerMessage.createHandshakeMessage(key));
+        }
+    }
+
+    public PeerMessage sendToPeer(PeerInfo receivingPeerInfo, byte[] messageToSend){
+        PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
+
+        peerConnection.sendData(messageToSend);
+        PeerMessage reply = peerConnection.receiveData();
+
+        return reply;
     }
 
     // TODO: everything about this

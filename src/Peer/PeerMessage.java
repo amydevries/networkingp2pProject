@@ -81,7 +81,7 @@ public class PeerMessage{
     }
 
 
-    public byte[] createActualMessage(int length, int messageType, byte[] messagePayload, String type){
+    static public byte[] createActualMessage(int length, int messageType, byte[] messagePayload, String type){
 
         //determine the message type code
         switch(type){
@@ -109,7 +109,7 @@ public class PeerMessage{
         return actualMessage;
     }
 
-    public byte[] createHandshakeMessage(int peerID){
+    static public byte[] createHandshakeMessage(int peerID){
         byte[] handshakeMsg;
         //Handshake message is 32 bytes
         ByteBuffer shakeMsgBuffer = ByteBuffer.allocate(32);
