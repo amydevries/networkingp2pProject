@@ -19,6 +19,14 @@ public class PeerLogger {
         }catch(Exception e) {}
     }
 
+    //if the file already exists, the FileWriter needs to append to the file not create a new one
+    public void setup(int peerID, boolean fileExists){
+        try{
+            logger = new FileWriter("log_peer_"+peerID+".log", true);
+
+        }catch(Exception e) {}
+    }
+
     public void close(){
         try{
             logger.close();

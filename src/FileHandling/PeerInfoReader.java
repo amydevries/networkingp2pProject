@@ -44,6 +44,7 @@ public class PeerInfoReader extends ConfigurationReader {
         peerHostNames.add(splited[1]);
         peerPorts.add(Integer.parseInt(splited[2]));
         peerFullFileOrNot.add(Integer.parseInt(splited[3]));
+        peerLogs.add(new File("log_peer_" + Integer.parseInt(splited[0]) + ".log"));
     }
 
     public int getPeerIDS(int index) {

@@ -2,6 +2,7 @@ package Peer;
 
 import FileHandling.PeerInfoReader;
 import Logger.PeerLogger;
+import Peer.Peer;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -15,7 +16,7 @@ public class PeerInfo {
     private String hostID;
     private int port;
     private int fileFinished;
-    private PeerLogger logger;
+    private PeerLogger peerLogger = new PeerLogger();
     private File peerLog;
 
     public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog){
@@ -37,7 +38,7 @@ public class PeerInfo {
                 this.port = peerInfoReader.getPeerPorts(i);
                 this.fileFinished = peerInfoReader.getPeerFullFileOrNot(i);
                 //setup the file writer for the peer and create the log file
-                logger.setup(this.peerID);
+                peerLogger.setup(this.peerID);
                 this.peerLog = new File("log_peer_" + this.peerID + ".log");
             }
         }
@@ -52,7 +53,7 @@ public class PeerInfo {
             if(myID == peerInfoReader.getPeerIDS(i)) break;
             if(myID != peerInfoReader.getPeerIDS(i)){
                 PeerInfo peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i)
-                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i), peerInfoReader.getPeerLogs(i));
+                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i), new File("log_peer_" + peerInfoReader.getPeerIDS(i) + ".log"));
                 neighbors.put(peerInfoReader.getPeerIDS(i), peerInfo);
             }
         }
