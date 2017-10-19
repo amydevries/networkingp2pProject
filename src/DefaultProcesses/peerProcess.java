@@ -3,6 +3,7 @@ package DefaultProcesses;
 import Peer.Peer;
 
 import static java.lang.System.exit;
+import static sun.misc.PostVMInitHook.run;
 
 public class peerProcess{
 
@@ -19,6 +20,7 @@ public class peerProcess{
     public peerProcess(int peerID){
         Peer peer = new Peer(peerID);
 
+        (new Thread() { public void run() { peer.runFileSharing(); }}).start();
 
 
     }

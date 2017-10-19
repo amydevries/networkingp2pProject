@@ -25,9 +25,11 @@ public class PeerMessage{
         return data;
     }
 
+    public PeerMessage() {}
+
     public PeerMessage(ISocket socket) throws IOException {
         header = new byte[4];
-        type = new byte[1];
+
         peerId  = new byte[4];
 
         int length;
@@ -58,9 +60,10 @@ public class PeerMessage{
                 socket.read(peerId);
         } else {
             length = byteArrayToInt(header);
+            type = new byte[1];
             socket.read(type);
 
-            data = new byte[length];
+            data = new byte[length-1];
 
             if (length > 0) {
                 if (socket.read(data) != length) {
@@ -70,6 +73,11 @@ public class PeerMessage{
 
             }
         }
+    }
+
+    public PeerMessage(int type, byte[] data){
+        this.type = intToByteArray(type);
+        this.data = data;
     }
 
 
@@ -121,6 +129,16 @@ public class PeerMessage{
         }
 
         return integer;
+    }
+
+    public static byte[] intToByteArray(final int number){
+        int byteNum = (40 - Integer.numberOfLeadingZeros (number < 0 ? ~number : number)) / 8;
+        byte[] byteArray = new byte[4];
+
+        for (int n = 0; n < byteNum; n++)
+            byteArray[3 - n] = (byte) (number >>> (n * 8));
+
+        return (byteArray);
     }
 
 }

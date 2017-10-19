@@ -25,5 +25,6 @@ public class PeerHandler extends Thread {
 
         handlers.get(peerMessage.getType()).handleMessage(peerConnection, peerMessage);
 
+        peerConnection.close();
     }
 }

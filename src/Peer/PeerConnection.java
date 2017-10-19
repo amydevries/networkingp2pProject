@@ -33,6 +33,13 @@ public class PeerConnection {
         this.iSocket = iSocket;
     }
 
+    public void close(){
+        if(iSocket != null){
+            iSocket.close();
+        }
+        iSocket = null;
+    }
+
     public void sendData(byte[] bytes){
         iSocket.write(bytes);
     }
