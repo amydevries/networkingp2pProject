@@ -7,12 +7,15 @@ import Sockets.ISocket;
 import java.net.Socket;
 import java.util.Hashtable;
 
+/**
+ * each peer has a peer handler that will handle all of the connections that peer makes to a specific peer that connects to it
+ *
+ * the peer handler also controls the massages being passed to the proper handler that can do the proper thing for
+ * that message according to the protocol
+ */
 public class PeerHandler extends Thread {
 
     private ISocket iSocket;
-
-    // hashtable for storing all of the connections for every peer
-    private Hashtable<Integer, ISocket> peerConnections = new Hashtable<Integer, ISocket>();
 
     // the peer that we are handling messages for
     private Peer parentPeer;
@@ -20,6 +23,7 @@ public class PeerHandler extends Thread {
     public PeerHandler(Peer parentPeer, Socket socket){
         this.parentPeer = parentPeer;
         iSocket = SocketFactory.getSocketFactory().makeSocket(socket);
+
     }
 
     public void run(){

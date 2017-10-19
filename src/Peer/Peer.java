@@ -17,6 +17,8 @@
 // if a neighbor is already unchoked no reason to send it an unchoked message
 // send choke message to all neighbors that missed the cut this time that were unchoked before
 
+
+
 // if the peer has a complete file
 // randomly select from the neighbors that are interested
 
@@ -27,6 +29,13 @@
 // when a peer is unchoked it sends a request message for a piece that it doesnt have but the peer who unchoked it has and it hasnt requested from other neighbor
 
 // a piece message contains the actual piece that a peer is sending to its neighbor
+
+
+
+// having some difficulty with having the message handlers and the initial connections to the neighbor peers
+// it seems like the handler handles messages that come in from other peers and doesnt initiate the connections
+// we might have to change it to handle initiating the connections or having something else that keeps track of connections that a peer starts itself
+//
 
 package Peer;
 
@@ -85,9 +94,7 @@ public class Peer extends Thread{
                 try{
                     Socket clientSocket = serverSocket.accept();
 
-                    // start the connections to all the peers that come before in the PeerInfo.cfg
-                    initiateConnections();
-
+                    // the peer handler handles the connection that comes in from the server socket
                     PeerHandler peerHandler = new PeerHandler(this, clientSocket);
                     peerHandler.start();
 

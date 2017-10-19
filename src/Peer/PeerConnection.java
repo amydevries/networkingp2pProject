@@ -6,11 +6,13 @@ import Sockets.ISocket;
 
 import java.io.IOException;
 
+// a peerConnection wraps a socket with information about the peer the socket is connecting to
 public class PeerConnection {
 
     // peer connection now remembers what peer it is acting as a connection for so we can more easily access bitfield/other information
     // idk if this is necessary it might need to be removed later
     private Peer parentPeer;
+
     private PeerInfo peerInfo;
     private ISocket iSocket;
     private PeerLogger peerLogger = new PeerLogger();
