@@ -33,8 +33,8 @@ public class startRemotePeers {
             for (int i = 0; i < numPeers; i++) {
                 System.out.println("Start remote peer " + peerInfoReader.getPeerIDS(i) +  " at " + peerInfoReader.getPeerHostNames(i) );
 
-                Runtime.getRuntime().exec("ssh " + peerInfoReader.getPeerHostNames(i) + " cd " + path + "; java peerProcess " + peerInfoReader.getPeerIDS(i));
-
+                //Runtime.getRuntime().exec("ssh " + peerInfoReader.getPeerHostNames(i) + " cd " + path + "; java peerProcess " + peerInfoReader.getPeerIDS(i));
+                Runtime.getRuntime().exec("java peerProcess " + peerInfoReader.getPeerIDS(i));
             }
             System.out.println("All remote peers started." );
 

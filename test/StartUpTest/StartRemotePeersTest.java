@@ -8,7 +8,8 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
+//This test currently does nothing. The assert doesn't work
+//will come back to this at some point I guess
 public class StartRemotePeersTest {
     @Test
     public void testSsh(){
@@ -30,6 +31,6 @@ public class StartRemotePeersTest {
         //Assert
 
         System.out.println(consoleOutput.toString());
-        //assertTrue(expectedOutput == consoleOutput.toString());
+        //assertTrue(expectedOutput.equals(consoleOutput.toString()));
     }
 }

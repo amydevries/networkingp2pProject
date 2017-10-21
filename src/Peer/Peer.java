@@ -40,6 +40,8 @@
 package Peer;
 
 import Factory.SocketFactory;
+import FileHandling.CommonReader;
+import FileHandling.PeerInfoReader;
 import Handlers.*;
 
 import java.net.ServerSocket;
@@ -68,6 +70,9 @@ public class Peer extends Thread{
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
     private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
 
+    private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
+    private CommonReader comReader = new CommonReader("Common.cfg");
+
 
     public Peer(int myID){
         peerInfo = new PeerInfo(myID);
@@ -87,6 +92,20 @@ public class Peer extends Thread{
     }
 
     public void runFileSharing(){
+
+        //loop though peers and add them to the hashtable and connect with the ones that are already in the hashtable?
+        for(int i = 0; i < peerReader.getNumberOfPeers(); i++){
+
+            PeerInfo infoToAdd = new PeerInfo(peerReader.getPeerIDS(i), peerReader.getPeerHostNames(i), peerReader.getPeerPorts(i),
+                    peerReader.getPeerFullFileOrNot(i), peerReader.getPeerLogs(i), peerReader.getPiecesInterested(i));
+
+            peers.put(peerReader.getPeerIDS(i), infoToAdd);
+
+            //for all the peers before this one, get its neighbors and connect to them
+            initiateConnections();
+
+        }
+
         try{
             ServerSocket serverSocket = SocketFactory.getSocketFactory().makeServerSocket(peerInfo.getPort());
 
