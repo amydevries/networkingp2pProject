@@ -19,7 +19,8 @@ public class PieceMessageHandler implements IHandler{
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
         //Writes to log file: update the 1s with variables when they're known
-        peerLogger.downloadingPiece(1, 1, 1, 1);
+        peerLogger.downloadingPiece(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID(), 1, 1);
+
 
         // recieved a message with a piece of data that we wanted
 

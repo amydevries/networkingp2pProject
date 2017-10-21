@@ -17,11 +17,14 @@ public class ChokeMessageHandler implements IHandler {
 
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
-        //Writes to log file: update the 1s with variables when they're known
-        peerLogger.choking(1, 1);
+        peerLogger.choking(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID());
+
 
         // not sure what to do with this one
 
         // it seems like we dont have to do much with it since whether or not a peer is choking us only matters when were calculating the transmission rate
+
+        //once the connection is choked, update the variable in PeerConnection
+        peerConnection.setChoked(true);
     }
 }

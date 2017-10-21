@@ -18,7 +18,7 @@ public class HaveMessageHandler implements IHandler{
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
         //Writes to log file: update the 1s with variables when they're known
-        peerLogger.receivedHaveMessage(1, 1,1);
+        peerLogger.receivedHaveMessage(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID(),1);
 
         // when a peer gets a piece it updates its neighbor peers with what it has
 

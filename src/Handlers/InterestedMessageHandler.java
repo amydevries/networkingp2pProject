@@ -17,8 +17,7 @@ public class InterestedMessageHandler implements IHandler {
 
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
-        //Writes to log file: update the 1s with variables when they're known
-        peerLogger.receivedInterestedMessage(1, 1);
+        peerLogger.receivedInterestedMessage(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID());
 
         // the peer is now interested in some of the pieces we have
 

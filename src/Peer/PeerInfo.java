@@ -7,6 +7,7 @@ import Peer.Peer;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.logging.Logger;
 
@@ -18,13 +19,15 @@ public class PeerInfo {
     private int fileFinished;
     private PeerLogger peerLogger = new PeerLogger();
     private File peerLog;
+    private ArrayList<Integer> piecesInterestedIn;   //stores the pieces that the peer is interested in
 
-    public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog){
+    public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog, ArrayList<Integer> piecesInterestedIn){
         this.peerID = peerID;
         this.hostID = hostID;
         this.port = port;
         this.fileFinished = fileFinished;
         this.peerLog = peerLog;
+        this.piecesInterestedIn = piecesInterestedIn;
     }
 
     public PeerInfo(int myID){
@@ -40,6 +43,7 @@ public class PeerInfo {
                 //setup the file writer for the peer and create the log file
                 peerLogger.setup(this.peerID);
                 this.peerLog = new File("log_peer_" + this.peerID + ".log");
+                this.piecesInterestedIn = peerInfoReader.getPiecesInterested(i);
             }
         }
     }
@@ -53,7 +57,8 @@ public class PeerInfo {
             if(myID == peerInfoReader.getPeerIDS(i)) break;
             if(myID != peerInfoReader.getPeerIDS(i)){
                 PeerInfo peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i)
-                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i), new File("log_peer_" + peerInfoReader.getPeerIDS(i) + ".log"));
+                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i),
+                        new File("log_peer_" + peerInfoReader.getPeerIDS(i) + ".log"), peerInfoReader.getPiecesInterested(i));
                 neighbors.put(peerInfoReader.getPeerIDS(i), peerInfo);
             }
         }
@@ -95,4 +100,8 @@ public class PeerInfo {
     public File getPeerLog() { return peerLog; }
 
     public void setPeerLog() { this.peerLog = peerLog; }
+
+    public ArrayList<Integer> getPiecesInterestedIn() { return piecesInterestedIn; }
+
+    public void setPiecesInterestedIn(){ this.piecesInterestedIn = piecesInterestedIn; }
 }

@@ -15,6 +15,7 @@ public class PeerInfoReader extends ConfigurationReader {
     private Vector<Integer> peerPorts =  new Vector<Integer>();;
     private Vector<Integer> peerFullFileOrNot =  new Vector<Integer>();;
     private Vector<File> peerLogs = new Vector<File>();;
+    private Vector<ArrayList<Integer>> piecesInterested = new Vector<ArrayList<Integer>>();;
 
     public PeerInfoReader(){}
 
@@ -45,6 +46,7 @@ public class PeerInfoReader extends ConfigurationReader {
         peerPorts.add(Integer.parseInt(splited[2]));
         peerFullFileOrNot.add(Integer.parseInt(splited[3]));
         peerLogs.add(new File("log_peer_" + Integer.parseInt(splited[0]) + ".log"));
+        piecesInterested.add(new ArrayList<Integer>());
     }
 
     public int getPeerIDS(int index) {
@@ -68,4 +70,6 @@ public class PeerInfoReader extends ConfigurationReader {
     }
 
     public File getPeerLogs(int index){ return peerLogs.get(index); }
+
+    public ArrayList<Integer> getPiecesInterested(int index) { return piecesInterested.get(index); }
 }

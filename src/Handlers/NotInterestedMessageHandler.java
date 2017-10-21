@@ -17,8 +17,7 @@ public class NotInterestedMessageHandler implements IHandler{
 
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
-        //Writes to log file: update the 1s with variables when they're known
-        peerLogger.unchoking(1, 1);
+        peerLogger.receivedNotInterestedMessage(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID());
 
         // when we receive a not interested message remove that peer from out list of interested neighbors
 

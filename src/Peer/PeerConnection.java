@@ -11,11 +11,15 @@ public class PeerConnection {
 
     // peer connection now remembers what peer it is acting as a connection for so we can more easily access bitfield/other information
     // idk if this is necessary it might need to be removed later
+    //parentPeer is the 'server' peer; the one that receives the messages
     private Peer parentPeer;
-
+    //peerInfo is the 'client' peer; the one that sends the messages
     private PeerInfo peerInfo;
     private ISocket iSocket;
     private PeerLogger peerLogger = new PeerLogger();
+
+    private boolean isConnectionEstablished;    //variable for if the connection between these peers is established
+    private boolean isChoked;                   //variable to determine if the one peer in the connection has choked the other (true == choked)
 
     public PeerConnection(Peer parentPeer, PeerInfo receivingPeerInfo){
         this.parentPeer = parentPeer;
@@ -65,4 +69,13 @@ public class PeerConnection {
     public Peer getParentPeer() {
         return parentPeer;
     }
+
+    public void setConnectionEstablished(boolean isConnectionEstablished) { this.isConnectionEstablished = isConnectionEstablished; }
+
+    public boolean getConnectionEstablished(){ return isConnectionEstablished; }
+
+    public void setChoked(boolean isChoked) { this.isChoked= isChoked; }
+
+    public boolean getChoked(){ return isChoked; }
+
 }

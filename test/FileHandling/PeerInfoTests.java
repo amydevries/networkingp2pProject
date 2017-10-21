@@ -181,4 +181,29 @@ public class PeerInfoTests {
             e.printStackTrace();
         }
     }
+
+    //Note: Not sure if this 100% works
+    @Test
+    public void test07_getsPiecesInterested (){
+        // Arrange
+        PeerInfoReader reader = new PeerInfoReader(testFileName);
+
+        // Act
+        reader.parse();
+        //create new PeerInfo for each peer based on ID from file
+        PeerInfo peer1 = new PeerInfo(reader.getPeerIDS(0));
+        PeerInfo peer2 = new PeerInfo(reader.getPeerIDS(1));
+        PeerInfo peer3 = new PeerInfo(reader.getPeerIDS(2));
+        PeerInfo peer4 = new PeerInfo(reader.getPeerIDS(3));
+        PeerInfo peer5 = new PeerInfo(reader.getPeerIDS(4));
+
+        //Assert
+        System.out.println(peer1.getPiecesInterestedIn());
+        System.out.println(reader.getPiecesInterested(0));
+        assertTrue(peer1.getPiecesInterestedIn().equals(reader.getPiecesInterested(0)));
+
+
+
+    }
 }
+

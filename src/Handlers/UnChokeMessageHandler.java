@@ -15,9 +15,11 @@ public class UnChokeMessageHandler implements IHandler{
 
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
-        //Writes to log file: update the 1s with variables when they're known
-        peerLogger.unchoking(1, 1);
+        peerLogger.unchoking(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID());
 
+
+        //once the connection is unchoked, update the variable in PeerConnection
+        peerConnection.setChoked(false);
 
         // yay we got an unchoke message
         // look through the bitfield of the peer who unchoked us for interesting pieces

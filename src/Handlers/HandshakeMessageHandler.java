@@ -15,5 +15,8 @@ public class HandshakeMessageHandler implements IHandler {
     @Override
     public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
 
+
+        //once the connection between the peers is established, update the isConnectionEstablished variable in PeerConnection
+        peerConnection.setConnectionEstablished(true);
     }
 }
