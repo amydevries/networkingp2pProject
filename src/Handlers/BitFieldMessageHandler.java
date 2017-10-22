@@ -3,9 +3,9 @@ package Handlers;
 import Peer.Peer;
 import Peer.PeerConnection;
 import Peer.PeerMessage;
-import java.util.BitSet;
-import java.util.Arrays;
-import java.util.BitSet;
+import Peer.BitField;
+
+import java.util.ArrayList;
 
 public class BitFieldMessageHandler implements IHandler{
 
@@ -17,13 +17,10 @@ public class BitFieldMessageHandler implements IHandler{
     public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
 
         // update the bitfield for the peer that sent the message
-        BitSet peerBits = BitSet.valueOf(peerMessage.getData());
+        BitField messageBitField = new BitField(peerMessage.getData().length);
+        messageBitField.setBitField(peerMessage.getData());
 
-        peerConnection.getPeerInfo().setBitField(peerBits);
-
-        BitSet interestedBits = (BitSet) peerBits.clone();
-
-        interestedBits.andNot(peer.getBitField());
+        ArrayList<Integer> interestedBits =  peer.getBitField().compareTo(messageBitField);
 
         byte[] payload = new byte[0];
 
