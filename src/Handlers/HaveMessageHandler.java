@@ -5,8 +5,6 @@ import Peer.Peer;
 import Peer.PeerConnection;
 import Peer.PeerMessage;
 
-import java.util.BitSet;
-
 public class HaveMessageHandler implements IHandler{
 
     private Peer peer;
@@ -26,20 +24,5 @@ public class HaveMessageHandler implements IHandler{
 
         // check our bit field to see if the new piece is a piece we are interested in
         // update the bitfield we have for the sending peer with the new piece form the have message
-
-        BitSet peerHasBits = BitSet.valueOf(peerMessage.getData());
-
-        peerConnection.getPeerInfo().getBitField().or(peerHasBits);
-
-        BitSet interestedBits = peerHasBits;
-
-        interestedBits.andNot(peer.getBitField());
-
-        if (interestedBits.isEmpty())
-            // TODO: send NOTINTERESTED meessage
-            ;
-        else
-            // TODO: send INTERESTED messsage
-            ;
     }
 }

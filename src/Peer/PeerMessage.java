@@ -83,7 +83,9 @@ public class PeerMessage{
     }
 
 
-    static public byte[] createActualMessage(int length, int messageType, byte[] messagePayload, String type){
+    static public byte[] createActualMessage(String type, byte[] messagePayload){
+
+        int messageType = 0;
 
         //determine the message type code
         switch(type){
