@@ -100,6 +100,7 @@ public class Peer extends Thread{
                     peerReader.getPeerFullFileOrNot(i), peerReader.getPeerLogs(i), peerReader.getPiecesInterested(i));
 
             peers.put(peerReader.getPeerIDS(i), infoToAdd);
+            System.out.println("added to hashtable: " + peerReader.getPeerIDS(i));
 
             //for all the peers before this one, get its neighbors and connect to them
             initiateConnections();
