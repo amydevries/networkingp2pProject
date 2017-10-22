@@ -190,13 +190,13 @@ public class Peer extends Thread{
         PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
         //add PeerConnection to hashtable
         connections.put(receivingPeerInfo.getPeerID(), peerConnection);
-        peerConnection.sendData(messageToSend);
+        peerConnection.sendMessage(messageToSend);
         PeerMessage reply = peerConnection.receiveData();
 
         return reply;
     }
 
-    // TODO: everything about this
+    // TODO: everything about this- figure out which one to keep..
     public PeerMessage sendToPeer(int peerID, int messageType, byte[] messageData){
         PeerInfo receivingPeerInfo = peers.get(peerID);
 
@@ -204,10 +204,12 @@ public class Peer extends Thread{
     }
 
     // TODO: this, idk what im doing yet
-    public PeerMessage connectAndSend(PeerInfo receivingPeerInfo, int messageType, byte[] messageData){
+    public PeerMessage sendHandshake(PeerInfo receivingPeerInfo){
         PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
 
-        PeerMessage messageToSend = new PeerMessage(messageType, messageData);
+        PeerMessage messageToSend = new PeerMessage(99, null);
+
+        peerConnection.sendMessage(messageToSend.createHandshakeMessage(receivingPeerInfo.getPeerID()));
 
         return null;
     }
