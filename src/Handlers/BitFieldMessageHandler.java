@@ -25,11 +25,13 @@ public class BitFieldMessageHandler implements IHandler{
 
         interestedBits.andNot(peer.getBitField());
 
-        if (interestedBits.isEmpty())
-            // TODO: send NOTINTERESTED meessage
-            ;
-        else
-            // TODO: send INTERESTED messsage
-            ;
+        byte[] payload = new byte[0];
+
+        if (interestedBits.isEmpty()) {
+            peerConnection.sendData(PeerMessage.createActualMessage("not interested", payload));
+        }
+        else {
+            peerConnection.sendData(PeerMessage.createActualMessage("interested", payload));
+        }
     }
 }

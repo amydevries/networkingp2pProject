@@ -83,7 +83,10 @@ public class PeerMessage{
     }
 
 
-    static public byte[] createActualMessage(int length, int messageType, byte[] messagePayload, String type){
+    static public byte[] createActualMessage(String type, byte[] messagePayload){
+
+        int messageType = 0;
+
 
         //determine the message type code
         switch(type){
@@ -100,10 +103,10 @@ public class PeerMessage{
         byte[] actualMessage;
 
         //the size of the actual message is the payload + 1 for type + 4 for message length
-        int size = messagePayload.length + 5;
+        int length = messagePayload.length + 1;
 
-        ByteBuffer actualMsgBuffer = ByteBuffer.allocate(size);
-        actualMsgBuffer.putInt(size);
+        ByteBuffer actualMsgBuffer = ByteBuffer.allocate(length);
+        actualMsgBuffer.putInt(length);
         actualMsgBuffer.putInt(messageType);
         actualMsgBuffer.put(messagePayload);
         actualMessage = actualMsgBuffer.array();
