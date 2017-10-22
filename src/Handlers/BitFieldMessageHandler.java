@@ -3,6 +3,9 @@ package Handlers;
 import Peer.Peer;
 import Peer.PeerConnection;
 import Peer.PeerMessage;
+import java.util.BitSet;
+import java.util.Arrays;
+import java.util.BitSet;
 
 public class BitFieldMessageHandler implements IHandler{
 
@@ -13,16 +16,20 @@ public class BitFieldMessageHandler implements IHandler{
     @Override
     public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
 
-        // recieve a bitfield from a recently handshaken peer
-
         // update the bitfield for the peer that sent the message
+        BitSet peerBits = BitSet.valueOf(peerMessage.getData());
 
-        // if the peer that sent the message has information we dont have add the sending peer to our list of interesting peers
-            // send an interested message to the peer that sent the bitfield
+        peerConnection.getPeerInfo().setBitField(peerBits);
 
-        // else if the peer that sent the message doesnt have any interesting pieces
-            // send a not interested message
+        BitSet interestedBits = (BitSet) peerBits.clone();
 
+        interestedBits.andNot(peer.getBitField());
 
+        if (interestedBits.isEmpty())
+            // TODO: send NOTINTERESTED meessage
+            ;
+        else
+            // TODO: send INTERESTED messsage
+            ;
     }
 }

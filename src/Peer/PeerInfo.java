@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.logging.Logger;
+import java.util.BitSet;
 
 public class PeerInfo {
 
@@ -20,6 +21,19 @@ public class PeerInfo {
     private PeerLogger peerLogger = new PeerLogger();
     private File peerLog;
     private ArrayList<Integer> piecesInterestedIn;   //stores the pieces that the peer is interested in
+
+    public BitSet getBitField() {
+        return bitField;
+    }
+
+    public void setBitField(BitSet bitField) {
+        this.bitField = bitField;
+    }
+
+    private BitSet bitField;
+
+
+
 
     public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog, ArrayList<Integer> piecesInterestedIn){
         this.peerID = peerID;

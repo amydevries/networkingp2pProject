@@ -3,6 +3,9 @@ package Handlers;
 import Logger.PeerLogger;
 import Peer.*;
 
+import java.util.BitSet;
+import java.util.Random;
+
 public class UnChokeMessageHandler implements IHandler{
 
     private Peer peer;
@@ -23,6 +26,32 @@ public class UnChokeMessageHandler implements IHandler{
 
         // yay we got an unchoke message
         // look through the bitfield of the peer who unchoked us for interesting pieces
+
+        while (!peerConnection.getChoked()) {
+
+            BitSet interestedBits = (BitSet) peerConnection.getPeerInfo().getBitField().clone();
+
+            interestedBits.andNot(peer.getBitField());
+
+            if (interestedBits.isEmpty())
+                break;
+
+            int [] interestedIn = new int[interestedBits.cardinality()];
+
+            int k = 0;
+
+            // TODO: add one more bitset to peer requestedBitField and don't request already requested pieces
+            for (int  i = 0; i < interestedBits.size(); i++) {
+                if (interestedBits.get(i)) {
+                        interestedIn[k++] = i;
+                }
+            }
+
+            int interestedPiece = interestedIn[new Random().nextInt(k)];
+
+
+            // TODO: sent REQUEST message with interestedPiece as argument
+        }
 
         // while we havent timed out
 

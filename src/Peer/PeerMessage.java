@@ -11,7 +11,7 @@ public class PeerMessage{
     private byte[] header;
     private byte[] type;
     private byte[] data;
-    private byte[] peerId;
+    private byte[] peerID;
 
     public byte[] getHeader() {
         return header;
@@ -25,12 +25,14 @@ public class PeerMessage{
         return data;
     }
 
+    public int getPeerID() {return byteArrayToInt(peerID); }
+
     public PeerMessage() {}
 
     public PeerMessage(ISocket socket) throws IOException {
         header = new byte[4];
 
-        peerId  = new byte[4];
+        peerID = new byte[4];
 
         int length;
 
@@ -41,7 +43,7 @@ public class PeerMessage{
                 byte [] header_cont = new byte[14];
                 byte [] zeros = new byte[10];
 
-                peerId = new byte[4];
+                peerID = new byte[4];
 
                 socket.read(header_cont);  // TODO: chech that we read 14 bytes and if not throw the exception
                 String header_cont_str = new String(header_cont, Charset.forName("US-ASCII"));
@@ -57,7 +59,7 @@ public class PeerMessage{
                     }
                 }
 
-                socket.read(peerId);
+                socket.read(peerID);
         } else {
             length = byteArrayToInt(header);
             type = new byte[1];
