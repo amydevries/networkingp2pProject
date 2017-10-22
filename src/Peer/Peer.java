@@ -46,7 +46,6 @@ import Handlers.*;
 
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.BitSet;
 import java.util.Hashtable;
 
 public class Peer extends Thread{
@@ -75,16 +74,9 @@ public class Peer extends Thread{
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
     private CommonReader comReader = new CommonReader("Common.cfg");
 
-    public BitSet getBitField() {
-        return bitField;
+    public BitField getBitField() {
+        return peerInfo.getBitField();
     }
-
-    public void setBitField(BitSet bitField) {
-        this.bitField = bitField;
-    }
-
-    private BitSet bitField;
-
 
     public Peer(int myID){
         peerInfo = new PeerInfo(myID);
