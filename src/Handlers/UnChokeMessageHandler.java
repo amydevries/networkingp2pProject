@@ -3,8 +3,11 @@ package Handlers;
 import Logger.PeerLogger;
 import Peer.*;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Random;
+
+import static Peer.PeerMessage.intToByteArray;
 
 public class UnChokeMessageHandler implements IHandler{
 
@@ -33,8 +36,10 @@ public class UnChokeMessageHandler implements IHandler{
 
             int interestedPiece = interestedIn.get(new Random().nextInt(interestedIn.size()));
 
-
-            // TODO: sent REQUEST message with interestedPiece as argument
+            //sent REQUEST message with interestedPiece as argument
+            byte [] interested;
+            interested = intToByteArray(interestedPiece);
+            peerConnection.sendMessage(PeerMessage.createActualMessage("request", interested));
         }
 
         // while we havent timed out
