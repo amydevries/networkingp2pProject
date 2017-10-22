@@ -192,7 +192,7 @@ public class Peer extends Thread{
     public PeerMessage sendToPeer(int peerID, int messageType, byte[] messageData){
         PeerInfo receivingPeerInfo = peers.get(peerID);
 
-        return connectAndSend(receivingPeerInfo, messageType, messageData);
+        return sendHandshake(receivingPeerInfo);
     }
 
     // TODO: this, idk what im doing yet
