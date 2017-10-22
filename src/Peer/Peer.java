@@ -70,6 +70,7 @@ public class Peer extends Thread{
 
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
     private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
+    private Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
     private CommonReader comReader = new CommonReader("Common.cfg");
@@ -116,6 +117,7 @@ public class Peer extends Thread{
             //for all the peers before this one, get its neighbors and connect to them
             initiateConnections();
 
+
         }
 
         try{
@@ -154,6 +156,10 @@ public class Peer extends Thread{
         return handlers;
     }
 
+    public Hashtable<Integer, PeerConnection> getConnections() {
+        return connections;
+    }
+
 
     /**
      *
@@ -182,7 +188,8 @@ public class Peer extends Thread{
 
     public PeerMessage sendToPeer(PeerInfo receivingPeerInfo, byte[] messageToSend){
         PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
-
+        //add PeerConnection to hashtable
+        connections.put(receivingPeerInfo.getPeerID(), peerConnection);
         peerConnection.sendData(messageToSend);
         PeerMessage reply = peerConnection.receiveData();
 
