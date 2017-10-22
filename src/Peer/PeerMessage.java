@@ -87,6 +87,7 @@ public class PeerMessage{
 
         int messageType = 0;
 
+
         //determine the message type code
         switch(type){
             case "choke": messageType = 0; break;
@@ -103,10 +104,10 @@ public class PeerMessage{
         byte[] actualMessage;
 
         //the size of the actual message is the payload + 1 for type + 4 for message length
-        int size = messagePayload.length + 5;
+        int length = messagePayload.length + 1;
 
-        ByteBuffer actualMsgBuffer = ByteBuffer.allocate(size);
-        actualMsgBuffer.putInt(size);
+        ByteBuffer actualMsgBuffer = ByteBuffer.allocate(length);
+        actualMsgBuffer.putInt(length);
         actualMsgBuffer.putInt(messageType);
         actualMsgBuffer.put(messagePayload);
         actualMessage = actualMsgBuffer.array();
