@@ -1,9 +1,9 @@
 package Handlers;
 
-        import Logger.PeerLogger;
-        import Peer.Peer;
-        import Peer.PeerConnection;
-        import Peer.PeerMessage;
+import Logger.PeerLogger;
+import Peer.Peer;
+import Peer.PeerConnection;
+import Peer.PeerMessage;
 
 public class ChokeMessageHandler implements IHandler {
 
