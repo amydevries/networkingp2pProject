@@ -50,7 +50,7 @@ public class PeerConnection {
         iSocket = null;
     }
 
-    public void sendData(byte[] bytes){
+    public void sendMessage(byte[] bytes){
         iSocket.write(bytes);
     }
 

@@ -98,6 +98,7 @@ public class PeerMessage{
             case "bitfield": messageType = 5; break;
             case "request": messageType =6; break;
             case "piece": messageType = 7; break;
+            case "handshake": messageType = 99; break;
         }
 
         byte[] actualMessage;

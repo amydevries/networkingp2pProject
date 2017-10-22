@@ -3,8 +3,6 @@ package Handlers;
 import Peer.Peer;
 import Peer.PeerConnection;
 import Peer.PeerMessage;
-import java.util.Arrays;
-import java.util.BitSet;
 
 public class HandshakeMessageHandler implements IHandler {
 
@@ -23,8 +21,8 @@ public class HandshakeMessageHandler implements IHandler {
 
         }
 
-        if (!peer.getBitField().isEmpty()) {
-            byte[] myBitFieldArray = peer.getBitField().toByteArray();
+        if (!peer.getBitField().isFull()) {
+            byte[] myBitFieldArray = peer.getBitField().getBitField();
 
 
             // TODO: send BITFIELD message with peer.getBitField()

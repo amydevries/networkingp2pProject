@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BitField {
 
-    private byte[] bitfield;
+    private byte[] bitField;
     private int numBits;
 
     public BitField(int numBits){
@@ -16,45 +16,49 @@ public class BitField {
     }
 
     private void createNewBitField(int size, boolean hasFile){
-        bitfield = new byte[size];
+        bitField = new byte[size];
 
-        for(int i = 0; i < bitfield.length; ++i){
-            bitfield[i] = (byte)(hasFile ? 1 : 0);
+        for(int i = 0; i < bitField.length; ++i){
+            bitField[i] = (byte)(hasFile ? 1 : 0);
         }
     }
 
-    public ArrayList<Integer> compareTo(byte[] bitfieldComparingTo){
+    public ArrayList<Integer> compareTo(BitField bitFieldComparingTo){
         ArrayList<Integer> interestingPieces = new ArrayList<Integer>();
 
-        for(int i = 0; i < bitfieldComparingTo.length; ++i)
-            if((bitfield[i] == (byte) 0) && (bitfieldComparingTo[i] == (byte)1))
+        for(int i = 0; i < bitFieldComparingTo.length(); ++i)
+            if((bitField[i] == (byte) 0) && (bitFieldComparingTo.getPiece(i) == (byte)1))
                 interestingPieces.add(i);
 
         return interestingPieces;
     }
 
-    public void getPiece(int index){
-        bitfield[index] = (byte)1;
+    public byte getPiece(int index){
+        return bitField[index];
+    }
+
+    public void setPiece(int index){
+        bitField[index] = (byte)1;
     }
 
     public Boolean isFull(){
 
-        for(byte current: bitfield){
+        for(byte current: bitField){
             if(current == (byte) 0) return false;
         }
 
         return true;
     }
 
-    public byte[] getBitfield() {
-        return bitfield;
+    public byte[] getBitField() {
+        return bitField;
     }
 
-    public void setBitfield(byte[] bitfield) {
-        this.bitfield = bitfield;
+    public void setBitField(byte[] bitField) {
+        this.bitField = bitField;
     }
 
-    public int getNumBits() {
+    public int length() {
         return numBits;
     }
 
