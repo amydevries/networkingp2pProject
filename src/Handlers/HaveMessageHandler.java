@@ -5,6 +5,8 @@ import Peer.Peer;
 import Peer.PeerConnection;
 import Peer.PeerMessage;
 
+import java.util.ArrayList;
+
 public class HaveMessageHandler implements IHandler{
 
     private Peer peer;
@@ -21,8 +23,20 @@ public class HaveMessageHandler implements IHandler{
         peerLogger.receivedHaveMessage(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID(),1);
 
         // when a peer gets a piece it updates its neighbor peers with what it has
+        int peerHasPiece = PeerMessage.byteArrayToInt(peerMessage.getData());
+
+        peerConnection.getPeerInfo().getBitField().setPiece(peerHasPiece);
 
         // check our bit field to see if the new piece is a piece we are interested in
-        // update the bitfield we have for the sending peer with the new piece form the have message
+        // update the bitfield we have for the sending peer with the new piece from the have message
+        ArrayList<Integer> interestedBits =  peer.getBitField().compareTo(peerConnection.getPeerInfo().getBitField());
+
+        byte[] payload = new byte[0];
+
+        if (interestedBits.isEmpty()) {
+            peerConnection.sendMessage(PeerMessage.createActualMessage("not interested", payload));
+        }
+
+
     }
 }

@@ -41,6 +41,7 @@ public class BitField {
         bitField[index] = (byte)1;
     }
 
+
     public Boolean isFull(){
 
         for(byte current: bitField){
@@ -55,7 +56,14 @@ public class BitField {
     }
 
     public void setBitField(byte[] bitField) {
-        this.bitField = bitField;
+            this.bitField = new byte[bitField.length * 8];
+
+            int k = 0;
+            for (int i = 0; i < bitField.length; i++) {
+                for (int mask = 0x80; mask > 0; mask = mask >> 1) {
+                    this.bitField[k] = (byte) (((bitField[i] & mask) != 0) ? 1:0);
+                }
+            }
     }
 
     public int length() {

@@ -17,7 +17,7 @@ public class BitFieldMessageHandler implements IHandler{
     public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
 
         // update the bitfield for the peer that sent the message
-        BitField messageBitField = new BitField(peerMessage.getData().length);
+        BitField messageBitField = new BitField(peerMessage.getData().length  * 8);
         messageBitField.setBitField(peerMessage.getData());
 
         ArrayList<Integer> interestedBits =  peer.getBitField().compareTo(messageBitField);
