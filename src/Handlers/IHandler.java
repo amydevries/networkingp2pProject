@@ -1,9 +1,9 @@
 package Handlers;
 
 import Peer.PeerConnection;
-import Peer.PeerMessage;
+import Peer.Message;
 
 public interface IHandler {
 
-    public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage);
+    public void handleMessage(PeerConnection peerConnection, Message message);
 }

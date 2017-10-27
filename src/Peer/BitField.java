@@ -11,19 +11,15 @@ public class BitField {
         this(numBits, false);
     }
 
-    public BitField(int numBits, boolean hasFile){
-        createNewBitField(numBits, hasFile);
-    }
-
-    private void createNewBitField(int size, boolean hasFile){
-        bitField = new byte[size];
+    public BitField(int numBits, boolean fileCompete){
+        bitField = new byte[numBits];
 
         for(int i = 0; i < bitField.length; ++i){
-            bitField[i] = (byte)(hasFile ? 1 : 0);
+            bitField[i] = (byte)(fileCompete ? 1 : 0);
         }
     }
 
-    public ArrayList<Integer> compareTo(BitField bitFieldComparingTo){
+    public ArrayList<Integer> getInterestingBits(BitField bitFieldComparingTo){
         ArrayList<Integer> interestingPieces = new ArrayList<Integer>();
 
         for(int i = 0; i < bitFieldComparingTo.length(); ++i)
@@ -56,7 +52,9 @@ public class BitField {
     }
 
     public void setBitField(byte[] bitField) {
-            this.bitField = new byte[bitField.length * 8];
+        this.bitField = bitField;
+        /*
+        this.bitField = new byte[bitField.length * 8];
 
             int k = 0;
             for (int i = 0; i < bitField.length; i++) {
@@ -64,6 +62,7 @@ public class BitField {
                     this.bitField[k] = (byte) (((bitField[i] & mask) != 0) ? 1:0);
                 }
             }
+            */
     }
 
     public int length() {

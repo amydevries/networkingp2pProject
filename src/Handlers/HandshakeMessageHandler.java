@@ -2,7 +2,7 @@ package Handlers;
 
 import Peer.Peer;
 import Peer.PeerConnection;
-import Peer.PeerMessage;
+import Peer.Message;
 
 public class HandshakeMessageHandler implements IHandler {
 
@@ -13,10 +13,10 @@ public class HandshakeMessageHandler implements IHandler {
     }
 
     @Override
-    public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
+    public void handleMessage(PeerConnection peerConnection, Message message) {
 
         // check that PeerID is matching
-        if (peerConnection.getPeerInfo().getPeerID() != peerMessage.getPeerID()) {
+        if (peerConnection.getPeerInfo().getPeerID() != message.getPeerID()) {
             // TODO: throw appropritae exception
 
         }

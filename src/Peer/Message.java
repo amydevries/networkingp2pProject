@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.io.IOException;
 
-public class PeerMessage{
+public class Message {
 
     private byte[] header;
     private byte[] type;
@@ -27,9 +27,9 @@ public class PeerMessage{
 
     public int getPeerID() {return byteArrayToInt(peerID); }
 
-    public PeerMessage() {}
+    public Message() {}
 
-    public PeerMessage(ISocket socket) throws IOException {
+    public Message(ISocket socket) throws IOException {
         header = new byte[4];
 
         peerID = new byte[4];
@@ -69,7 +69,7 @@ public class PeerMessage{
 
             if (length > 0) {
                 if (socket.read(data) != length) {
-                    throw new IOException("EOF in PeerMessage constructor: " +
+                    throw new IOException("EOF in Message constructor: " +
                             "Unexpected message data length");
                 }
 
@@ -77,7 +77,7 @@ public class PeerMessage{
         }
     }
 
-    public PeerMessage(int type, byte[] data){
+    public Message(int type, byte[] data){
         this.type = intToByteArray(type);
         this.data = data;
     }

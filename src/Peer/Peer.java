@@ -120,8 +120,8 @@ public class Peer extends Thread{
                     Socket clientSocket = serverSocket.accept();
 
                     // the peer handler handles the connection that comes in from the server socket
-                    PeerHandler peerHandler = new PeerHandler(this, clientSocket);
-                    peerHandler.start();
+                    ReceivedMessageHandler receivedMessageHandler = new ReceivedMessageHandler(this, clientSocket);
+                    receivedMessageHandler.start();
 
                 }catch (Exception e){}
             }
@@ -174,32 +174,32 @@ public class Peer extends Thread{
         // loop through all peers
         for(int key: peers.keySet()){
             // send handshake message to each of them
-            PeerMessage returnMessage = sendToPeer(peers.get(key), PeerMessage.createHandshakeMessage(key));
+            Message returnMessage = sendToPeer(peers.get(key), Message.createHandshakeMessage(key));
         }
     }
 
-    public PeerMessage sendToPeer(PeerInfo receivingPeerInfo, byte[] messageToSend){
+    public Message sendToPeer(PeerInfo receivingPeerInfo, byte[] messageToSend){
         PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
         //add PeerConnection to hashtable
         connections.put(receivingPeerInfo.getPeerID(), peerConnection);
         peerConnection.sendMessage(messageToSend);
-        PeerMessage reply = peerConnection.receiveData();
+        Message reply = peerConnection.receiveData();
 
         return reply;
     }
 
     // TODO: everything about this- figure out which one to keep..
-    public PeerMessage sendToPeer(int peerID, int messageType, byte[] messageData){
+    public Message sendToPeer(int peerID, int messageType, byte[] messageData){
         PeerInfo receivingPeerInfo = peers.get(peerID);
 
         return sendHandshake(receivingPeerInfo);
     }
 
     // TODO: this, idk what im doing yet
-    public PeerMessage sendHandshake(PeerInfo receivingPeerInfo){
+    public Message sendHandshake(PeerInfo receivingPeerInfo){
         PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
 
-        PeerMessage messageToSend = new PeerMessage(99, null);
+        Message messageToSend = new Message(99, null);
 
         peerConnection.sendMessage(messageToSend.createHandshakeMessage(receivingPeerInfo.getPeerID()));
 

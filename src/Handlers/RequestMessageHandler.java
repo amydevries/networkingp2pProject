@@ -2,7 +2,7 @@ package Handlers;
 
 import Peer.Peer;
 import Peer.PeerConnection;
-import Peer.PeerMessage;
+import Peer.Message;
 
 public class RequestMessageHandler implements IHandler{
 
@@ -11,7 +11,7 @@ public class RequestMessageHandler implements IHandler{
     public RequestMessageHandler(Peer peer) { this.peer = peer; }
 
     @Override
-    public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
+    public void handleMessage(PeerConnection peerConnection, Message message) {
 
         // recieved a request message form an unchoked peer
         // double check to make sure the peer really is unchoked

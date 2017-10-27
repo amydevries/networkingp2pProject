@@ -3,7 +3,7 @@ package Handlers;
 import Logger.PeerLogger;
 import Peer.Peer;
 import Peer.PeerConnection;
-import Peer.PeerMessage;
+import Peer.Message;
 
 public class ChokeMessageHandler implements IHandler {
 
@@ -13,7 +13,7 @@ public class ChokeMessageHandler implements IHandler {
     public ChokeMessageHandler(Peer peer) { this.peer = peer; }
 
     @Override
-    public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
+    public void handleMessage(PeerConnection peerConnection, Message message) {
 
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);

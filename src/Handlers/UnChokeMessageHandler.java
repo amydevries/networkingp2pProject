@@ -3,11 +3,11 @@ package Handlers;
 import Logger.PeerLogger;
 import Peer.*;
 
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static Peer.PeerMessage.intToByteArray;
+import static Peer.Message.intToByteArray;
+import Peer.Message;
 
 public class UnChokeMessageHandler implements IHandler{
 
@@ -17,7 +17,7 @@ public class UnChokeMessageHandler implements IHandler{
     public UnChokeMessageHandler(Peer peer) { this.peer = peer; }
 
     @Override
-    public void handleMessage(PeerConnection peerConnection, PeerMessage peerMessage) {
+    public void handleMessage(PeerConnection peerConnection, Message message) {
 
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
@@ -32,14 +32,14 @@ public class UnChokeMessageHandler implements IHandler{
 
         while (!peerConnection.getChoked()) {
 
-            ArrayList<Integer> interestedIn = peer.getBitField().compareTo(peerConnection.getPeerInfo().getBitField());
+            ArrayList<Integer> interestedIn = peer.getBitField().getInterestingBits(peerConnection.getPeerInfo().getBitField());
 
             int interestedPiece = interestedIn.get(new Random().nextInt(interestedIn.size()));
 
             //sent REQUEST message with interestedPiece as argument
             byte [] interested;
             interested = intToByteArray(interestedPiece);
-            peerConnection.sendMessage(PeerMessage.createActualMessage("request", interested));
+            peerConnection.sendMessage(Message.createActualMessage("request", interested));
         }
 
         // while we havent timed out

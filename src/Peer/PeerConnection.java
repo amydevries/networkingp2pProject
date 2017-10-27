@@ -54,10 +54,10 @@ public class PeerConnection {
         iSocket.write(bytes);
     }
 
-    public PeerMessage receiveData(){
-        PeerMessage msg = null;
+    public Message receiveData(){
+        Message msg = null;
         try {
-            msg = new PeerMessage(iSocket);
+            msg = new Message(iSocket);
         } catch (IOException e) {
             e.printStackTrace();
         }
