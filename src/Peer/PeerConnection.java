@@ -7,7 +7,7 @@ import Sockets.ISocket;
 import java.io.IOException;
 
 // a peerConnection wraps a socket with information about the peer the socket is connecting to
-public class PeerConnection {
+public class PeerConnection implements Comparable<PeerConnection>{
 
     // peer connection now remembers what peer it is acting as a connection for so we can more easily access bitfield/other information
     // idk if this is necessary it might need to be removed later
@@ -17,6 +17,8 @@ public class PeerConnection {
     private PeerInfo peerInfo;
     private ISocket iSocket;
     private PeerLogger peerLogger = new PeerLogger();
+
+    private int piecesReceived = 0;
 
     private boolean isConnectionEstablished;    //variable for if the connection between these peers is established
     private boolean isChoked;                   //variable to determine if the one peer in the connection has choked the other (true == choked)
@@ -78,4 +80,27 @@ public class PeerConnection {
 
     public boolean getChoked(){ return isChoked; }
 
+    public int getPiecesReceived() {
+        return piecesReceived;
+    }
+
+    public void resetPiecesReceived() {
+        this.piecesReceived = 0;
+    }
+
+    public void incrementPiecesReceived(){
+        piecesReceived++;
+    }
+
+    @Override
+    public int compareTo(PeerConnection differentConnection) {
+        if(differentConnection == null)
+            return -1;
+        if(this == null)
+            return 1;
+
+        //sort the connections from the highest to the lowest
+        int value = differentConnection.getPiecesReceived() - this.getPiecesReceived();
+        return value;
+    }
 }

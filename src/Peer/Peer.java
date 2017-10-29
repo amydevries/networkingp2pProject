@@ -69,7 +69,7 @@ public class Peer extends Thread{
 
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
     private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
-    private Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
+    private static Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
     private CommonReader comReader = new CommonReader("Common.cfg");
@@ -110,6 +110,7 @@ public class Peer extends Thread{
             initiateConnections();
 
 
+
         }
 
         try{
@@ -148,7 +149,7 @@ public class Peer extends Thread{
         return handlers;
     }
 
-    public Hashtable<Integer, PeerConnection> getConnections() {
+    public static Hashtable<Integer, PeerConnection> getConnections() {
         return connections;
     }
 
@@ -205,5 +206,6 @@ public class Peer extends Thread{
 
         return null;
     }
+
 
 }

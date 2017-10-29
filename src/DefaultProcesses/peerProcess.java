@@ -1,6 +1,7 @@
 package DefaultProcesses;
 
 import Peer.Peer;
+import IntervalTimer.IntervalTimer;
 
 import static java.lang.System.exit;
 import static sun.misc.PostVMInitHook.run;
@@ -22,6 +23,7 @@ public class peerProcess{
 
         (new Thread() { public void run() { peer.runFileSharing(); }}).start();
 
-
+        IntervalTimer.timerStart();
     }
+
 }
