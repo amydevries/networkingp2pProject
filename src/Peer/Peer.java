@@ -41,6 +41,7 @@ package Peer;
 
 import Factory.SocketFactory;
 import FileHandling.CommonReader;
+import FileHandling.FileHandler;
 import FileHandling.PeerInfoReader;
 import Handlers.*;
 
@@ -60,7 +61,7 @@ public class Peer extends Thread{
     public static Integer REQUESTMESSAGE = 6;
     public static Integer PIECEMESSAGE = 7;
 
-    private PeerInfo peerInfo;
+    private static PeerInfo peerInfo;
     private boolean shutdown;
 
     // peers we are interested and not interested in
@@ -74,6 +75,8 @@ public class Peer extends Thread{
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
     private CommonReader comReader = new CommonReader("Common.cfg");
 
+    private FileHandler fileHandler;
+
     public BitField getBitField() {
         return peerInfo.getBitField();
     }
@@ -82,6 +85,8 @@ public class Peer extends Thread{
         peerInfo = new PeerInfo(myID);
 
         peers = peerInfo.getNeighborPeers(myID);
+
+        fileHandler = new FileHandler();
 
         handlers.put(HANDSHAKEMESSAGE,new HandshakeMessageHandler(this));
         handlers.put(CHOKEMESSAGE,new ChokeMessageHandler(this));
@@ -134,7 +139,7 @@ public class Peer extends Thread{
         shutdown = true;
     }
 
-    public PeerInfo getPeerInfo(){
+    public static PeerInfo getPeerInfo(){
         return peerInfo;
     }
 
@@ -207,5 +212,8 @@ public class Peer extends Thread{
         return null;
     }
 
+    public FileHandler getFileHandler() {
+        return fileHandler;
+    }
 
 }
