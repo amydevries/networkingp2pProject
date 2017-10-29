@@ -13,11 +13,14 @@ public class RequestMessageHandler implements IHandler{
     @Override
     public void handleMessage(PeerConnection peerConnection, Message message) {
 
-        // recieved a request message form an unchoked peer
+        // recieved a request message from an unchoked peer
         // double check to make sure the peer really is unchoked
-
-        // if the peer is unchoked start transmitting the piece it asked for
-
+        if(!peerConnection.getChoked()){
+            // if the peer is unchoked start transmitting the piece it asked for
+            int pieceInterestedIn = Message.byteArrayToInt(message.getData());
+            byte[] piece = peer.getFileHandler().getPiece(pieceInterestedIn).getData();
+            peerConnection.sendMessage(Message.createActualMessage("piece", piece));
+        }
         // else if it isnt unchoked then just ignore it
 
     }
