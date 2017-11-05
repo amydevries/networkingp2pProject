@@ -1,5 +1,6 @@
 package Handlers;
 
+import Logger.PeerLogger;
 import Peer.Peer;
 import Peer.PeerConnection;
 import Peer.Message;

@@ -20,8 +20,8 @@ public class NotInterestedMessageHandler implements IHandler{
         peerLogger.receivedNotInterestedMessage(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID());
 
         // when we receive a not interested message remove that peer from out list of interested neighbors
-        peer.interestedPeers.remove(peerConnection.getPeerInfo().getPeerID());
-        peer.notInterestedPeers.put(peerConnection.getPeerInfo().getPeerID(), peerConnection.getPeerInfo());
+        if(peer.interestedPeers.containsKey(peerConnection.getPeerInfo().getPeerID())) peer.interestedPeers.remove(peerConnection.getPeerInfo().getPeerID());
+        if(!peer.notInterestedPeers.containsKey(peerConnection.getPeerInfo().getPeerID())) peer.notInterestedPeers.put(peerConnection.getPeerInfo().getPeerID(), peerConnection.getPeerInfo());
 
     }
 }
