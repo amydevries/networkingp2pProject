@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
 
+import FileHandling.CommonReader;
 import Peer.PeerConnection;
 import Peer.Peer;
 
@@ -35,5 +36,16 @@ public class IntervalTimer extends Thread{
             connections.add(connectionHashtable.get(key));
         }
         Collections.sort(connections);
+
+        CommonReader comReader = new CommonReader();
+        int numPrefNeighbors = comReader.getNumberPreferredNeighbors();
+
+        //for the top n peers, unchoke the n that have uploaded the most
+       /* for(int i=0; i < connections.size() && i < numPrefNeighbors; i++){
+            if(connections.get(i).getConnectionEstablished() && connections.get(i).getPeerInfo().isChoked() &&
+                    connections.get(i).getPeerInfo()){
+
+            }
+        }*/
     }
 }

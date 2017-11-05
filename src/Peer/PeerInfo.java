@@ -17,6 +17,7 @@ public class PeerInfo {
     private String hostID;
     private int port;
     private int fileFinished;
+    private boolean isChoked;          //variable to determine if the one peer in the connection has choked the other (true == choked)
 
     BitField bitField;
     private PeerLogger peerLogger = new PeerLogger();
@@ -34,13 +35,14 @@ public class PeerInfo {
         this.bitField = bitField;
     }
 
-    public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog, ArrayList<Integer> piecesInterestedIn){
+    public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog, ArrayList<Integer> piecesInterestedIn, boolean isChoked){
         this.peerID = peerID;
         this.hostID = hostID;
         this.port = port;
         this.fileFinished = fileFinished;
         this.peerLog = peerLog;
         this.piecesInterestedIn = piecesInterestedIn;
+        this.isChoked = isChoked;
     }
 
     public PeerInfo(int myID){
@@ -57,6 +59,7 @@ public class PeerInfo {
                 peerLogger.setup(this.peerID);
                 this.peerLog = new File("log_peer_" + this.peerID + ".log");
                 this.piecesInterestedIn = peerInfoReader.getPiecesInterested(i);
+                this.isChoked = peerInfoReader.getChokedList(i);
             }
         }
     }
@@ -71,7 +74,7 @@ public class PeerInfo {
             if(myID != peerInfoReader.getPeerIDS(i)){
                 PeerInfo peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i)
                         , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i),
-                        new File("log_peer_" + peerInfoReader.getPeerIDS(i) + ".log"), peerInfoReader.getPiecesInterested(i));
+                        new File("log_peer_" + peerInfoReader.getPeerIDS(i) + ".log"), peerInfoReader.getPiecesInterested(i), peerInfoReader.getChokedList(i));
                 neighbors.put(peerInfoReader.getPeerIDS(i), peerInfo);
             }
         }
@@ -117,4 +120,12 @@ public class PeerInfo {
     public ArrayList<Integer> getPiecesInterestedIn() { return piecesInterestedIn; }
 
     public void setPiecesInterestedIn(){ this.piecesInterestedIn = piecesInterestedIn; }
+
+    public boolean isChoked(){
+        synchronized (this){
+            return isChoked;
+        }
+    }
+
+    public void setIsChoked(boolean isChoked){ this.isChoked = isChoked; }
 }

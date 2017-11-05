@@ -3,6 +3,7 @@ package Peer;
 import Factory.SocketFactory;
 import Logger.PeerLogger;
 import Sockets.ISocket;
+import Peer.PeerInfo;
 
 import java.io.IOException;
 
@@ -21,7 +22,6 @@ public class PeerConnection implements Comparable<PeerConnection>{
     private int piecesReceived = 0;
 
     private boolean isConnectionEstablished;    //variable for if the connection between these peers is established
-    private boolean isChoked;                   //variable to determine if the one peer in the connection has choked the other (true == choked)
 
     public PeerConnection(Peer parentPeer, PeerInfo receivingPeerInfo){
         this.parentPeer = parentPeer;
@@ -76,9 +76,9 @@ public class PeerConnection implements Comparable<PeerConnection>{
 
     public boolean getConnectionEstablished(){ return isConnectionEstablished; }
 
-    public void setChoked(boolean isChoked) { this.isChoked= isChoked; }
+    public void setChoked(boolean isChoked) { this.peerInfo.setIsChoked(isChoked); }
 
-    public boolean isChoked(){ return isChoked; }
+    public boolean getChoked(){ return peerInfo.isChoked(); }
 
     public int getPiecesReceived() {
         return piecesReceived;

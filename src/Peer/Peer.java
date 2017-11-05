@@ -110,7 +110,7 @@ public class Peer extends Thread{
         for(int i = 0; i < peerReader.getNumberOfPeers(); i++){
 
             PeerInfo infoToAdd = new PeerInfo(peerReader.getPeerIDS(i), peerReader.getPeerHostNames(i), peerReader.getPeerPorts(i),
-                    peerReader.getPeerFullFileOrNot(i), peerReader.getPeerLogs(i), peerReader.getPiecesInterested(i));
+                    peerReader.getPeerFullFileOrNot(i), peerReader.getPeerLogs(i), peerReader.getPiecesInterested(i), peerReader.getChokedList(i));
 
             peers.put(peerReader.getPeerIDS(i), infoToAdd);
             System.out.println("added to hashtable: " + peerReader.getPeerIDS(i));
