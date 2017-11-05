@@ -11,7 +11,6 @@ public class FileHandler {
 
     private BitField bitField;
     private ArrayList<Piece> pieces;
-    private Integer numberOfPiecesDownloaded;
 
     private CommonReader commonReader = new CommonReader("Common.cfg");
 

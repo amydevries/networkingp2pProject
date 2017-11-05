@@ -78,7 +78,7 @@ public class PeerConnection implements Comparable<PeerConnection>{
 
     public void setChoked(boolean isChoked) { this.peerInfo.setIsChoked(isChoked); }
 
-    public boolean getChoked(){ return peerInfo.isChoked(); }
+    public boolean isChoked(){ return peerInfo.isChoked(); }
 
     public int getPiecesReceived() {
         return piecesReceived;

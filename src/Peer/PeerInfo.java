@@ -126,4 +126,5 @@ public class PeerInfo {
     }
 
     public void setIsChoked(boolean isChoked){ this.isChoked = isChoked; }
+
 }
