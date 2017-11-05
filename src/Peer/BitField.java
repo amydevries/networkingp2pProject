@@ -37,6 +37,14 @@ public class BitField {
         bitField[index] = (byte)1;
     }
 
+    public int getNumberOfPieces(){
+        int numPieces = 0;
+        for(int i = 0 ; i < bitField.length; ++i){
+            if(bitField[i] == (byte)1) numPieces++;
+        }
+
+        return numPieces;
+    }
 
     public Boolean isFull(){
 

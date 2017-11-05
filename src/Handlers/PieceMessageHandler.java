@@ -24,7 +24,6 @@ public class PieceMessageHandler implements IHandler{
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
         //Writes to log file: update the 1s with variables when they're known
-        peerLogger.downloadingPiece(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID(), 1, 1);
 
         // received a message with a piece of data that we wanted
         byte[] data = message.getData();
@@ -44,6 +43,10 @@ public class PieceMessageHandler implements IHandler{
 
         // update our bit field and currently requesting field
         peer.getBitField().setPiece(pieceLocation);
+
+        // increase our download rate for this connection
+        peerConnection.incrementPiecesReceived();
+        peerLogger.downloadingPiece(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID(), pieceLocation, peer.getBitField().getNumberOfPieces());
 
         // look through our neighbors and if they no longer have interesting pieces send them a not interested message
         Hashtable<Integer, PeerConnection> connectionHashtable =  peer.getConnections();

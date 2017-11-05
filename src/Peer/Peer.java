@@ -67,8 +67,8 @@ public class Peer extends Thread{
     private boolean shutdown;
 
     // peers we are interested and not interested in
-    private Hashtable<Integer, PeerInfo> interestedPeers = new Hashtable<Integer, PeerInfo>();
-    private Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
+    public static Hashtable<Integer, PeerInfo> interestedPeers = new Hashtable<Integer, PeerInfo>();
+    public static Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
 
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
     private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
