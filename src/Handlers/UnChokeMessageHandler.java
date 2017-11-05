@@ -30,7 +30,7 @@ public class UnChokeMessageHandler implements IHandler{
         // yay we got an unchoke message
         // look through the bitfield of the peer who unchoked us for interesting pieces
 
-        while (!peerConnection.getChoked()) {
+        while (!peerConnection.isChoked()) {
 
             ArrayList<Integer> interestedIn = peer.getBitField().getInterestingBits(peerConnection.getPeerInfo().getBitField());
 

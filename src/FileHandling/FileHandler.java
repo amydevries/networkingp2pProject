@@ -86,6 +86,10 @@ public class FileHandler {
         this.pieces = pieces;
     }
 
+    public void setPiece(int index, Piece piece){
+        this.pieces.set(index, piece);
+    }
+
     public BitField getBitField() {
         return bitField;
     }
