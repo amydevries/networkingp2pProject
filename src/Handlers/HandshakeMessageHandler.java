@@ -17,15 +17,14 @@ public class HandshakeMessageHandler implements IHandler {
 
         // check that PeerID is matching
         if (peerConnection.getPeerInfo().getPeerID() != message.getPeerID()) {
-            // TODO: throw appropritae exception
-
+            throw new RuntimeException();
         }
 
         if (!peer.getBitField().isFull()) {
             byte[] myBitFieldArray = peer.getBitField().getBitField();
 
 
-            // TODO: send BITFIELD message with peer.getBitField()
+            peerConnection.sendMessage(Message.createActualMessage("bitfield", myBitFieldArray));
         }
 
         // once the connection between the peers is established, update the isConnectionEstablished variable in PeerConnection

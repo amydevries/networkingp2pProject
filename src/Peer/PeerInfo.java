@@ -29,6 +29,8 @@ public class PeerInfo {
         return bitField;
     }
 
+    public void setBitField(int index) { bitField.setPiece(index); }
+
     public void setBitField(BitField bitField) {
         this.bitField = bitField;
     }

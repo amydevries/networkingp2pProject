@@ -20,9 +20,8 @@ public class InterestedMessageHandler implements IHandler {
         peerLogger.receivedInterestedMessage(peerConnection.getParentPeer().getPeerInfo().getPeerID(), peerConnection.getPeerInfo().getPeerID());
 
         // the peer is now interested in some of the pieces we have
-        peer.notInterestedPeers.remove(peerConnection.getPeerInfo().getPeerID());
-        peer.interestedPeers.put(peerConnection.getPeerInfo().getPeerID(), peerConnection.getPeerInfo());
-
+        if(peer.notInterestedPeers.containsKey(peerConnection.getPeerInfo().getPeerID())) peer.notInterestedPeers.remove(peerConnection.getPeerInfo().getPeerID());
+        if(!peer.interestedPeers.containsKey(peerConnection.getPeerInfo().getPeerID())) peer.interestedPeers.put(peerConnection.getPeerInfo().getPeerID(), peerConnection.getPeerInfo());
 
     }
 }
