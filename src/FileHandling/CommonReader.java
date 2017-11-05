@@ -17,6 +17,7 @@ public class CommonReader extends ConfigurationReader {
 
     public CommonReader(String fileName){
         nameOfFileReadingFrom = fileName;
+        this.parse();
     }
 
     @Override

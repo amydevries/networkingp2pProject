@@ -1,5 +1,6 @@
 package DefaultProcesses;
 
+import FileHandling.CommonReader;
 import Peer.Peer;
 import IntervalTimer.IntervalTimer;
 
@@ -16,6 +17,7 @@ public class peerProcess{
         int peerID = Integer.parseInt(args[0]);
 
         new peerProcess(peerID);
+
     }
 
     public peerProcess(int peerID){

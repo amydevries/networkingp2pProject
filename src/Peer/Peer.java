@@ -44,10 +44,12 @@ import FileHandling.CommonReader;
 import FileHandling.FileHandler;
 import FileHandling.PeerInfoReader;
 import Handlers.*;
+import Logger.PeerLogger;
 
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Hashtable;
+import java.util.logging.Logger;
 
 public class Peer extends Thread{
 
@@ -75,6 +77,8 @@ public class Peer extends Thread{
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
     private CommonReader comReader = new CommonReader("Common.cfg");
 
+    private PeerLogger peerLogger = new PeerLogger();
+
     private FileHandler fileHandler;
 
     public BitField getBitField() {
@@ -101,7 +105,7 @@ public class Peer extends Thread{
     }
 
     public void runFileSharing(){
-
+        System.out.println("in runFileSharing");
         //loop though peers and add them to the hashtable and connect with the ones that are already in the hashtable?
         for(int i = 0; i < peerReader.getNumberOfPeers(); i++){
 
@@ -181,6 +185,7 @@ public class Peer extends Thread{
         for(int key: peers.keySet()){
             // send handshake message to each of them
             Message returnMessage = sendToPeer(peers.get(key), Message.createHandshakeMessage(key));
+
         }
     }
 
@@ -191,6 +196,10 @@ public class Peer extends Thread{
         peerConnection.sendMessage(messageToSend);
         Message reply = peerConnection.receiveData();
 
+        //setup the logger for use; need to have "true" to indicate that the file already exists
+        peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
+        //Writes to log file: update the 1s with variables when they're known
+        peerLogger.tcpConnection(peerConnection.getPeerInfo().getPeerID(), receivingPeerInfo.getPeerID());
         return reply;
     }
 
