@@ -29,8 +29,11 @@ public class peerProcess{
         CommonReader comRead = new CommonReader();
 
 
-        IntervalTimer theTimer = new IntervalTimer(comRead.getUnchokingInterval(), peerID);
-        theTimer.timerStart();
+        IntervalTimer unchokingIntervalTimer = new IntervalTimer(comRead.getUnchokingInterval(), peerID);
+        unchokingIntervalTimer.unchokingIntervalTimerStart();
+
+        IntervalTimer optimisticIntervalTimer = new IntervalTimer(comRead.getOptimisticUnchokingInterval(), peerID);
+        optimisticIntervalTimer.optimisticTimerStart();
     }
 
 }
