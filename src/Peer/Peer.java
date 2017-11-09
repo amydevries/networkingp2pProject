@@ -107,6 +107,7 @@ public class Peer extends Thread{
     public void runFileSharing(){
         System.out.println("in runFileSharing");
         //loop though peers and add them to the hashtable and connect with the ones that are already in the hashtable?
+        System.out.println(peerReader.getNumberOfPeers());
         for(int i = 0; i < peerReader.getNumberOfPeers(); i++){
 
             PeerInfo infoToAdd = new PeerInfo(peerReader.getPeerIDS(i), peerReader.getPeerHostNames(i), peerReader.getPeerPorts(i),
@@ -162,24 +163,6 @@ public class Peer extends Thread{
         return connections;
     }
 
-
-    /**
-     *
-     *
-     *  UNSURE ABOUT ALL OF THIS
-     *
-     *  right now im trying to decide between having the handshake message inside of the handler
-     *  or having all the initial handshakes that a peer can send happen here
-     *
-     *  if its in the handler that makes it easier to have all of the connections in one hashtable for the handler
-     *
-     *  but im not sure which is better and with everything being multithreaded how everything will interact
-     *
-     *
-     */
-
-
-
     public void initiateConnections(){
         // loop through all peers
         for(int key: peers.keySet()){
@@ -201,24 +184,6 @@ public class Peer extends Thread{
         //Writes to log file: update the 1s with variables when they're known
         peerLogger.tcpConnection(peerConnection.getPeerInfo().getPeerID(), receivingPeerInfo.getPeerID());
         return reply;
-    }
-
-    // TODO: everything about this- figure out which one to keep..
-    public Message sendToPeer(int peerID, int messageType, byte[] messageData){
-        PeerInfo receivingPeerInfo = peers.get(peerID);
-
-        return sendHandshake(receivingPeerInfo);
-    }
-
-    // TODO: this, idk what im doing yet
-    public Message sendHandshake(PeerInfo receivingPeerInfo){
-        PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
-
-        Message messageToSend = new Message(99, null);
-
-        peerConnection.sendMessage(messageToSend.createHandshakeMessage(receivingPeerInfo.getPeerID()));
-
-        return null;
     }
 
     public FileHandler getFileHandler() {

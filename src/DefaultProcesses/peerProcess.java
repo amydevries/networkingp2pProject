@@ -21,7 +21,7 @@ public class peerProcess{
     }
 
     public peerProcess(int peerID){
-        Peer peer = new Peer(peerID);
+        final Peer peer = new Peer(peerID);
 
         (new Thread() { public void run() { peer.runFileSharing(); }}).start();
 

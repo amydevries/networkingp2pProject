@@ -24,11 +24,11 @@ public class FileHandler {
             numberPieces = fileSize/pieceSize + 1;
         else numberPieces = fileSize/pieceSize;
 
-        boolean fileFinshed = Peer.getPeerInfo().getFileFinished() != 0;
+        boolean fileFinished = Peer.getPeerInfo().getFileFinished() != 0;
 
-        bitField = new BitField(numberPieces, fileFinshed);
+        bitField = new BitField(numberPieces, fileFinished);
         
-        if(fileFinshed){
+        if(fileFinished){
             pieces = new ArrayList<Piece>();
             readFromFile(numberPieces);
         }
@@ -74,7 +74,8 @@ public class FileHandler {
     }
 
     public void receive(int index, byte[]data){
-
+        Piece piece = new Piece(data);
+        pieces.add(index, piece);
     }
 
     public ArrayList<Piece> getPieces() {
