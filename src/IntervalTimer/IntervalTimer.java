@@ -3,6 +3,7 @@ package IntervalTimer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Hashtable;
+import java.util.Random;
 
 import FileHandling.CommonReader;
 import Logger.PeerLogger;
@@ -19,7 +20,6 @@ public class IntervalTimer extends Thread{
     private static int peerID;
 
     public IntervalTimer(int delay, int peerID){
-
         this.delay = delay;
         this.peerID = peerID;
     }
@@ -34,7 +34,7 @@ public class IntervalTimer extends Thread{
         }
     }
 
-    public static void timerStart(){
+    public static void unchokingIntervalTimerStart(){
         ArrayList<PeerConnection> connections = new ArrayList<PeerConnection>();
         Hashtable<Integer, PeerConnection> connectionHashtable = Peer.getConnections();
         for(int key: connectionHashtable.keySet()){
@@ -47,11 +47,14 @@ public class IntervalTimer extends Thread{
 
         //for the top n peers, unchoke the n that have uploaded the most
         int i;
-       for(i=0; i < connections.size() && i < numPrefNeighbors; i++){
-            if(connections.get(i).getConnectionEstablished() && connections.get(i).getPeerInfo().isChoked() && Peer.interestedPeers.containsKey(connections.get(i).getPeerInfo().getPeerID())){
-                //unchoke these peers
-                connections.get(i).getPeerInfo().setIsChoked(false);
-                connections.get(i).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
+        for(i=0; i < connections.size() && i < numPrefNeighbors; i++){
+            if(connections.get(i).getConnectionEstablished() && connections.get(i).getPeerInfo().isChoked() &&
+                    Peer.interestedPeers.containsKey(connections.get(i).getPeerInfo().getPeerID())){
+                //unchoke these peers. only send the unchoke message if they were choked previously
+                if(connections.get(i).getPeerInfo().isChoked()){
+                    connections.get(i).getPeerInfo().setIsChoked(false);
+                    connections.get(i).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
+                }
             }
         }
 
@@ -78,5 +81,33 @@ public class IntervalTimer extends Thread{
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerID, true);
         peerLogger.changePreferredNeighbors(peerID, neighbors);
+    }
+
+    public static void optimisticTimerStart(){
+        //select a random neighbor that is choked currently but is one that we're interested in
+
+        //keep an array list of only the neighbors that are choked
+        ArrayList<PeerConnection> chokedConnections = new ArrayList<PeerConnection>();
+        Hashtable<Integer, PeerConnection> connectionHashtable = Peer.getConnections();
+        for(int key: connectionHashtable.keySet()){
+            //check to see if it is unchoked AND we are interested in it
+            if(connectionHashtable.get(key).isChoked() && Peer.interestedPeers.containsKey(chokedConnections.get(key).getPeerInfo().getPeerID())) {
+                chokedConnections.add(connectionHashtable.get(key));
+            }
+        }
+
+        //generate random number to select random neighbor
+        Random random = new Random();
+        int randomNeighbor = Math.abs(random.nextInt()) % chokedConnections.size();
+        int randomNeighborID = chokedConnections.get(randomNeighbor).getPeerInfo().getPeerID();
+
+        //send unchoking message
+        chokedConnections.get(randomNeighborID).getPeerInfo().setIsChoked(false);
+        chokedConnections.get(randomNeighborID).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
+
+        PeerLogger peerLogger = new PeerLogger();
+        //setup the logger for use; need to have "true" to indicate that the file already exists
+        peerLogger.setup(peerID, true);
+        peerLogger.changeOptimisticallyUnchockedNeighbor(peerID, randomNeighborID);
     }
 }
