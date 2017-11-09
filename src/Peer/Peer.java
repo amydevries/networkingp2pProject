@@ -87,7 +87,7 @@ public class Peer extends Thread{
 
     public Peer(int myID){
         peerInfo = new PeerInfo(myID);
-
+        peerReader.parse();
         peers = peerInfo.getNeighborPeers(myID);
 
         fileHandler = new FileHandler();

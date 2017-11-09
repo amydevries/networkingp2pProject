@@ -5,6 +5,7 @@ import Sockets.ISocket;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Message {
 
@@ -116,16 +117,31 @@ public class Message {
     }
 
     static public byte[] createHandshakeMessage(int peerID){
-        byte[] handshakeMsg;
-        //Handshake message is 32 bytes
-        ByteBuffer shakeMsgBuffer = ByteBuffer.allocate(32);
-        shakeMsgBuffer.put(("P2PFILESHARINGPROJ").getBytes());
-        //18 zero-bits
-        shakeMsgBuffer.put(ByteBuffer.allocate(18));
-        shakeMsgBuffer.putInt(peerID);
-        handshakeMsg = shakeMsgBuffer.array();
 
-        return handshakeMsg;
+        //Handshake message is 32 bytes
+        String header = "P2PFILESHARINGPROJ";
+        byte[] headerAsByteArray = header.getBytes();
+        byte[] zeroPads = new byte[18];
+        Arrays.fill(zeroPads, (byte)0);
+        byte[] peerIDAsByteArray = intToByteArray(peerID);
+
+        byte[] message = concatAll(headerAsByteArray, zeroPads, peerIDAsByteArray);
+
+        return message;
+    }
+
+    public static byte[] concatAll(byte[] first, byte[]... rest) {
+        int totalLength = first.length;
+        for (byte[] array : rest) {
+            totalLength += array.length;
+        }
+        byte[] result = Arrays.copyOf(first, totalLength);
+        int offset = first.length;
+        for (byte[] array : rest) {
+            System.arraycopy(array, 0, result, offset, array.length);
+            offset += array.length;
+        }
+        return result;
     }
 
     public static int byteArrayToInt(byte[] byteArray) {
