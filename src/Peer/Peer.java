@@ -39,7 +39,6 @@
 
 package Peer;
 
-import Factory.SocketFactory;
 import FileHandling.CommonReader;
 import FileHandling.FileHandler;
 import FileHandling.PeerInfoReader;
@@ -124,7 +123,7 @@ public class Peer extends Thread{
         }
 
         try{
-            ServerSocket serverSocket = SocketFactory.getSocketFactory().makeServerSocket(peerInfo.getPort());
+            ServerSocket serverSocket = new ServerSocket(peerInfo.getPort());
 
             while(!shutdown){
                 try{

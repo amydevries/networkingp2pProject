@@ -1,7 +1,7 @@
 package Peer;
 
-import Factory.SocketFactory;
 import Handlers.IHandler;
+import Sockets.BasicSocket;
 import Sockets.ISocket;
 
 import java.net.Socket;
@@ -22,7 +22,7 @@ public class ReceivedMessageHandler extends Thread {
 
     public ReceivedMessageHandler(Peer parentPeer, Socket socket){
         this.parentPeer = parentPeer;
-        iSocket = SocketFactory.getSocketFactory().makeSocket(socket);
+        iSocket = new BasicSocket(socket);
 
     }
 

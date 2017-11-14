@@ -1,7 +1,7 @@
 package Peer;
 
-import Factory.SocketFactory;
 import Logger.PeerLogger;
+import Sockets.BasicSocket;
 import Sockets.ISocket;
 import Peer.PeerInfo;
 
@@ -27,7 +27,7 @@ public class PeerConnection implements Comparable<PeerConnection>{
         this.parentPeer = parentPeer;
         this.peerInfo = receivingPeerInfo;
         try {
-            iSocket = SocketFactory.getSocketFactory().makeSocket(peerInfo.getHostID(), peerInfo.getPort());
+            iSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
 
             //not sure if this is where the logger should go for the TCP connection
             //setup the logger for use; need to have "true" to indicate that the file already exists

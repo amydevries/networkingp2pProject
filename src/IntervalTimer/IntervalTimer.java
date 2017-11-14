@@ -96,18 +96,21 @@ public class IntervalTimer extends Thread{
             }
         }
 
-        //generate random number to select random neighbor
         Random random = new Random();
-        int randomNeighbor = Math.abs(random.nextInt()) % chokedConnections.size();
-        int randomNeighborID = chokedConnections.get(randomNeighbor).getPeerInfo().getPeerID();
+        int randomNeighborID = 0;
+        if(chokedConnections.size() > 0){
+            //generate random number to select random neighbor
+            int randomNeighbor = Math.abs(random.nextInt()) % chokedConnections.size();
+            randomNeighborID = chokedConnections.get(randomNeighbor).getPeerInfo().getPeerID();
 
-        //send unchoking message
-        chokedConnections.get(randomNeighborID).getPeerInfo().setIsChoked(false);
-        chokedConnections.get(randomNeighborID).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
+            //send unchoking message
+            chokedConnections.get(randomNeighborID).getPeerInfo().setIsChoked(false);
+            chokedConnections.get(randomNeighborID).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
 
-        PeerLogger peerLogger = new PeerLogger();
-        //setup the logger for use; need to have "true" to indicate that the file already exists
-        peerLogger.setup(peerID, true);
-        peerLogger.changeOptimisticallyUnchockedNeighbor(peerID, randomNeighborID);
+            PeerLogger peerLogger = new PeerLogger();
+            //setup the logger for use; need to have "true" to indicate that the file already exists
+            peerLogger.setup(peerID, true);
+            peerLogger.changeOptimisticallyUnchockedNeighbor(peerID, randomNeighborID);
+        }
     }
 }
