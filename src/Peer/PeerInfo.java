@@ -35,14 +35,13 @@ public class PeerInfo {
         this.bitField = bitField;
     }
 
-    public PeerInfo(int peerID, String hostID, int port, int fileFinished, File peerLog, ArrayList<Integer> piecesInterestedIn, boolean isChoked){
+    public PeerInfo(int peerID, String hostID, int port, int fileFinished){
         this.peerID = peerID;
         this.hostID = hostID;
         this.port = port;
         this.fileFinished = fileFinished;
-        this.peerLog = peerLog;
-        this.piecesInterestedIn = piecesInterestedIn;
-        this.isChoked = isChoked;
+        this.peerLog = new File("log_peer_" + peerID + ".log");
+        this.isChoked = true;
     }
 
     public PeerInfo(int myID){
@@ -56,10 +55,11 @@ public class PeerInfo {
                 this.port = peerInfoReader.getPeerPorts(i);
                 this.fileFinished = peerInfoReader.getPeerFullFileOrNot(i);
                 //setup the file writer for the peer and create the log file
-                peerLogger.setup(this.peerID);
+
+                /*peerLogger.setup(this.peerID);
                 this.peerLog = new File("log_peer_" + this.peerID + ".log");
                 this.piecesInterestedIn = peerInfoReader.getPiecesInterested(i);
-                this.isChoked = peerInfoReader.getChokedList(i);
+                this.isChoked = peerInfoReader.getChokedList(i);*/
             }
         }
     }
@@ -73,8 +73,7 @@ public class PeerInfo {
             if(myID == peerInfoReader.getPeerIDS(i)) break;
             if(myID != peerInfoReader.getPeerIDS(i)){
                 PeerInfo peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i)
-                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i),
-                        new File("log_peer_" + peerInfoReader.getPeerIDS(i) + ".log"), peerInfoReader.getPiecesInterested(i), peerInfoReader.getChokedList(i));
+                        , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i));
                 neighbors.put(peerInfoReader.getPeerIDS(i), peerInfo);
             }
         }

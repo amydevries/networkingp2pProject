@@ -16,9 +16,9 @@ public class PeerInfoReader extends ConfigurationReader {
     private Vector<String> peerHostNames =  new Vector<String>();;
     private Vector<Integer> peerPorts =  new Vector<Integer>();;
     private Vector<Integer> peerFullFileOrNot =  new Vector<Integer>();;
-    private Vector<File> peerLogs = new Vector<File>();;
+    /*private Vector<File> peerLogs = new Vector<File>();;
     private Vector<ArrayList<Integer>> piecesInterested = new Vector<ArrayList<Integer>>();;
-    private Vector<Boolean> chokedList = new Vector<Boolean>();
+    private Vector<Boolean> chokedList = new Vector<Boolean>();*/
 
     public PeerInfoReader(){}
 
@@ -48,9 +48,9 @@ public class PeerInfoReader extends ConfigurationReader {
         peerHostNames.add(splited[1]);
         peerPorts.add(Integer.parseInt(splited[2]));
         peerFullFileOrNot.add(Integer.parseInt(splited[3]));
-        peerLogs.add(new File("log_peer_" + Integer.parseInt(splited[0]) + ".log"));
+        /*peerLogs.add(new File("log_peer_" + Integer.parseInt(splited[0]) + ".log"));
         piecesInterested.add(new ArrayList<Integer>());
-        chokedList.add(false);  //not sure if this is actually right; assuming that this is where it's being read from file, so put it as false
+        chokedList.add(false);*/  //not sure if this is actually right; assuming that this is where it's being read from file, so put it as false
     }
 
     public int getPeerIDS(int index) {
@@ -73,9 +73,9 @@ public class PeerInfoReader extends ConfigurationReader {
         return numberOfPeers;
     }
 
-    public File getPeerLogs(int index){ return peerLogs.get(index); }
+    /*public File getPeerLogs(int index){ return peerLogs.get(index); }
 
     public ArrayList<Integer> getPiecesInterested(int index) { return piecesInterested.get(index); }
 
-    public boolean getChokedList(int index) { return chokedList.get(index); }
+    public boolean getChokedList(int index) { return chokedList.get(index); }*/
 }
