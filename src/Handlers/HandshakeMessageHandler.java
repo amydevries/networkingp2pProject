@@ -15,8 +15,10 @@ public class HandshakeMessageHandler implements IHandler {
     @Override
     public void handleMessage(PeerConnection peerConnection, Message message) {
 
+        System.out.println(peerConnection.getParentPeer().getPeerInfo().getPeerID());
+        System.out.println(message.getPeerID());
         // check that PeerID is matching
-        if (peerConnection.getPeerInfo().getPeerID() != message.getPeerID()) {
+        if (peerConnection.getParentPeer().getPeerInfo().getPeerID() != message.getPeerID()) {
             throw new RuntimeException();
         }
 

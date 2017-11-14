@@ -32,7 +32,6 @@ public class Message {
 
     public Message(ISocket socket) throws IOException {
         header = new byte[4];
-
         peerID = new byte[4];
 
         int length;

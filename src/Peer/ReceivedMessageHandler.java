@@ -34,7 +34,11 @@ public class ReceivedMessageHandler extends Thread {
         Hashtable<Integer, IHandler> handlers = parentPeer.getHandlers();
 
         // pass it to a handler that can act according to the protocol for the specific message type
-        handlers.get(message.getType()).handleMessage(peerConnection, message);
+        int handler = Message.byteArrayToInt(message.getType());
+        System.out.println(handlers.get(message.getType()));
+        System.out.println(handler);
+
+        handlers.get(handler).handleMessage(peerConnection, message);
 
         peerConnection.close();
     }
