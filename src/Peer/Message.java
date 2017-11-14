@@ -46,10 +46,12 @@ public class Message {
 
                 peerID = new byte[4];
 
-                socket.read(header_cont);  // TODO: chech that we read 14 bytes and if not throw the exception
+                type = intToByteArray(99);
+
+                socket.read(header_cont);  // TODO: check that we read 14 bytes and if not throw the exception
                 String header_cont_str = new String(header_cont, Charset.forName("US-ASCII"));
                 if(header_cont_str.equals("ILESHARINGPROJ")) {
-                    // TODO: throw excepetion
+                    // TODO: throw exception
                     return;
                 }
                 socket.read(zeros);

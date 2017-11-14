@@ -110,19 +110,19 @@ public class Peer extends Thread{
         for(int i = 0; i < peerReader.getNumberOfPeers(); i++){
 
             PeerInfo infoToAdd = new PeerInfo(peerReader.getPeerIDS(i), peerReader.getPeerHostNames(i), peerReader.getPeerPorts(i),
-                    peerReader.getPeerFullFileOrNot(i), peerReader.getPeerLogs(i), peerReader.getPiecesInterested(i), peerReader.getChokedList(i));
+                    peerReader.getPeerFullFileOrNot(i));
 
             peers.put(peerReader.getPeerIDS(i), infoToAdd);
             System.out.println("added to hashtable: " + peerReader.getPeerIDS(i));
 
-            //for all the peers before this one, get its neighbors and connect to them
-            initiateConnections();
-
-
 
         }
 
+        //for all the peers before this one, get its neighbors and connect to them
+        initiateConnections();
+
         try{
+
             ServerSocket serverSocket = new ServerSocket(peerInfo.getPort());
 
             while(!shutdown){
@@ -163,10 +163,13 @@ public class Peer extends Thread{
     }
 
     public void initiateConnections(){
-        // loop through all peers
+        // loop through all peers until you reach your own
         for(int key: peers.keySet()){
-            // send handshake message to each of them
-            Message returnMessage = sendToPeer(peers.get(key), Message.createHandshakeMessage(key));
+            if(key<peerInfo.getPeerID()){
+                // send handshake message to each of them
+                Message returnMessage = sendToPeer(peers.get(key), Message.createHandshakeMessage(key));
+            }
+
 
         }
     }
