@@ -1,14 +1,12 @@
 package Sockets;
 
-import Sockets.ISocket;
-
 import java.net.*;
 import java.io.*;
 import java.nio.*;
 import java.nio.channels.*;
 import java.util.*;
 
-public class BasicSocket implements ISocket{
+public class BasicSocket {
 
     Socket socket;           //socket connect to the server
     OutputStream out;         //stream write to the socket
@@ -28,8 +26,6 @@ public class BasicSocket implements ISocket{
         }
     }
 
-
-    @Override
     public void write(byte[] bytes) {
         try {
             out.write(bytes);
@@ -39,7 +35,6 @@ public class BasicSocket implements ISocket{
         }
     }
 
-    @Override
     public int read() {
         try {
             return in.read();
@@ -49,7 +44,15 @@ public class BasicSocket implements ISocket{
         return 0;
     }
 
-    @Override
+    public int read(byte theByte) {
+        try {
+            return in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public int read(byte[] bytes) {
         try {
             return in.read(bytes);
@@ -59,7 +62,6 @@ public class BasicSocket implements ISocket{
         return 0;
     }
 
-    @Override
     public void close() {
         try {
             in.close();

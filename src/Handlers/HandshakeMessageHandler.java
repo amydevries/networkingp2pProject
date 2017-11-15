@@ -18,10 +18,11 @@ public class HandshakeMessageHandler implements IHandler {
         System.out.println(peerConnection.getParentPeer().getPeerInfo().getPeerID());
         System.out.println(message.getPeerID());
         // check that PeerID is matching
-        if (peerConnection.getParentPeer().getPeerInfo().getPeerID() != message.getPeerID()) {
+        /*if (peerConnection.getParentPeer().getPeerInfo().getPeerID() != message.getPeerID()) {
             throw new RuntimeException();
-        }
-
+        }*/
+        System.out.println(peer);
+        System.out.println(peer.getBitField());
         if (!peer.getBitField().isFull()) {
             byte[] myBitFieldArray = peer.getBitField().getBitField();
 

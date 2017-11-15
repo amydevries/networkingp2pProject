@@ -91,7 +91,7 @@ public class IntervalTimer extends Thread{
         Hashtable<Integer, PeerConnection> connectionHashtable = Peer.getConnections();
         for(int key: connectionHashtable.keySet()){
             //check to see if it is unchoked AND we are interested in it
-            if(connectionHashtable.get(key).isChoked() && Peer.interestedPeers.containsKey(chokedConnections.get(key).getPeerInfo().getPeerID())) {
+            if(connectionHashtable.get(key).isChoked() && Peer.interestedPeers.containsKey(key)) {
                 chokedConnections.add(connectionHashtable.get(key));
             }
         }

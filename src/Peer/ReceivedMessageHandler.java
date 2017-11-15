@@ -2,7 +2,6 @@ package Peer;
 
 import Handlers.IHandler;
 import Sockets.BasicSocket;
-import Sockets.ISocket;
 
 import java.net.Socket;
 import java.util.Hashtable;
@@ -15,7 +14,7 @@ import java.util.Hashtable;
  */
 public class ReceivedMessageHandler extends Thread {
 
-    private ISocket iSocket;
+    private BasicSocket iSocket;
 
     // the peer that we are handling messages for
     private Peer parentPeer;
@@ -34,7 +33,7 @@ public class ReceivedMessageHandler extends Thread {
         Hashtable<Integer, IHandler> handlers = parentPeer.getHandlers();
 
         // pass it to a handler that can act according to the protocol for the specific message type
-        int handler = Message.byteArrayToInt(message.getType());
+        int handler = (byte)(message.getType());
         System.out.println(handlers.get(message.getType()));
         System.out.println(handler);
 

@@ -1,5 +1,6 @@
 package Peer;
 
+import FileHandling.CommonReader;
 import FileHandling.PeerInfoReader;
 import Logger.PeerLogger;
 import Peer.Peer;
@@ -17,7 +18,7 @@ public class PeerInfo {
     private String hostID;
     private int port;
     private int fileFinished;
-    private boolean isChoked;          //variable to determine if the one peer in the connection has choked the other (true == choked)
+    private boolean isChoked = true;          //variable to determine if the one peer in the connection has choked the other (true == choked)
 
     BitField bitField;
     private PeerLogger peerLogger = new PeerLogger();
@@ -42,6 +43,15 @@ public class PeerInfo {
         this.fileFinished = fileFinished;
         this.peerLog = new File("log_peer_" + peerID + ".log");
         this.isChoked = true;
+        CommonReader comReader = new CommonReader("Common.cfg");
+        int pieceSize = comReader.getPieceSize();
+        int fileSize = comReader.getFileSize();
+        int numPieces = fileSize/pieceSize;
+        if (fileSize % pieceSize != 0){
+            numPieces++;
+        }
+        this.bitField = new BitField(numPieces, fileFinished != 0);
+        System.out.println(bitField);
     }
 
     public PeerInfo(int myID){
@@ -54,6 +64,16 @@ public class PeerInfo {
                 this.hostID = peerInfoReader.getPeerHostNames(i);
                 this.port = peerInfoReader.getPeerPorts(i);
                 this.fileFinished = peerInfoReader.getPeerFullFileOrNot(i);
+                CommonReader comReader = new CommonReader("Common.cfg");
+                int pieceSize = comReader.getPieceSize();
+                int fileSize = comReader.getFileSize();
+                int numPieces = fileSize/pieceSize;
+                if (fileSize % pieceSize != 0){
+                    numPieces++;
+                }
+                this.bitField = new BitField(numPieces, fileFinished != 0);
+                System.out.println(bitField);
+
                 //setup the file writer for the peer and create the log file
 
                 /*peerLogger.setup(this.peerID);

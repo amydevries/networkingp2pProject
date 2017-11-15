@@ -1,7 +1,8 @@
 package Peer;
 
-import Sockets.ISocket;
+import Sockets.BasicSocket;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.util.Arrays;
 public class Message {
 
     private byte[] header;
-    private byte[] type;
+    private byte type;
     private byte[] data;
     private byte[] peerID;
 
@@ -18,7 +19,7 @@ public class Message {
         return header;
     }
 
-    public byte[] getType() {
+    public byte getType() {
         return type;
     }
 
@@ -30,41 +31,50 @@ public class Message {
 
     public Message() {}
 
-    public Message(ISocket socket) throws IOException {
+    public Message(BasicSocket socket) throws IOException {
         header = new byte[4];
         peerID = new byte[4];
-
+                    System.out.println("Here1");
         int length;
 
         socket.read(header);
         String header_str = new String(header, Charset.forName("US-ASCII"));
+                    System.out.println(header_str);
 
         if (header_str.equals("P2PF")) {
                 byte [] header_cont = new byte[14];
                 byte [] zeros = new byte[10];
 
                 peerID = new byte[4];
-
-                type = intToByteArray(99);
-
+                        System.out.println("Here2");
+                //type = intToByteArray(99);
+                        System.out.println("Here3");
                 socket.read(header_cont);  // TODO: check that we read 14 bytes and if not throw the exception
                 String header_cont_str = new String(header_cont, Charset.forName("US-ASCII"));
-                if(header_cont_str.equals("ILESHARINGPROJ")) {
+                        System.out.println("Here4");
+                if(!header_cont_str.equals("ILESHARINGPROJ")) {
                     // TODO: throw exception
+                        System.out.println("Here5");
                     return;
                 }
-                socket.read(zeros);
-
-                for (int i = 0; i < 10; i++) {
-                    if (zeros[i] != 0) {
-                        // TODO: throw exception
+                    System.out.println("Here6");
+                int size = socket.read(zeros);
+                    if(size != 10){
+                        System.out.println("nope");
                     }
-                }
+                    System.out.println("Here7");
+                    System.out.println("zeros: " + byteArrayToInt(zeros));
 
-                socket.read(peerID);
+                    System.out.println("Here8");
+
+                int size2 = socket.read(peerID);
+                if(size2 != 4){
+                    System.out.println("nope2");
+                }
+                    System.out.println("bytePeerId: " + byteArrayToInt(peerID));
         } else {
             length = byteArrayToInt(header);
-            type = new byte[1];
+            type = 1;
             socket.read(type);
 
             data = new byte[length-1];
@@ -80,7 +90,7 @@ public class Message {
     }
 
     public Message(int type, byte[] data){
-        this.type = intToByteArray(type);
+        this.type = (byte) type;
         this.data = data;
     }
 
@@ -119,14 +129,25 @@ public class Message {
 
     static public byte[] createHandshakeMessage(int peerID){
 
+        System.out.println(peerID);
         //Handshake message is 32 bytes
         String header = "P2PFILESHARINGPROJ";
         byte[] headerAsByteArray = header.getBytes();
         byte[] zeroPads = new byte[18];
         Arrays.fill(zeroPads, (byte)0);
-        byte[] peerIDAsByteArray = intToByteArray(peerID);
+        byte[] peerIDAsByteArray = new byte[4];
+        ByteBuffer buff = ByteBuffer.allocate(4);
+        buff.putInt(peerID);
+        buff.flip();
+        buff.get(peerIDAsByteArray);
 
         byte[] message = concatAll(headerAsByteArray, zeroPads, peerIDAsByteArray);
+        try {
+            String str = new String(message, "UTF-8");
+            System.out.println("str: " + str);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         return message;
     }

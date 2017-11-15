@@ -119,12 +119,11 @@ public class Peer extends Thread{
         }
 
         //for all the peers before this one, get its neighbors and connect to them
-        initiateConnections();
 
         try{
 
             ServerSocket serverSocket = new ServerSocket(peerInfo.getPort());
-
+            initiateConnections();
             while(!shutdown){
                 try{
                     Socket clientSocket = serverSocket.accept();
@@ -132,6 +131,7 @@ public class Peer extends Thread{
                     // the peer handler handles the connection that comes in from the server socket
                     ReceivedMessageHandler receivedMessageHandler = new ReceivedMessageHandler(this, clientSocket);
                     receivedMessageHandler.start();
+
 
                 }catch (Exception e){}
             }
@@ -167,25 +167,25 @@ public class Peer extends Thread{
         for(int key: peers.keySet()){
             if(key<peerInfo.getPeerID()){
                 // send handshake message to each of them
-                Message returnMessage = sendToPeer(peers.get(key), Message.createHandshakeMessage(key));
+                sendToPeer(peers.get(key), Message.createHandshakeMessage(key));
             }
 
 
         }
     }
 
-    public Message sendToPeer(PeerInfo receivingPeerInfo, byte[] messageToSend){
+    public void sendToPeer(PeerInfo receivingPeerInfo, byte[] messageToSend){
         PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
         //add PeerConnection to hashtable
         connections.put(receivingPeerInfo.getPeerID(), peerConnection);
         peerConnection.sendMessage(messageToSend);
-        Message reply = peerConnection.receiveData();
 
         //setup the logger for use; need to have "true" to indicate that the file already exists
         peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
         //Writes to log file: update the 1s with variables when they're known
         peerLogger.tcpConnection(peerConnection.getPeerInfo().getPeerID(), receivingPeerInfo.getPeerID());
-        return reply;
+        System.out.println("a: " + peerConnection.getPeerInfo().getPeerID());
+        System.out.println("b: " + receivingPeerInfo.getPeerID());
     }
 
     public FileHandler getFileHandler() {
