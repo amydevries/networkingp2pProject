@@ -20,6 +20,9 @@ public class PeerInfo {
     private int fileFinished;
     private boolean isChoked = true;          //variable to determine if the one peer in the connection has choked the other (true == choked)
 
+    private int downloadRate;
+    private boolean interested;
+
     BitField bitField;
     private PeerLogger peerLogger = new PeerLogger();
     private File peerLog;
@@ -43,6 +46,8 @@ public class PeerInfo {
         this.fileFinished = fileFinished;
         this.peerLog = new File("log_peer_" + peerID + ".log");
         this.isChoked = true;
+        this.downloadRate = 0;
+        this.piecesInterestedIn = new ArrayList<Integer>();
         CommonReader comReader = CommonReader.getCommonReader();
         int pieceSize = comReader.getPieceSize();
         int fileSize = comReader.getFileSize();
@@ -55,8 +60,7 @@ public class PeerInfo {
     }
 
     public PeerInfo(int myID){
-        PeerInfoReader peerInfoReader = new PeerInfoReader();
-        peerInfoReader.parse();
+        PeerInfoReader peerInfoReader = PeerInfoReader.getPeerInfoReader();
 
         for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
             if(myID == peerInfoReader.getPeerIDS(i)){
@@ -85,8 +89,7 @@ public class PeerInfo {
     }
 
     public Hashtable<Integer,PeerInfo> getNeighborPeers(int myID){
-        PeerInfoReader peerInfoReader = new PeerInfoReader();
-        peerInfoReader.parse();
+        PeerInfoReader peerInfoReader = PeerInfoReader.getPeerInfoReader();
         Hashtable<Integer,PeerInfo> neighbors = new Hashtable<Integer, PeerInfo>();
 
         for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
@@ -148,4 +151,19 @@ public class PeerInfo {
 
     public void setIsChoked(boolean isChoked){ this.isChoked = isChoked; }
 
+    public int getDownloadRate() {
+        return downloadRate;
+    }
+
+    public void setDownloadRate(int downloadRate) {
+        this.downloadRate = downloadRate;
+    }
+
+    public boolean isInterested() {
+        return interested;
+    }
+
+    public void setInterested(boolean interested) {
+        this.interested = interested;
+    }
 }
