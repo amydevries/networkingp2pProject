@@ -42,7 +42,6 @@ package Peer;
 import FileHandling.CommonReader;
 import FileHandling.FileHandler;
 import FileHandling.PeerInfoReader;
-import Handlers.*;
 import Logger.PeerLogger;
 
 import java.net.ServerSocket;
@@ -70,7 +69,6 @@ public class Peer extends Thread{
     public static Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
 
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
-    private Hashtable<Integer, IHandler> handlers = new Hashtable<Integer, IHandler>();
     private static Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
@@ -90,16 +88,6 @@ public class Peer extends Thread{
         peers = peerInfo.getNeighborPeers(myID);
 
         fileHandler = new FileHandler();
-
-        handlers.put(HANDSHAKEMESSAGE,new HandshakeMessageHandler(this));
-        handlers.put(CHOKEMESSAGE,new ChokeMessageHandler(this));
-        handlers.put(UNCHOKEMESSAGE,new UnChokeMessageHandler(this));
-        handlers.put(INTERESTEDMESSAGE,new InterestedMessageHandler(this));
-        handlers.put(NOTINTERESTEDMESSAGE, new NotInterestedMessageHandler(this));
-        handlers.put(HAVEMESSAGE,new HaveMessageHandler(this));
-        handlers.put(BITFIELDMESSAGE, new BitFieldMessageHandler(this));
-        handlers.put(REQUESTMESSAGE, new RequestMessageHandler(this));
-        handlers.put(PIECEMESSAGE, new PieceMessageHandler(this));
 
     }
 
@@ -128,9 +116,6 @@ public class Peer extends Thread{
                 try{
                     Socket clientSocket = serverSocket.accept();
 
-                    // the peer handler handles the connection that comes in from the server socket
-                    ReceivedMessageHandler receivedMessageHandler = new ReceivedMessageHandler(this, clientSocket);
-                    receivedMessageHandler.start();
 
 
                 }catch (Exception e){}
@@ -152,10 +137,6 @@ public class Peer extends Thread{
             if (peerInfo.getPeerID() == peerID)
                 return peers.get(key);
         return null;
-    }
-
-    public Hashtable<Integer, IHandler> getHandlers() {
-        return handlers;
     }
 
     public static Hashtable<Integer, PeerConnection> getConnections() {
