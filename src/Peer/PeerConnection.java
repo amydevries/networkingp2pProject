@@ -7,7 +7,6 @@ import Sockets.BasicSocket;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Hashtable;
 
 // a peerConnection wraps a socket with information about the peer the socket is connecting to
 public class PeerConnection implements Runnable, Comparable<PeerConnection>{
@@ -33,7 +32,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         try {
             bSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
 
-            //not sure if this is where the logger should go for the TCP connection
             //setup the logger for use; need to have "true" to indicate that the file already exists
             peerLogger.setup(peerInfo.getPeerID(), true);
             //Writes to log file
@@ -245,5 +243,75 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     @Override
     public void run() {
 
+        while(true){
+            Message handshakeMesage = null;
+            try {
+                handshakeMesage = new Message(bSocket);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if(handshakeMesage.getType() == Byte.parseByte(null)){
+              if(peerInfo != null)  {
+                  if(peerInfo.getPeerID() == handshakeMesage.getPeerID()){
+                  }else {
+                      throw new RuntimeException();
+                  }
+              }
+
+              else{
+                  for(int key: Peer.getPeers().keySet()){
+                      if(Peer.getPeers().get(key).getPeerID() == handshakeMesage.getPeerID()){
+                          peerInfo = Peer.getPeers().get(key);
+                      }
+                  }
+              }
+            }
+            break;
+        }
+
+        SendingMessages.sendingBitField(bSocket, Peer.getFileHandler().getBitField().getBitField());
+        Message bitFieldMessage = null;
+
+        try {
+            bitFieldMessage = new Message(bSocket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (bitFieldMessage.getType() == (byte)5){
+            peerInfo.getBitField().setBitField(bitFieldMessage.getData());
+        }
+
+        synchronized (interestingPieces){
+            interestingPieces = Peer.getFileHandler().getBitField().getInterestingBits(peerInfo.getBitField());
+
+            if(interestingPieces.size()>0){
+                SendingMessages.sendingInterested(bSocket);
+            }
+            else{
+                SendingMessages.sendingNotInterested(bSocket);
+            }
+        }
+
+        Message interestedMessage = null;
+
+        try {
+            interestedMessage = new Message(bSocket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if(interestedMessage.getType() == (byte)2){
+            peerInfo.setInterested(true);
+        }
+        else if(interestedMessage.getType() == (byte)3){
+            peerInfo.setInterested(false);
+        }
+
+        isConnectionEstablished = true;
+
+        boolean firstPieceRequested = false;
+
+        //TODO: finish this until the end 
     }
 }

@@ -74,7 +74,7 @@ public class Peer extends Thread{
     public static Hashtable<Integer, PeerInfo> interestedPeers = new Hashtable<Integer, PeerInfo>();
     public static Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
 
-    private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
+    private static Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
     public static ArrayList<PeerConnection> connections = new ArrayList<PeerConnection>();
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
@@ -177,6 +177,10 @@ public class Peer extends Thread{
 
     public static FileHandler getFileHandler() {
         return fileHandler;
+    }
+
+    public static Hashtable<Integer, PeerInfo> getPeers() {
+        return peers;
     }
 
 }

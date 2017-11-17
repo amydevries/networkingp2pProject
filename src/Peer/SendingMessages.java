@@ -24,7 +24,7 @@ public class SendingMessages {
         byte [] message = Message.createActualMessage("interested", new byte[0] );
         socket.write(message);
     }
-    public static void sendingnotInterested(BasicSocket socket){
+    public static void sendingNotInterested(BasicSocket socket){
         byte [] message = Message.createActualMessage("not interested", new byte[0] );
         socket.write(message);
     }
