@@ -138,7 +138,7 @@ public class Peer extends Thread{
                 return peers.get(key);
         return null;
     }
-    
+
     public static Hashtable<Integer, PeerConnection> getConnections() {
         return connections;
     }
