@@ -41,7 +41,7 @@ public class SendingMessages {
         synchronized(Peer.getFileHandler().getPiece(index)){};
         if(!Peer.getFileHandler().getPiece(index).hasBeenRequested()){
             Peer.getFileHandler().getPiece(index).request();
-            //TODO: FINISH THIS AND PIECE MESSAGE 
+            //TODO: FINISH THIS AND PIECE MESSAGE
         }
         byte [] message = Message.createActualMessage("not interested", new byte[0] );
         socket.write(message);
