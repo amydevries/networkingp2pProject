@@ -82,7 +82,7 @@ public class Message {
             if (length > 0) {
                 if (socket.read(data) != length) {
                     throw new IOException("EOF in Message constructor: " +
-                            "Unexpected message data length");
+                            "Unexpected message data getNumberOfBits");
                 }
 
             }
@@ -115,7 +115,7 @@ public class Message {
 
         byte[] actualMessage;
 
-        //the size of the actual message is the payload + 1 for type + 4 for message length
+        //the size of the actual message is the payload + 1 for type + 4 for message getNumberOfBits
         int length = messagePayload.length + 1;
 
         ByteBuffer actualMsgBuffer = ByteBuffer.allocate(length);
