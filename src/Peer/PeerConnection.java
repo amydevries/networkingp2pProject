@@ -56,6 +56,16 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         Peer.connections.add(this);
     }
 
+    public PeerConnection (PeerInfo peerInfo){
+        this.peerInfo = peerInfo;
+        Peer.connections.add(this);
+        try {
+            this.bSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void close(){
         if(bSocket != null){
             bSocket.close();

@@ -42,6 +42,7 @@ package Peer;
 import FileHandling.CommonReader;
 import FileHandling.FileHandler;
 import FileHandling.PeerInfoReader;
+import IntervalTimer.IntervalTimer;
 import Logger.PeerLogger;
 
 import java.net.ServerSocket;
@@ -108,33 +109,29 @@ public class Peer extends Thread{
             peers.put(peerReader.getPeerIDS(i), infoToAdd);
             System.out.println("added to hashtable: " + peerReader.getPeerIDS(i));
 
-            executorService = Executors.newCachedThreadPool();
-
-            //listens to incoming connections
-            executorService.execute(new IncomingConnections());
 
         }
 
-        //for all the peers before this one, get its neighbors and connect to them
+        executorService = Executors.newCachedThreadPool();
 
-        try{
+        //listens to incoming connections
+        executorService.execute(new IncomingConnections());
 
-            ServerSocket serverSocket = new ServerSocket(peerInfo.getPort());
-            initiateConnections(executorService);
-            while(!shutdown){
-                try{
-                    Socket clientSocket = serverSocket.accept();
-
-
-
-                }catch (Exception e){}
+        for(int key: peers.keySet()){
+            if(key < peerInfo.getPeerID()){
+                executorService.execute(new PeerConnection(peers.get(key)));
             }
+        }
 
-            serverSocket.close();
+        //read the delay from the config file and then pass in the peerID
+        CommonReader comRead = CommonReader.getCommonReader();
 
-        }catch (Exception e){}
+        IntervalTimer unchokingIntervalTimer = new IntervalTimer(comRead.getUnchokingInterval(),peerInfo.getPeerID());
+        unchokingIntervalTimer.unchokingIntervalTimerStart();
 
-        shutdown = true;
+        IntervalTimer optimisticIntervalTimer = new IntervalTimer(comRead.getOptimisticUnchokingInterval(), peerInfo.getPeerID());
+        optimisticIntervalTimer.optimisticTimerStart();
+
     }
 
     public static PeerInfo getPeerInfo(){
