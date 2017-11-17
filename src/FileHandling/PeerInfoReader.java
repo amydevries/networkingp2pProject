@@ -20,7 +20,9 @@ public class PeerInfoReader extends ConfigurationReader {
     private Vector<ArrayList<Integer>> piecesInterested = new Vector<ArrayList<Integer>>();;
     private Vector<Boolean> chokedList = new Vector<Boolean>();*/
 
-    public PeerInfoReader(){}
+    public PeerInfoReader(){
+        this.parse();
+    }
 
     public static final PeerInfoReader peerInfoReader = new PeerInfoReader("PeerInfo.cfg");
 
@@ -28,6 +30,7 @@ public class PeerInfoReader extends ConfigurationReader {
 
     public PeerInfoReader(String fileName){
         nameOfFileReadingFrom = fileName;
+        this.parse();
     }
 
     @Override
