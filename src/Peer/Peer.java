@@ -46,11 +46,15 @@ import Logger.PeerLogger;
 
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 public class Peer extends Thread{
+
+    static ExecutorService executorService;
 
     public static Integer HANDSHAKEMESSAGE = 99;
     public static Integer CHOKEMESSAGE = 0;
@@ -70,7 +74,7 @@ public class Peer extends Thread{
     public static Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
 
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
-    public static Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
+    public static ArrayList<PeerConnection> connections = new ArrayList<PeerConnection>();
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
 
@@ -82,6 +86,7 @@ public class Peer extends Thread{
         return peerInfo.getBitField();
     }
 
+
     public Peer(int myID){
         peerInfo = new PeerInfo(myID);
         peerReader.parse();
@@ -91,7 +96,7 @@ public class Peer extends Thread{
 
     }
 
-    public void runFileSharing(ExecutorService executorService){
+    public void runFileSharing(){
         System.out.println("in runFileSharing");
         //loop though peers and add them to the hashtable and connect with the ones that are already in the hashtable?
         System.out.println(peerReader.getNumberOfPeers());
@@ -102,6 +107,11 @@ public class Peer extends Thread{
 
             peers.put(peerReader.getPeerIDS(i), infoToAdd);
             System.out.println("added to hashtable: " + peerReader.getPeerIDS(i));
+
+            executorService = Executors.newCachedThreadPool();
+
+            //listens to incoming connections
+            executorService.execute(new IncomingConnections());
 
         }
 
@@ -138,7 +148,7 @@ public class Peer extends Thread{
         return null;
     }
 
-    public static Hashtable<Integer, PeerConnection> getConnections() {
+    public static ArrayList<PeerConnection> getConnections() {
         return connections;
     }
 
@@ -157,7 +167,7 @@ public class Peer extends Thread{
     public void sendToPeer(PeerInfo receivingPeerInfo, byte[] messageToSend){
         PeerConnection peerConnection = new PeerConnection(this, receivingPeerInfo);
         //add PeerConnection to hashtable
-        connections.put(receivingPeerInfo.getPeerID(), peerConnection);
+        connections.add(peerConnection);
         peerConnection.sendMessage(messageToSend);
 
         //setup the logger for use; need to have "true" to indicate that the file already exists

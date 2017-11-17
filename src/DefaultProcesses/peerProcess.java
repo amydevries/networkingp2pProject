@@ -11,8 +11,6 @@ import static sun.misc.PostVMInitHook.run;
 
 public class peerProcess{
 
-    static ExecutorService executorService;
-
     public static void main(String[] args) throws Exception{
 
         if(args.length != 1){
@@ -23,25 +21,22 @@ public class peerProcess{
 
         new peerProcess(peerID);
 
+
     }
 
     public peerProcess(int peerID){
         final Peer peer = new Peer(peerID);
 
-        executorService = Executors.newCachedThreadPool();
-        executorService.execute(new IncomingConnections());
-
-        peer.runFileSharing(executorService);
-
         //read the delay from the config file and then pass in the peerID
         CommonReader comRead = CommonReader.getCommonReader();
-
 
         IntervalTimer unchokingIntervalTimer = new IntervalTimer(comRead.getUnchokingInterval(), peerID);
         unchokingIntervalTimer.unchokingIntervalTimerStart();
 
         IntervalTimer optimisticIntervalTimer = new IntervalTimer(comRead.getOptimisticUnchokingInterval(), peerID);
         optimisticIntervalTimer.optimisticTimerStart();
+
+        peer.runFileSharing();
     }
 
 }

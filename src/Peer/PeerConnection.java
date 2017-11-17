@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Hashtable;
 
 // a peerConnection wraps a socket with information about the peer the socket is connecting to
-public class PeerConnection implements Comparable<PeerConnection>{
+public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
     // peer connection now remembers what peer it is acting as a connection for so we can more easily access bitfield/other information
     // idk if this is necessary it might need to be removed later
@@ -169,13 +169,13 @@ public class PeerConnection implements Comparable<PeerConnection>{
                 peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), pieceLocation, parentPeer.getBitField().getNumberOfPieces());
 
                 // look through our neighbors and if they no longer have interesting pieces send them a not interested message
-                Hashtable<Integer, PeerConnection> connectionHashtable =  Peer.getConnections();
-                for(int key: connectionHashtable.keySet()){
-                    ArrayList<Integer> pieces = parentPeer.getBitField().getInterestingBits(connectionHashtable.get(key).getPeerInfo().getBitField());
-                    if(pieces.isEmpty()) connectionHashtable.get(key).sendMessage(Message.createActualMessage("not interested", new byte[0]));
+
+                for(int i=0; i<Peer.connections.size(); i++){
+                    ArrayList<Integer> pieces = parentPeer.getBitField().getInterestingBits(Peer.connections.get(i).getPeerInfo().getBitField());
+                    if(pieces.isEmpty()) Peer.connections.get(i).sendMessage(Message.createActualMessage("not interested", new byte[0]));
 
                     // send a have message to all neighbors letting them know that we just got a new piece
-                    connectionHashtable.get(key).sendMessage(Message.createActualMessage("have", pieceLocationArray));
+                    Peer.connections.get(i).sendMessage(Message.createActualMessage("have", pieceLocationArray));
                 }
 
             }
@@ -230,5 +230,10 @@ public class PeerConnection implements Comparable<PeerConnection>{
 
     public ArrayList<Integer> getInterestingPieces() {
         return interestingPieces;
+    }
+
+    @Override
+    public void run() {
+
     }
 }
