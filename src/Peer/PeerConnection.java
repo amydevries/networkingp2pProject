@@ -51,6 +51,11 @@ public class PeerConnection implements Comparable<PeerConnection>{
         this.bSocket = bSocket;
     }
 
+    public PeerConnection(BasicSocket basicSocket){
+        this.bSocket = basicSocket;
+        Peer.connections.add(this);
+    }
+
     public void close(){
         if(bSocket != null){
             bSocket.close();
