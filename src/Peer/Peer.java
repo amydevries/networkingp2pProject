@@ -76,7 +76,7 @@ public class Peer extends Thread{
 
     private PeerLogger peerLogger = new PeerLogger();
 
-    private FileHandler fileHandler;
+    private static FileHandler fileHandler;
 
     public BitField getBitField() {
         return peerInfo.getBitField();
@@ -169,7 +169,7 @@ public class Peer extends Thread{
         System.out.println("b: " + receivingPeerInfo.getPeerID());
     }
 
-    public FileHandler getFileHandler() {
+    public static FileHandler getFileHandler() {
         return fileHandler;
     }
 
