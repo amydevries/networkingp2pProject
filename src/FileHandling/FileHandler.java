@@ -12,7 +12,7 @@ public class FileHandler {
     private BitField bitField;
     private ArrayList<Piece> pieces;
 
-    private CommonReader commonReader = new CommonReader("Common.cfg");
+    private CommonReader commonReader = CommonReader.getCommonReader();
 
     public FileHandler(){
         int fileSize = commonReader.getFileSize();

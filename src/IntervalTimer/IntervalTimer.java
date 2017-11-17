@@ -42,7 +42,7 @@ public class IntervalTimer extends Thread{
         }
         Collections.sort(connections);
 
-        CommonReader comReader = new CommonReader();
+        CommonReader comReader = CommonReader.getCommonReader();
         int numPrefNeighbors = comReader.getNumberPreferredNeighbors();
 
         //for the top n peers, unchoke the n that have uploaded the most

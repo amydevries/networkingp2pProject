@@ -26,7 +26,7 @@ public class peerProcess{
         (new Thread() { public void run() { peer.runFileSharing(); }}).start();
 
         //read the delay from the config file and then pass in the peerID
-        CommonReader comRead = new CommonReader();
+        CommonReader comRead = CommonReader.getCommonReader();
 
 
         IntervalTimer unchokingIntervalTimer = new IntervalTimer(comRead.getUnchokingInterval(), peerID);
