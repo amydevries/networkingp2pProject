@@ -2,6 +2,7 @@ package Peer;
 
 import java.nio.ByteBuffer;
 import Sockets.BasicSocket;
+import peerbase.PeerConnection;
 
 public class SendingMessages {
 
@@ -38,15 +39,30 @@ public class SendingMessages {
         socket.write(message);
     }
     public static void sendingRequest(BasicSocket socket, int index){
-        synchronized(Peer.getFileHandler().getPiece(index)){};
-        if(!Peer.getFileHandler().getPiece(index).hasBeenRequested()){
-            Peer.getFileHandler().getPiece(index).request();
-            //TODO: FINISH THIS AND PIECE MESSAGE
+        synchronized(Peer.getFileHandler().getPiece(index)) {
+            if (!Peer.getFileHandler().getPiece(index).hasBeenRequested()) {
+                Peer.getFileHandler().getPiece(index).request();
+
+                for (int i = 0; i < Peer.getConnections().size(); i++) {
+                    synchronized (Peer.getConnections().get(i).getInterestingPieces()) {
+                        Peer.getConnections().get(i).getInterestingPieces().remove(new Integer(index));
+                    }
+                }
+            }
+
+            ByteBuffer indexBuffer = ByteBuffer.allocate(4);
+            indexBuffer.putInt(index);
+            byte[] message = Message.createActualMessage("request", indexBuffer.array());
+            socket.write(message);
         }
-        byte [] message = Message.createActualMessage("not interested", new byte[0] );
-        socket.write(message);
     }
+    public static void sendingPiece(BasicSocket socket,int index, byte[] messagePayload) {
+        ByteBuffer indexBuffer = ByteBuffer.allocate(messagePayload.length + 4);
+        indexBuffer.putInt(index);
+        indexBuffer.put(messagePayload);
+        byte[] message = Message.createActualMessage("piece", indexBuffer.array());
+        socket.write(message);
 
-
+    }
 
 }
