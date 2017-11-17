@@ -3,16 +3,21 @@ package DefaultProcesses;
 import FileHandling.CommonReader;
 import Peer.Peer;
 import IntervalTimer.IntervalTimer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static java.lang.System.exit;
 import static sun.misc.PostVMInitHook.run;
 
 public class peerProcess{
 
+    static ExecutorService executorService;
 
     public static void main(String[] args) throws Exception{
 
-        if(args.length != 1) exit(0);
+        if(args.length != 1){
+            throw new IllegalArgumentException("Peer ID must be specified.");
+        }
 
         int peerID = Integer.parseInt(args[0]);
 
@@ -23,7 +28,10 @@ public class peerProcess{
     public peerProcess(int peerID){
         final Peer peer = new Peer(peerID);
 
-        (new Thread() { public void run() { peer.runFileSharing(); }}).start();
+        executorService = Executors.newCachedThreadPool();
+        executorService.execute(new IncomingConnections());
+
+        peer.runFileSharing(executorService);
 
         //read the delay from the config file and then pass in the peerID
         CommonReader comRead = CommonReader.getCommonReader();

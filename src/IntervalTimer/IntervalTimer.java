@@ -18,6 +18,7 @@ public class IntervalTimer extends Thread{
 
     private int delay;
     private static int peerID;
+    private static boolean programFinished = false;
 
     public IntervalTimer(int delay, int peerID){
         this.delay = delay;
