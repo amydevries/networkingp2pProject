@@ -43,7 +43,7 @@ public class PeerInfo {
         this.fileFinished = fileFinished;
         this.peerLog = new File("log_peer_" + peerID + ".log");
         this.isChoked = true;
-        CommonReader comReader = new CommonReader("Common.cfg");
+        CommonReader comReader = CommonReader.getCommonReader();
         int pieceSize = comReader.getPieceSize();
         int fileSize = comReader.getFileSize();
         int numPieces = fileSize/pieceSize;
@@ -64,7 +64,7 @@ public class PeerInfo {
                 this.hostID = peerInfoReader.getPeerHostNames(i);
                 this.port = peerInfoReader.getPeerPorts(i);
                 this.fileFinished = peerInfoReader.getPeerFullFileOrNot(i);
-                CommonReader comReader = new CommonReader("Common.cfg");
+                CommonReader comReader = CommonReader.getCommonReader();
                 int pieceSize = comReader.getPieceSize();
                 int fileSize = comReader.getFileSize();
                 int numPieces = fileSize/pieceSize;
