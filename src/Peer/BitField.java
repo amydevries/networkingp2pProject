@@ -12,6 +12,7 @@ public class BitField {
     }
 
     public BitField(int numBits, boolean fileCompete){
+        this.numBits = numBits;
         bitField = new byte[numBits];
 
         for(int i = 0; i < bitField.length; ++i){
@@ -56,21 +57,13 @@ public class BitField {
     }
 
     public byte[] getBitField() {
-        return bitField;
+        synchronized (this) {
+            return bitField;
+        }
     }
 
     public void setBitField(byte[] bitField) {
         this.bitField = bitField;
-        /*
-        this.bitField = new byte[bitField.length * 8];
-
-            int k = 0;
-            for (int i = 0; i < bitField.length; i++) {
-                for (int mask = 0x80; mask > 0; mask = mask >> 1) {
-                    this.bitField[k] = (byte) (((bitField[i] & mask) != 0) ? 1:0);
-                }
-            }
-            */
     }
 
     public int length() {
