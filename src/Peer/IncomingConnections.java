@@ -17,7 +17,7 @@ public class IncomingConnections implements Runnable {
 
         try{
             serverSocket = new ServerSocket(Peer.getPeerInfo().getPort());
-            for(;;){
+            while(true){
                 Socket socket = serverSocket.accept();
                 BasicSocket basicSocket = new BasicSocket(socket);
                 Peer.executorService.execute(new PeerConnection(basicSocket));
