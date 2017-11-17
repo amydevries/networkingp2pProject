@@ -5,7 +5,8 @@ public class Piece {
     private byte[] data;
     private boolean full;
     private boolean requested = false;
-    private CommonReader commonReader = new CommonReader("Common.cfg");
+    private CommonReader commonReader = CommonReader.getCommonReader();
+
 
     public Piece(){
         data = new byte[commonReader.getPieceSize()];
