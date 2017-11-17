@@ -67,22 +67,35 @@ public class PeerConnection implements Comparable<PeerConnection>{
 
             if (msg.getType() == (byte)0){
                 setChoked(true);
+                //setup the logger for use; need to have "true" to indicate that the file already exists
+                peerLogger.setup(getPeerInfo().getPeerID(), true);
+                peerLogger.choking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
             if (msg.getType() == (byte)1){
                 setChoked(false);
+
+                peerLogger.setup(getPeerInfo().getPeerID(), true);
+                peerLogger.unchoking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
             if (msg.getType() == (byte)2){
                 // the peer is now interested in some of the pieces we have
                 if(Peer.notInterestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.notInterestedPeers.remove(getPeerInfo().getPeerID());
                 if(!Peer.interestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.interestedPeers.put(getPeerInfo().getPeerID(), getPeerInfo());
+
+                peerLogger.setup(getPeerInfo().getPeerID(), true);
+                peerLogger.receivedInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
             if (msg.getType() == (byte)3){
                 if(Peer.interestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.interestedPeers.remove(getPeerInfo().getPeerID());
                 if(!Peer.notInterestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.notInterestedPeers.put(getPeerInfo().getPeerID(), getPeerInfo());
+
+                peerLogger.setup(getPeerInfo().getPeerID(), true);
+                peerLogger.receivedNotInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
             if (msg.getType() == (byte)4){
                 int peerHasPieceIndex = Message.byteArrayToInt(msg.getData());
 
+                peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedHaveMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), peerHasPieceIndex);
 
                 // update the bitfield we have for the sending peer with the new piece from the have message
@@ -123,6 +136,8 @@ public class PeerConnection implements Comparable<PeerConnection>{
                 // else if it isnt unchoked then just ignore it
             }
             if (msg.getType() == (byte)7){
+                peerLogger.setup(getPeerInfo().getPeerID(), true);
+
                 // received a message with a piece of data that we wanted
                 byte[] data = msg.getData();
 
