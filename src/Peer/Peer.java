@@ -47,6 +47,7 @@ import Logger.PeerLogger;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Hashtable;
+import java.util.concurrent.ExecutorService;
 import java.util.logging.Logger;
 
 public class Peer extends Thread{
@@ -72,7 +73,6 @@ public class Peer extends Thread{
     private static Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
-    private CommonReader comReader = CommonReader.getCommonReader();
 
     private PeerLogger peerLogger = new PeerLogger();
 
@@ -91,7 +91,7 @@ public class Peer extends Thread{
 
     }
 
-    public void runFileSharing(){
+    public void runFileSharing(ExecutorService executorService){
         System.out.println("in runFileSharing");
         //loop though peers and add them to the hashtable and connect with the ones that are already in the hashtable?
         System.out.println(peerReader.getNumberOfPeers());
@@ -103,7 +103,6 @@ public class Peer extends Thread{
             peers.put(peerReader.getPeerIDS(i), infoToAdd);
             System.out.println("added to hashtable: " + peerReader.getPeerIDS(i));
 
-
         }
 
         //for all the peers before this one, get its neighbors and connect to them
@@ -111,7 +110,7 @@ public class Peer extends Thread{
         try{
 
             ServerSocket serverSocket = new ServerSocket(peerInfo.getPort());
-            initiateConnections();
+            initiateConnections(executorService);
             while(!shutdown){
                 try{
                     Socket clientSocket = serverSocket.accept();
@@ -143,14 +142,14 @@ public class Peer extends Thread{
         return connections;
     }
 
-    public void initiateConnections(){
+    public void initiateConnections(ExecutorService executorService){
         // loop through all peers until you reach your own
         for(int key: peers.keySet()){
             if(key<peerInfo.getPeerID()){
                 // send handshake message to each of them
                 sendToPeer(peers.get(key), Message.createHandshakeMessage(key));
             }
-
+            //need to do something with the executor service here
 
         }
     }
