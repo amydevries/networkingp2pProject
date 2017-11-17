@@ -21,6 +21,8 @@ public class PeerConnection implements Comparable<PeerConnection>{
     private BasicSocket bSocket;
     private PeerLogger peerLogger = new PeerLogger();
 
+    private ArrayList<Integer> interestingPieces = new ArrayList<Integer>();
+
     private int piecesReceived = 0;
 
     private boolean isConnectionEstablished;    //variable for if the connection between these peers is established
@@ -215,5 +217,13 @@ public class PeerConnection implements Comparable<PeerConnection>{
         //sort the connections from the highest to the lowest
         int value = differentConnection.getPiecesReceived() - this.getPiecesReceived();
         return value;
+    }
+
+    public void sendHave(int index){
+
+    }
+
+    public ArrayList<Integer> getInterestingPieces() {
+        return interestingPieces;
     }
 }

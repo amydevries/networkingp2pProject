@@ -69,7 +69,7 @@ public class Peer extends Thread{
     public static Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
 
     private Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
-    private static Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
+    public static Hashtable<Integer, PeerConnection> connections = new Hashtable<Integer, PeerConnection>();
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
     private CommonReader comReader = CommonReader.getCommonReader();
