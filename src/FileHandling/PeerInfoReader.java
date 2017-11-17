@@ -22,6 +22,10 @@ public class PeerInfoReader extends ConfigurationReader {
 
     public PeerInfoReader(){}
 
+    public static final PeerInfoReader peerInfoReader = new PeerInfoReader("PeerInfo.cfg");
+
+    public static PeerInfoReader getPeerInfoReader() { return peerInfoReader;}
+
     public PeerInfoReader(String fileName){
         nameOfFileReadingFrom = fileName;
     }

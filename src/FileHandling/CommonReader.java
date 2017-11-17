@@ -11,6 +11,10 @@ public class CommonReader extends ConfigurationReader {
     private int fileSize;
     private int pieceSize;
 
+    public static final CommonReader commonReader = new CommonReader("Common.cfg");
+
+    public static CommonReader getCommonReader() { return commonReader;}
+
     private String nameOfFileReadingFrom = "Common.cfg";
 
     public CommonReader(){}
