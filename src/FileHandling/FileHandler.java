@@ -79,7 +79,7 @@ public class FileHandler {
         synchronized (pieces.get(index)){
             pieces.get(index).setData(data);
             bitField.setPiece(index);
-            for(int i : Peer.connections.keySet()){
+            for(int i=0; i<Peer.connections.size();i++){
                 if(Peer.connections.get(i).getConnectionEstablished()) {
                     Peer.connections.get(i).sendHave(index);
                     synchronized (Peer.connections.get(i).getInterestingPieces()) {

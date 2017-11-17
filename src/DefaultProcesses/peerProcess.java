@@ -26,16 +26,6 @@ public class peerProcess{
 
     public peerProcess(int peerID){
         final Peer peer = new Peer(peerID);
-
-        //read the delay from the config file and then pass in the peerID
-        CommonReader comRead = CommonReader.getCommonReader();
-
-        IntervalTimer unchokingIntervalTimer = new IntervalTimer(comRead.getUnchokingInterval(), peerID);
-        unchokingIntervalTimer.unchokingIntervalTimerStart();
-
-        IntervalTimer optimisticIntervalTimer = new IntervalTimer(comRead.getOptimisticUnchokingInterval(), peerID);
-        optimisticIntervalTimer.optimisticTimerStart();
-
         peer.runFileSharing();
     }
 
