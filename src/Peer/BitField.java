@@ -5,15 +5,15 @@ import java.util.ArrayList;
 public class BitField {
 
     private byte[] bitField;
-    private int numBits;
+    private int numberOfBits;
 
-    public BitField(int numBits){
-        this(numBits, false);
+    public BitField(int numberOfBits){
+        this(numberOfBits, false);
     }
 
-    public BitField(int numBits, boolean fileCompete){
-        this.numBits = numBits;
-        bitField = new byte[numBits];
+    public BitField(int numberOfBits, boolean fileCompete){
+        this.numberOfBits = numberOfBits;
+        bitField = new byte[numberOfBits];
 
         for(int i = 0; i < bitField.length; ++i){
             bitField[i] = (byte)(fileCompete ? 1 : 0);
@@ -23,7 +23,7 @@ public class BitField {
     public ArrayList<Integer> getInterestingBits(BitField bitFieldComparingTo){
         ArrayList<Integer> interestingPieces = new ArrayList<Integer>();
 
-        for(int i = 0; i < bitFieldComparingTo.length(); ++i)
+        for(int i = 0; i < bitFieldComparingTo.getNumberOfBits(); ++i)
             if((bitField[i] == (byte) 0) && (bitFieldComparingTo.getPiece(i) == (byte)1))
                 interestingPieces.add(i);
 
@@ -66,11 +66,11 @@ public class BitField {
         this.bitField = bitField;
     }
 
-    public int length() {
-        return numBits;
+    public int getNumberOfBits() {
+        return numberOfBits;
     }
 
-    public void setNumBits(int numBits) {
-        this.numBits = numBits;
+    public void setNumberOfBits(int numberOfBits) {
+        this.numberOfBits = numberOfBits;
     }
 }

@@ -1,5 +1,6 @@
 package FileHandling;
 
+import DefaultProcesses.peerProcess;
 import Peer.BitField;
 import Peer.Peer;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 
 public class FileHandler {
 
+    private int numberOfPiecesDownloaded = 0;
     private BitField bitField;
     private ArrayList<Piece> pieces;
 
@@ -74,8 +76,18 @@ public class FileHandler {
     }
 
     public void receive(int index, byte[]data){
-        Piece piece = new Piece(data);
-        pieces.add(index, piece);
+        synchronized (pieces.get(index)){
+            pieces.get(index).setData(data);
+            bitField.setPiece(index);
+            for(int i : Peer.connections.keySet()){
+                if(Peer.connections.get(i).getConnectionEstablished()) {
+                    Peer.connections.get(i).sendHave(index);
+                    synchronized (Peer.connections.get(i).getInterestingPieces()) {
+                        Peer.connections.get(i).getInterestingPieces().remove(index);
+                    }
+                }
+            }
+        }
     }
 
     public ArrayList<Piece> getPieces() {
@@ -100,5 +112,17 @@ public class FileHandler {
 
     public Piece getPiece(int index){
         return pieces.get(index);
+    }
+
+    public void increaseNumberOfPiecesDownloaded(){
+        numberOfPiecesDownloaded++;
+    }
+
+    public int getNumberOfPiecesDownloaded(){
+        return numberOfPiecesDownloaded;
+    }
+
+    public boolean isFull(){
+        return bitField.isFull();
     }
 }
