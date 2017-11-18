@@ -7,6 +7,7 @@ import Sockets.BasicSocket;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 // a peerConnection wraps a socket with information about the peer the socket is connecting to
 public class PeerConnection implements Runnable, Comparable<PeerConnection>{
@@ -25,6 +26,8 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     private int piecesReceived = 0;
 
     private boolean isConnectionEstablished;    //variable for if the connection between these peers is established
+
+    private boolean closeConnection = false;
 
     public PeerConnection(Peer parentPeer, PeerInfo receivingPeerInfo){
         this.parentPeer = parentPeer;
@@ -76,6 +79,21 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     }
 
     public Message receiveData(){
+
+        synchronized(interestingPieces){
+            if(interestingPieces.size() > 0 && !isChoked()){
+                Random random = new Random();
+                int reqPieceIndex = Math.abs(random.nextInt()) % interestingPieces.size();
+                SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
+                try{
+                    Thread.sleep(250);
+                }
+                catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+
         Message msg = null;
         try {
             msg = new Message(bSocket);
@@ -94,8 +112,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             }
             if (msg.getType() == (byte)2){
                 // the peer is now interested in some of the pieces we have
-                if(Peer.notInterestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.notInterestedPeers.remove(getPeerInfo().getPeerID());
-                if(!Peer.interestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.interestedPeers.put(getPeerInfo().getPeerID(), getPeerInfo());
+                peerInfo.setInterested(true);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
@@ -310,8 +327,15 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
         isConnectionEstablished = true;
 
-        boolean firstPieceRequested = false;
+        while(true){
+            receiveData();
+            if(closeConnection){
+                break;
+            }
+        }
+    }
 
-        //TODO: finish this until the end 
+    public void setCloseConnection(boolean closeConnection){
+        this.closeConnection = closeConnection;
     }
 }
