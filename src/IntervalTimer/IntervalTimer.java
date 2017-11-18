@@ -54,13 +54,11 @@ public class IntervalTimer implements Runnable {
                         int i;
                         for (i = 0; i < connections.size() && i < numPrefNeighbors; i++) {
                             if (connections.get(i).getConnectionEstablished() && connections.get(i).getPeerInfo().isChoked() &&
-                                    Peer.interestedPeers.containsKey(connections.get(i).getPeerInfo().getPeerID())) {
+                                    connections.get(i).getPeerInfo().isInterested()) {
                                 //unchoke these peers. only send the unchoke message if they were choked previously
-                                if (connections.get(i).getPeerInfo().isChoked()) {
-                                    connections.get(i).getPeerInfo().setIsChoked(false);
-                                    connections.get(i).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
-                                }
+                                connections.get(i).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
                             }
+
                         }
 
                         for (; i < connections.size(); i++) {
@@ -79,13 +77,25 @@ public class IntervalTimer implements Runnable {
                         }
 
                         PeerLogger peerLogger = new PeerLogger();
-                        int[] neighbors = new int[connections.size()];
-                        for (int k = 0; k < connections.size(); k++) {
+                        int[] neighbors = new int[comReader.getNumberPreferredNeighbors()];
+                        for (int k = 0; k<connections.size() && k < comReader.getNumberPreferredNeighbors(); k++) {
                             neighbors[k] = connections.get(k).getPeerInfo().getPeerID();
                         }
                         //setup the logger for use; need to have "true" to indicate that the file already exists
                         peerLogger.setup(peerID, true);
                         peerLogger.changePreferredNeighbors(peerID, neighbors);
+
+                        if(Peer.connections.size()> 0){
+                            programFinished = true;
+                            for(int k =0; k < connections.size(); k++){
+                                if(!connections.get(k).getPeerInfo().getBitField().isFull()){
+                                    programFinished = false;
+                                }
+                            }
+                            if(programFinished){
+                                Peer.executorService.shutdownNow();
+                            }
+                        }
 
 
                     }

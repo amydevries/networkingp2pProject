@@ -55,7 +55,7 @@ import java.util.logging.Logger;
 
 public class Peer extends Thread{
 
-    static ExecutorService executorService;
+    public static ExecutorService executorService;
 
     public static Integer HANDSHAKEMESSAGE = 99;
     public static Integer CHOKEMESSAGE = 0;
@@ -69,10 +69,6 @@ public class Peer extends Thread{
 
     private static PeerInfo peerInfo;
     private boolean shutdown;
-
-    // peers we are interested and not interested in
-    public static Hashtable<Integer, PeerInfo> interestedPeers = new Hashtable<Integer, PeerInfo>();
-    public static Hashtable<Integer, PeerInfo> notInterestedPeers = new Hashtable<Integer, PeerInfo>();
 
     private static Hashtable<Integer, PeerInfo> peers = new Hashtable<Integer,PeerInfo>();
     public static ArrayList<PeerConnection> connections = new ArrayList<PeerConnection>();
