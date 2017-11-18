@@ -5,6 +5,7 @@ import Logger.PeerLogger;
 import Sockets.BasicSocket;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -117,74 +118,60 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 getPeerInfo().setBitField(peerHasPieceIndex);
 
                 // check our bit field to see if the new piece is a piece we are interested in
-                ArrayList<Integer> interestedBits =  parentPeer.getBitField().getInterestingBits(getPeerInfo().getBitField());
+                synchronized(interestingPieces){
+                    interestingPieces = Peer.getFileHandler().getBitField().getInterestingBits(peerInfo.getBitField());
 
-                // if there are no interesting pieces send a not interested message
-                if (interestedBits.isEmpty()) {
-                    sendMessage(Message.createActualMessage("not interested", new byte[0]));
-                }else{
-                    sendMessage(Message.createActualMessage("interested", new byte[0]));
-                }
-            }
-            if (msg.getType() == (byte)5){
-                BitField messageBitField = new BitField(msg.getData().length);
-                messageBitField.setBitField(msg.getData());
+                    boolean interested = peerInfo.isInterested();
 
-                ArrayList<Integer> interestedBits =  parentPeer.getBitField().getInterestingBits(messageBitField);
-
-                byte[] payload = new byte[0];
-
-                if (interestedBits.isEmpty()) {
-                    sendMessage(Message.createActualMessage("not interested", payload));
-                }
-                else {
-                    sendMessage(Message.createActualMessage("interested", payload));
+                    if(interestingPieces.size() > 0){
+                        peerInfo.setInterested(true);
+                        if(!interested) SendingMessages.sendingInterested(bSocket);
+                    }else{
+                        peerInfo.setInterested(false);
+                        if(interested) SendingMessages.sendingNotInterested(bSocket);
+                    }
                 }
             }
             if (msg.getType() == (byte)6){
-                if(!isChoked()){
-                    // if the peer is unchoked start transmitting the piece it asked for
-                    int pieceInterestedIn = Message.byteArrayToInt(msg.getData());
-                    byte[] piece = parentPeer.getFileHandler().getPiece(pieceInterestedIn).getData();
-                    sendMessage(Message.createActualMessage("piece", piece));
+
+                if(!peerInfo.isChoked()){
+
+                    byte[] data = msg.getData();
+
+                    int index = Message.byteArrayToInt(data);
+
+                    if(Peer.getFileHandler().getBitField().getBitField()[index] == (byte)1){
+
+                        byte[] dataToSend = Peer.getFileHandler().getPiece(index).getData();
+                        SendingMessages.sendingPiece(bSocket, index, dataToSend);
+                    }
                 }
-                // else if it isnt unchoked then just ignore it
             }
             if (msg.getType() == (byte)7){
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
-
-                // received a message with a piece of data that we wanted
                 byte[] data = msg.getData();
 
-                // get the first 4 bytes which is the piece index field
-                byte[] pieceLocationArray = new byte[4];
-                for(int i = 0; i < 4; i++) pieceLocationArray[i] = data[i];
+                ByteBuffer byteBuffer = ByteBuffer.allocate(data.length);
+                byteBuffer.put(data);
+                byteBuffer.position(0);
 
-                // convert the byte index field into an int
-                int pieceLocation = Message.byteArrayToInt(pieceLocationArray);
-
-                // move the data into a piece
-                Piece piece = new Piece(Arrays.copyOfRange(data, 4, data.length));
-
-                // write the data to the correct location
-                parentPeer.getFileHandler().setPiece(pieceLocation, piece);
-
-                // update our bit field and currently requesting field
-                parentPeer.getBitField().setPiece(pieceLocation);
-
-                // increase our download rate for this connection
-                incrementPiecesReceived();
-                peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), pieceLocation, parentPeer.getBitField().getNumberOfPieces());
-
-                // look through our neighbors and if they no longer have interesting pieces send them a not interested message
-
-                for(int i=0; i<Peer.connections.size(); i++){
-                    ArrayList<Integer> pieces = parentPeer.getBitField().getInterestingBits(Peer.connections.get(i).getPeerInfo().getBitField());
-                    if(pieces.isEmpty()) Peer.connections.get(i).sendMessage(Message.createActualMessage("not interested", new byte[0]));
-
-                    // send a have message to all neighbors letting them know that we just got a new piece
-                    Peer.connections.get(i).sendMessage(Message.createActualMessage("have", pieceLocationArray));
+                int index = byteBuffer.getInt();
+                byte[] pieceData = new byte[data.length - 4];
+                for(int i = 0; i < data.length - 4; ++i){
+                    pieceData[i] = byteBuffer.get();
                 }
+
+                Peer.getFileHandler().receive(index, pieceData);
+
+                peerInfo.setDownloadRate(peerInfo.getDownloadRate() + 1);
+
+                Peer.getFileHandler().increaseNumberOfPiecesDownloaded();
+
+                if(Peer.getFileHandler().getBitField().isFull()){
+
+                }
+
+                peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, parentPeer.getBitField().getNumberOfPieces());
 
             }
 
