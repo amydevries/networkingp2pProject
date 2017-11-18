@@ -118,8 +118,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 peerLogger.receivedInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
             if (msg.getType() == (byte)3){
-                if(Peer.interestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.interestedPeers.remove(getPeerInfo().getPeerID());
-                if(!Peer.notInterestedPeers.containsKey(getPeerInfo().getPeerID())) Peer.notInterestedPeers.put(getPeerInfo().getPeerID(), getPeerInfo());
+                peerInfo.setInterested(false);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedNotInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
