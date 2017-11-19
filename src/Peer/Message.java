@@ -21,7 +21,7 @@ public class Message {
 
     public int getType() {
         if(type == null) return 99;
-        else return Message.byteArrayToInt(type);
+        else return (type[0]);
     }
 
     public byte[] getData() {
@@ -37,8 +37,9 @@ public class Message {
         peerID = new byte[4];
                     System.out.println("Here1");
         int length;
-
+            System.out.println("before socket read");
         socket.read(header);
+            System.out.println("after socket read");
         String header_str = new String(header, Charset.forName("US-ASCII"));
                     System.out.println(header_str);
 
@@ -72,6 +73,7 @@ public class Message {
                 if(size2 != 4){
                     System.out.println("nope2");
                 }
+
                     System.out.println("bytePeerId: " + byteArrayToInt(peerID));
         } else {
             type = new byte[1];
@@ -81,7 +83,7 @@ public class Message {
             data = new byte[length-1];
 
             if (length > 0) {
-                if (socket.read(data) != length) {
+                if (socket.read(data) != length-1) {
                     throw new IOException("EOF in Message constructor: " +
                             "Unexpected message data getNumberOfBits");
                 }
@@ -92,7 +94,7 @@ public class Message {
 
     static public byte[] createActualMessage(String type, byte[] messagePayload){
 
-        int messageType = 0;
+        byte messageType = 0;
 
 
         //determine the message type code
@@ -111,11 +113,13 @@ public class Message {
         byte[] actualMessage;
 
         //the size of the actual message is the payload + 1 for type + 4 for message getNumberOfBits
-        int length = messagePayload.length + 1;
+        byte[] length = intToByteArray(messagePayload.length + 1);
 
-        ByteBuffer actualMsgBuffer = ByteBuffer.allocate(length);
-        actualMsgBuffer.putInt(length);
-        actualMsgBuffer.putInt(messageType);
+
+        ByteBuffer actualMsgBuffer = ByteBuffer.allocate(Message.byteArrayToInt(length)+4);
+        actualMsgBuffer.put(length);
+        actualMsgBuffer.put(messageType);
+        System.out.println("messagePayload.length: " + messagePayload.length);
         actualMsgBuffer.put(messagePayload);
         actualMessage = actualMsgBuffer.array();
 
@@ -128,17 +132,20 @@ public class Message {
         //Handshake message is 32 bytes
         String header = "P2PFILESHARINGPROJ";
         byte[] headerAsByteArray = header.getBytes();
-        byte[] zeroPads = new byte[18];
+        byte[] zeroPads = new byte[10];
         Arrays.fill(zeroPads, (byte)0);
         byte[] peerIDAsByteArray = new byte[4];
         ByteBuffer buff = ByteBuffer.allocate(4);
         buff.putInt(peerID);
+        System.out.println("peerID set in create: " + peerID);
         buff.flip();
         buff.get(peerIDAsByteArray);
+        System.out.println("peerID as byte array: " + Message.byteArrayToInt(peerIDAsByteArray));
 
         byte[] message = concatAll(headerAsByteArray, zeroPads, peerIDAsByteArray);
+        System.out.println("msg length: " + message.length);
         try {
-            String str = new String(message, "UTF-8");
+            String str = new String(message, "US-ASCII");
             System.out.println("str: " + str);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -151,7 +158,9 @@ public class Message {
         int totalLength = first.length;
         for (byte[] array : rest) {
             totalLength += array.length;
+            System.out.println("arrayLength: " + array.length);
         }
+        System.out.println("totalLength: " + totalLength);
         byte[] result = Arrays.copyOf(first, totalLength);
         int offset = first.length;
         for (byte[] array : rest) {
@@ -162,12 +171,8 @@ public class Message {
     }
 
     public static int byteArrayToInt(byte[] byteArray) {
-        int integer = 0;
-        for (int i = 0; i < byteArray.length; i++) {
-            integer = (integer << 8) | ( ((int)byteArray[i]) & 0xff );
-        }
 
-        return integer;
+        return ByteBuffer.wrap(byteArray).getInt();
     }
 
     public static byte[] intToByteArray(final int number){
