@@ -93,7 +93,6 @@ public class PeerInfo {
         Hashtable<Integer,PeerInfo> neighbors = new Hashtable<Integer, PeerInfo>();
 
         for(int i = 0; i < peerInfoReader.getNumberOfPeers(); ++i){
-            if(myID == peerInfoReader.getPeerIDS(i)) break;
             if(myID != peerInfoReader.getPeerIDS(i)){
                 PeerInfo peerInfo = new PeerInfo(peerInfoReader.getPeerIDS(i), peerInfoReader.getPeerHostNames(i)
                         , peerInfoReader.getPeerPorts(i), peerInfoReader.getPeerFullFileOrNot(i));
