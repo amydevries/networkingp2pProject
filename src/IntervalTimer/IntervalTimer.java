@@ -122,7 +122,7 @@ public class IntervalTimer implements Runnable {
 
                         for (int i = 0; i < Peer.connections.size(); i++) {
                             //check to see if it is unchoked AND we are interested in it
-                            if (Peer.connections.get(i).isChoked() && Peer.connections.get(i).getInterestingPieces().size() > 0) {
+                            if (Peer.connections.get(i).getPeerInfo() != null && Peer.connections.get(i).isChoked() && Peer.connections.get(i).getInterestingPieces().size() > 0) {
                                 potentialConnections.add(i);
                             }
                         }
