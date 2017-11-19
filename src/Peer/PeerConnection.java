@@ -1,13 +1,11 @@
 package Peer;
 
-import FileHandling.Piece;
 import Logger.PeerLogger;
 import Sockets.BasicSocket;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 // a peerConnection wraps a socket with information about the peer the socket is connecting to
@@ -103,32 +101,32 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         try {
             msg = new Message(bSocket);
 
-            if (msg.getType() == (byte)0){
+            if (msg.getType() == 0){
                 setChoked(true);
                 //setup the logger for use; need to have "true" to indicate that the file already exists
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.choking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
-            if (msg.getType() == (byte)1){
+            if (msg.getType() == 1){
                 setChoked(false);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.unchoking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
-            if (msg.getType() == (byte)2){
+            if (msg.getType() == 2){
                 // the peer is now interested in some of the pieces we have
                 peerInfo.setInterested(true);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
-            if (msg.getType() == (byte)3){
+            if (msg.getType() == 3){
                 peerInfo.setInterested(false);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedNotInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
             }
-            if (msg.getType() == (byte)4){
+            if (msg.getType() == 4){
                 int peerHasPieceIndex = Message.byteArrayToInt(msg.getData());
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
@@ -152,7 +150,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     }
                 }
             }
-            if (msg.getType() == (byte)6){
+            if (msg.getType() == 6){
 
                 if(!peerInfo.isChoked()){
 
@@ -167,7 +165,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     }
                 }
             }
-            if (msg.getType() == (byte)7){
+            if (msg.getType() == 7){
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 byte[] data = msg.getData();
 
@@ -254,7 +252,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 e.printStackTrace();
             }
 
-            if(handshakeMesage.getType() == Byte.parseByte(null)){
+            if(handshakeMesage.getType() == 99){
               if(peerInfo != null)  {
                   if(peerInfo.getPeerID() == handshakeMesage.getPeerID()){
                   }else {
@@ -281,7 +279,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (bitFieldMessage.getType() == (byte)5){
+        if (bitFieldMessage.getType() == 5){
             peerInfo.getBitField().setBitField(bitFieldMessage.getData());
         }
 
@@ -304,10 +302,10 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             e.printStackTrace();
         }
 
-        if(interestedMessage.getType() == (byte)2){
+        if(interestedMessage.getType() == 2){
             peerInfo.setInterested(true);
         }
-        else if(interestedMessage.getType() == (byte)3){
+        else if(interestedMessage.getType() == 3){
             peerInfo.setInterested(false);
         }
 

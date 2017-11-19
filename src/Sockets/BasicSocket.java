@@ -44,15 +44,6 @@ public class BasicSocket {
         return 0;
     }
 
-    public int read(byte theByte) {
-        try {
-            return in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
     public int read(byte[] bytes) {
         try {
             return in.read(bytes);

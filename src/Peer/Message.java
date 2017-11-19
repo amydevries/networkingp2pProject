@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Message {
 
     private byte[] header;
-    private byte type;
+    private byte[] type = null;
     private byte[] data;
     private byte[] peerID;
 
@@ -19,8 +19,9 @@ public class Message {
         return header;
     }
 
-    public byte getType() {
-        return type;
+    public int getType() {
+        if(type == null) return 99;
+        else return Message.byteArrayToInt(type);
     }
 
     public byte[] getData() {
@@ -73,8 +74,8 @@ public class Message {
                 }
                     System.out.println("bytePeerId: " + byteArrayToInt(peerID));
         } else {
+            type = new byte[1];
             length = byteArrayToInt(header);
-            type = 1;
             socket.read(type);
 
             data = new byte[length-1];
@@ -88,12 +89,6 @@ public class Message {
             }
         }
     }
-
-    public Message(int type, byte[] data){
-        this.type = (byte) type;
-        this.data = data;
-    }
-
 
     static public byte[] createActualMessage(String type, byte[] messagePayload){
 
