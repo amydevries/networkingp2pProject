@@ -235,10 +235,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         return value;
     }
 
-    public void sendHave(int index){
-
-    }
-
     public ArrayList<Integer> getInterestingPieces() {
         return interestingPieces;
     }
@@ -319,6 +315,10 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 break;
             }
         }
+    }
+
+    public void sendUnchoke(){
+        SendingMessages.sendingUnChoke(bSocket);
     }
 
     public void setCloseConnection(boolean closeConnection){

@@ -109,7 +109,7 @@ public class IntervalTimer implements Runnable {
         //select a random neighbor that is choked currently but is one that we're interested in
 
         //keep an array list of only the neighbors that are choked
-        ArrayList<PeerConnection> chokedConnections = new ArrayList<PeerConnection>();
+        ArrayList<Integer> potentialConnections = new ArrayList<Integer>();
 
         CommonReader comReader = CommonReader.getCommonReader();
 
@@ -122,21 +122,18 @@ public class IntervalTimer implements Runnable {
 
                         for (int i = 0; i < Peer.connections.size(); i++) {
                             //check to see if it is unchoked AND we are interested in it
-                            if (Peer.connections.get(i).isChoked() && Peer.interestedPeers.containsKey(i)) {
-                                chokedConnections.add(Peer.connections.get(i));
+                            if (Peer.connections.get(i).isChoked() && Peer.connections.get(i).getInterestingPieces().size() > 0) {
+                                potentialConnections.add(i);
                             }
                         }
 
                         Random random = new Random();
                         int randomNeighborID = 0;
-                        if (chokedConnections.size() > 0) {
+                        if (potentialConnections.size() > 0) {
                             //generate random number to select random neighbor
-                            int randomNeighbor = Math.abs(random.nextInt()) % chokedConnections.size();
-                            randomNeighborID = chokedConnections.get(randomNeighbor).getPeerInfo().getPeerID();
-
-                            //send unchoking message
-                            chokedConnections.get(randomNeighborID).getPeerInfo().setIsChoked(false);
-                            chokedConnections.get(randomNeighborID).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
+                            int randomNeighbor = Math.abs(random.nextInt()) % potentialConnections.size();
+                            Peer.connections.get(randomNeighbor).setChoked(false);
+                            Peer.connections.get(randomNeighbor).sendUnchoke();
 
                             PeerLogger peerLogger = new PeerLogger();
                             //setup the logger for use; need to have "true" to indicate that the file already exists
