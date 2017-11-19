@@ -79,6 +79,10 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         bSocket.write(bytes);
     }
 
+    public void sendHave(int index){
+        SendingMessages.sendingHave(bSocket, index);
+    }
+
     public Message receiveData(){
 
         synchronized(interestingPieces){
