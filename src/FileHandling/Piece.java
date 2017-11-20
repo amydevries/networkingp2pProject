@@ -19,8 +19,10 @@ public class Piece {
     }
 
     public byte[] getData(){
-        if(full) return data;
-        return null;
+        if(data != null)
+            return data;
+        else
+            return null;
     }
 
     public void setData(byte[] data){

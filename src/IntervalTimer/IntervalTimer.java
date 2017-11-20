@@ -6,10 +6,14 @@ import java.util.Hashtable;
 import java.util.Random;
 
 import FileHandling.CommonReader;
+import FileHandling.FileHandler;
+import FileHandling.PeerInfoReader;
 import Logger.PeerLogger;
 import Peer.PeerConnection;
 import Peer.Peer;
 import Peer.Message;
+
+import static java.lang.System.exit;
 
 /**
  * for controlling the timing for chocking and un-chocking
@@ -36,7 +40,7 @@ public class IntervalTimer implements Runnable {
     }
 
     public static void unchokingIntervalTimerStart() {
-        ArrayList<PeerConnection> connections = new ArrayList<PeerConnection>();
+        System.out.println("Entering unchoking timer");
 
         CommonReader comReader = CommonReader.getCommonReader();
         int numPrefNeighbors = comReader.getNumberPreferredNeighbors();
@@ -48,38 +52,46 @@ public class IntervalTimer implements Runnable {
                             this.cancel();
                         }
 
-                        Collections.sort(connections);
+                        Collections.sort(Peer.connections);
+                        System.out.println("collections sorted");
+                        System.out.println("connections.size: " + Peer.connections.size());
+                        for(int i = 0; i < Peer.connections.size(); i++){
+                            System.out.println("***Peer id " + i + " : " + Peer.connections.get(i).getPeerInfo().getPeerID());
+                        }
 
                         //for the top n peers, unchoke the n that have uploaded the most
                         int i;
-                        for (i = 0; i < connections.size() && i < numPrefNeighbors; i++) {
-                            if (connections.get(i).getConnectionEstablished() && connections.get(i).getPeerInfo().isChoked() &&
-                                    connections.get(i).getPeerInfo().isInterested()) {
+                        for (i = 0; i < Peer.connections.size() && i < numPrefNeighbors; i++) {
+                            if (Peer.connections.get(i).getConnectionEstablished() && Peer.connections.get(i).getPeerInfo().isChoked() &&
+                                    Peer.connections.get(i).getPeerInfo().isInterested()) {
                                 //unchoke these peers. only send the unchoke message if they were choked previously
-                                connections.get(i).sendMessage(Message.createActualMessage("unchoke", new byte[0]));
+                                Peer.connections.get(i).sendUnchoke();
+                                System.out.println("in the unchoking loop in interval timer");
                             }
 
                         }
 
-                        for (; i < connections.size(); i++) {
+                        for (; i < Peer.connections.size(); i++) {
                             //choke the remaining peers
-                            if (connections.get(i).getConnectionEstablished() && !connections.get(i).getPeerInfo().isChoked()) {
+                            if (Peer.connections.get(i).getConnectionEstablished() && !Peer.connections.get(i).getPeerInfo().isChoked()) {
                                 //unchoke these peers
-                                connections.get(i).getPeerInfo().setIsChoked(true);
-                                connections.get(i).sendMessage(Message.createActualMessage("choke", new byte[0]));
+                                Peer.connections.get(i).getPeerInfo().setIsChoked(true);
+                                Peer.connections.get(i).sendMessage(Message.createActualMessage("choke", new byte[0]));
+                                Peer.connections.get(i).sendChoke();
+                                System.out.println("in the choking loop in interval timer ");
                             }
                         }
 
-                        for (int k = 0; k < connections.size(); k++) {
-                            if (connections.get(k).getConnectionEstablished()) {
-                                connections.get(k).resetPiecesReceived();
+                        for (int k = 0; k < Peer.connections.size(); k++) {
+                            if (Peer.connections.get(k).getConnectionEstablished()) {
+                                Peer.connections.get(k).resetPiecesReceived();
                             }
                         }
 
                         PeerLogger peerLogger = new PeerLogger();
                         int[] neighbors = new int[comReader.getNumberPreferredNeighbors()];
-                        for (int k = 0; k<connections.size() && k < comReader.getNumberPreferredNeighbors(); k++) {
-                            neighbors[k] = connections.get(k).getPeerInfo().getPeerID();
+                        for (int k = 0; k < Peer.connections.size() && k < comReader.getNumberPreferredNeighbors(); k++) {
+                            neighbors[k] = Peer.connections.get(k).getPeerInfo().getPeerID();
                         }
                         //setup the logger for use; need to have "true" to indicate that the file already exists
                         peerLogger.setup(peerID, true);
@@ -87,13 +99,24 @@ public class IntervalTimer implements Runnable {
 
                         if(Peer.connections.size()> 0){
                             programFinished = true;
-                            for(int k =0; k < connections.size(); k++){
-                                if(!connections.get(k).getPeerInfo().getBitField().isFull()){
+                            for(int k =0; k < Peer.connections.size(); k++){
+                                if(!Peer.connections.get(k).getPeerInfo().getBitField().isFull()){
                                     programFinished = false;
                                 }
                             }
                             if(programFinished){
+                                System.out.println("!Program finished!");
+                                PeerInfoReader peerReader = PeerInfoReader.getPeerInfoReader();
+                                for(int k = 0; k< peerReader.getNumberOfPeers(); k ++){
+                                    System.out.println("checking peers from reader " + peerReader.getPeerIDS(k));
+                                    if(peerReader.getPeerFullFileOrNot(k) != 1){
+                                        System.out.println("Writing to non-original file");
+                                        Peer.getFileHandler().writingFile();
+                                    }
+                                }
+
                                 Peer.executorService.shutdownNow();
+                                exit(0);
                             }
                         }
 
@@ -108,6 +131,8 @@ public class IntervalTimer implements Runnable {
     public static void optimisticTimerStart() {
         //select a random neighbor that is choked currently but is one that we're interested in
 
+
+        System.out.println("Entering optimistic timer");
         //keep an array list of only the neighbors that are choked
         ArrayList<Integer> potentialConnections = new ArrayList<Integer>();
 

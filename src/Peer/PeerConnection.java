@@ -28,6 +28,8 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
     private boolean closeConnection = false;
 
+    private boolean remotePeerChokingUs = true;
+
     public PeerConnection(Peer parentPeer, PeerInfo receivingPeerInfo){
         this.parentPeer = parentPeer;
         this.peerInfo = receivingPeerInfo;
@@ -84,7 +86,9 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     public Message receiveData(){
         System.out.println("entered receieveData");
         synchronized(interestingPieces){
-            if(interestingPieces.size() > 0 && !isChoked()){
+            System.out.println("pieces size: " + interestingPieces.size());
+            System.out.println("isChoked: " + isChoked());
+            if(interestingPieces.size() > 0 && !remotePeerChokingUs){
                 Random random = new Random();
                 int reqPieceIndex = Math.abs(random.nextInt()) % interestingPieces.size();
                 SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
@@ -102,14 +106,14 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             msg = new Message(bSocket);
 
             if (msg.getType() == 0){
-                setChoked(true);
+                remotePeerChokingUs = true;
                 //setup the logger for use; need to have "true" to indicate that the file already exists
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.choking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("choking");
             }
             if (msg.getType() == 1){
-                setChoked(false);
+                remotePeerChokingUs = false;
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.unchoking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
@@ -328,10 +332,16 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     }
 
     public void sendUnchoke(){
+        System.out.println("sending unchoke in peerConnection");
         SendingMessages.sendingUnChoke(bSocket);
     }
 
     public void setCloseConnection(boolean closeConnection){
         this.closeConnection = closeConnection;
+    }
+
+    public void sendChoke() {
+        System.out.println("sending choke in peerConnection");
+        SendingMessages.sendingChoke(bSocket);
     }
 }

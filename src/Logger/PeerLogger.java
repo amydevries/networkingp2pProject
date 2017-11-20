@@ -14,7 +14,7 @@ public class PeerLogger {
     public void setup(int peerID){
 
         try{
-            logger = new FileWriter("log_peer_"+peerID+".log");
+            logger = new FileWriter("./peer_"+peerID+"/log_peer_"+peerID+".log");
 
         }catch(Exception e) {}
     }
@@ -22,7 +22,7 @@ public class PeerLogger {
     //if the file already exists, the FileWriter needs to append to the file not create a new one
     public void setup(int peerID, boolean fileExists){
         try{
-            logger = new FileWriter("log_peer_"+peerID+".log", true);
+            logger = new FileWriter("./peer_"+peerID+"/log_peer_"+peerID+".log", true);
 
         }catch(Exception e) {}
     }
