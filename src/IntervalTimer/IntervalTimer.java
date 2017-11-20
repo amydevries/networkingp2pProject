@@ -100,7 +100,7 @@ public class IntervalTimer implements Runnable {
                         if(Peer.connections.size()> 0){
                             programFinished = true;
                             for(int k =0; k < Peer.connections.size(); k++){
-                                if(!Peer.connections.get(k).getPeerInfo().getBitField().isFull()){
+                                if(!Peer.getPeerInfo().getBitField().isFull() && !Peer.connections.get(k).getPeerInfo().getBitField().isFull()){
                                     programFinished = false;
                                 }
                             }

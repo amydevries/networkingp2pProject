@@ -1,1 +1,6 @@
-2017/11/20_11:35:23: Peer 1002 has the preferred neighbors [1001, 0]
+2017/11/20_14:30:32: Peer 1001 is unchoked by 1002
+2017/11/20_14:30:32: Peer 1002 has the optimistically unchoked neighbor 0
+2017/11/20_14:30:32: Peer 1002 has the preferred neighbors [1001, 0]
+2017/11/20_14:35:14: Peer 1001 is unchoked by 1002
+2017/11/20_14:35:14: Peer 1002 has the preferred neighbors [1001, 0]
+2017/11/20_14:35:14: Peer 1002 has the optimistically unchoked neighbor 0

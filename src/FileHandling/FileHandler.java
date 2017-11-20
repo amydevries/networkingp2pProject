@@ -6,6 +6,9 @@ import Peer.Peer;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
 public class FileHandler {
@@ -32,7 +35,7 @@ public class FileHandler {
             File src = new File(commonReader.getFileName());
             File dst = new File("./peer_"+Peer.getPeerInfo().getPeerID()+"/"+commonReader.getFileName());
             try {
-                copyFile(src, dst);
+                copyFile(src.toPath(), dst.toPath());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,21 +122,8 @@ public class FileHandler {
         }
     }
 
-    private static void copyFile(File src, File dst) throws IOException {
-        InputStream is = null;
-        OutputStream os = null;
-        try {
-            is = new FileInputStream(src);
-            os = new FileOutputStream(dst);
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = is.read(buffer)) > 0) {
-                os.write(buffer, 0, length);
-            }
-        } finally {
-            is.close();
-            os.close();
-        }
+    private static void copyFile(Path src, Path dst) throws IOException {
+        Files.copy(src, dst, StandardCopyOption.REPLACE_EXISTING);
     }
 
     public ArrayList<Piece> getPieces() {
