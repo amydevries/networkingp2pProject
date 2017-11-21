@@ -92,6 +92,7 @@ public class FileHandler {
         synchronized (pieces.get(index)){
             pieces.get(index).setData(data);
             bitField.setPiece(index);
+            Peer.getPeerInfo().getBitField().setPiece(index);
             for(int i=0; i<Peer.connections.size();i++){
                 if(Peer.connections.get(i).getConnectionEstablished()) {
                     Peer.connections.get(i).sendHave(index);
