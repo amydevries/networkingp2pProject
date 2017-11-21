@@ -1,3 +1,9 @@
-2017/11/21_10:09:23: Peer 1001 has the preferred neighbors [0, 0]
-2017/11/21_10:09:28: Peer 1001 has the preferred neighbors [1002, 0]
-2017/11/21_10:09:28: Peer 1002 is unchoked by 1001
+2017/11/21_10:16:33: Peer 1001 has the preferred neighbors [0, 0]
+2017/11/21_10:16:37: Peer 1001 has the preferred neighbors [1002, 0]
+2017/11/21_10:16:37: Peer 1002 is unchoked by 1001
+2017/11/21_10:16:38: Peer 1002 has downloaded the piece 3 from 1001Now the number of pieces it has is 0
+2017/11/21_10:16:38: Peer 1002 received the ‘not interested’ message from 1001
+2017/11/21_10:16:38: Peer 1002 has downloaded the piece 0 from 1001Now the number of pieces it has is 0
+2017/11/21_10:16:39: Peer 1002 has downloaded the piece 1 from 1001Now the number of pieces it has is 0
+2017/11/21_10:16:39: Peer 1002 has downloaded the piece 2 from 1001Now the number of pieces it has is 0
+2017/11/21_10:16:42: Peer 1001 has the preferred neighbors [1002, 0]

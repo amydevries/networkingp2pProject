@@ -205,8 +205,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 System.out.println("getPeerInfo().getPeerID(): " + Peer.getPeerInfo().getPeerID());
                 System.out.println("getPeerInfo().getPeerID(): " + getPeerInfo().getPeerID());
                 System.out.println("index: " + index);
-                System.out.println("parentPeer.getBitField().getNumberOfPieces(): " + parentPeer.getBitField().getNumberOfPieces());
-                peerLogger.downloadingPiece(getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, parentPeer.getBitField().getNumberOfPieces());
+                System.out.println("parentPeer.getBitField().getNumberOfPieces(): " + Peer.getPeerInfo().getBitField().getNumberOfPieces());
 
                 peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.getPeerInfo().getBitField().getNumberOfPieces());
                 System.out.println("piece");
