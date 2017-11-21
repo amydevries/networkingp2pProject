@@ -1,12 +1,7 @@
-2017/11/21_10:16:33: Peer 1002 has the preferred neighbors [1001, 0]
-2017/11/21_10:16:38: Peer 1001 received the ‘have’ message from 1002 for the piece 3
-2017/11/21_10:16:38: Peer 1002 has the preferred neighbors [1001, 0]
-2017/11/21_10:16:38: Peer 1001 received the ‘have’ message from 1002 for the piece 0
-2017/11/21_10:16:39: Peer 1001 received the ‘have’ message from 1002 for the piece 1
-2017/11/21_10:16:39: Peer 1001 received the ‘have’ message from 1002 for the piece 2
-2017/11/21_10:16:43: Peer 1002 has the preferred neighbors [1001, 0]
-2017/11/21_10:16:48: Peer 1002 has the preferred neighbors [1001, 0]
-2017/11/21_10:16:53: Peer 1002 has the preferred neighbors [1001, 0]
-2017/11/21_10:16:58: Peer 1002 has the preferred neighbors [1001, 0]
-2017/11/21_10:17:03: Peer 1002 has the preferred neighbors [1001, 0]
-2017/11/21_10:17:08: Peer 1002 has the preferred neighbors [1001, 0]
+2017/11/21_10:29:09: Peer 1002 has the preferred neighbors [1001, 0]
+2017/11/21_10:29:13: Peer 1001 received the ‘have’ message from 1002 for the piece 2
+2017/11/21_10:29:14: Peer 1002 has the preferred neighbors [1001, 0]
+2017/11/21_10:29:14: Peer 1001 received the ‘have’ message from 1002 for the piece 0
+2017/11/21_10:29:14: Peer 1001 received the ‘have’ message from 1002 for the piece 1
+2017/11/21_10:29:14: Peer 1001 received the ‘have’ message from 1002 for the piece 3
+2017/11/21_10:29:18: Peer 1002 has the preferred neighbors [1001, 0]
