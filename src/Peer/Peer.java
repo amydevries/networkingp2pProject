@@ -51,6 +51,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class Peer extends Thread{
@@ -94,6 +95,11 @@ public class Peer extends Thread{
     }
 
     public void runFileSharing(){
+        try {
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("in runFileSharing");
         //loop though peers and add them to the hashtable and connect with the ones that are already in the hashtable?
         System.out.println(peerReader.getNumberOfPeers());
