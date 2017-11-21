@@ -63,7 +63,7 @@ public class FileHandler {
         byte[] data = new byte[0];
 
         try{
-            fileInputStream = new FileInputStream(new File(commonReader.getFileName()));
+            fileInputStream = new FileInputStream(new File("./peer_"+Peer.getPeerInfo().getPeerID()+"/"+commonReader.getFileName()));
             data = new byte[commonReader.getFileSize()];
             fileInputStream.read(data);
         }catch (Exception e){ e.printStackTrace(); }
