@@ -96,7 +96,7 @@ public class FileHandler {
                 if(Peer.connections.get(i).getConnectionEstablished()) {
                     Peer.connections.get(i).sendHave(index);
                     synchronized (Peer.connections.get(i).getInterestingPieces()) {
-                        Peer.connections.get(i).getInterestingPieces().remove(index);
+                        Peer.connections.get(i).getInterestingPieces().remove(new Integer(index));
                     }
                 }
             }
