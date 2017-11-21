@@ -14,7 +14,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     //peerInfo is the 'client' peer; the one that sends the messages
     private PeerInfo peerInfo;
     private BasicSocket bSocket;
-    private PeerLogger peerLogger = new PeerLogger();
+    private PeerLogger peerLogger = PeerLogger.getLogger();
 
     private ArrayList<Integer> interestingPieces = new ArrayList<Integer>();
 
@@ -32,7 +32,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             bSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
 
             //setup the logger for use; need to have "true" to indicate that the file already exists
-            peerLogger.setup(peerInfo.getPeerID(), true);
             //Writes to log file
             peerLogger.tcpConnection(Peer.getPeerInfo().getPeerID(), receivingPeerInfo.getPeerID());
             System.out.println("c: " + Peer.getPeerInfo().getPeerID());
@@ -103,7 +102,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 System.out.println("Received msg type = 0");
                 remotePeerChokingUs = true;
                 //setup the logger for use; need to have "true" to indicate that the file already exists
-                peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.choking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("choking");
             }
@@ -112,7 +110,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 System.out.println("Received msg type = 1");
                 remotePeerChokingUs = false;
 
-                peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.unchoking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("unchoking");
             }
@@ -121,7 +118,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 // the peer is now interested in some of the pieces we have
                 peerInfo.setInterested(true);
 
-                peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("interested");
             }
@@ -129,7 +125,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 System.out.println("Received msg type = 3");
                 peerInfo.setInterested(false);
 
-                peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedNotInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("uninterested");
             }
@@ -137,11 +132,10 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 System.out.println("Received msg type = 4");
                 int peerHasPieceIndex = Message.byteArrayToInt(msg.getData());
 
-                peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedHaveMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), peerHasPieceIndex);
 
                 // update the bitfield we have for the sending peer with the new piece from the have message
-                getPeerInfo().setBitField(peerHasPieceIndex);
+                peerInfo.setBitField(peerHasPieceIndex);
 
                 // check our bit field to see if the new piece is a piece we are interested in
                 synchronized(interestingPieces){
@@ -180,7 +174,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             }
             if (msg.getType() == 7){
                 System.out.println("Received msg type = 7");
-                peerLogger.setup(getPeerInfo().getPeerID(), true);
                 byte[] data = msg.getData();
 
                 ByteBuffer byteBuffer = ByteBuffer.allocate(data.length);

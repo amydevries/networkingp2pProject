@@ -22,7 +22,7 @@ public class PeerLoggerTest{
 
     @BeforeEach
     public void setUp(){
-        logger = new PeerLogger();
+        logger = PeerLogger.getLogger();
     }
 
     @AfterEach
@@ -37,7 +37,6 @@ public class PeerLoggerTest{
     @Test
     public void test01_LoggerSetupCreatesFile(){
         // Act
-        logger.setup(PEER_ID);
         File file = new File(fileName);
 
         // Assert
@@ -47,7 +46,6 @@ public class PeerLoggerTest{
     @Test
     public void test02_LoggerSetupCreatesFileWithRightName(){
         // Act
-        logger.setup(PEER_ID);
         File file = new File("log_peer_" + (PEER_ID+1) + ".log");
 
         // Assert
@@ -62,7 +60,6 @@ public class PeerLoggerTest{
         int peerConnectedTo = 2;
 
         // Act
-        logger.setup(PEER_ID);
         logger.tcpConnection(peerGeneratingLog, peerConnectedTo);
 
         try {
@@ -89,7 +86,6 @@ public class PeerLoggerTest{
         int[] preferredNeighborList = {1, 2, 3};
 
         // Act
-        logger.setup(PEER_ID);
         logger.changePreferredNeighbors(peerID, preferredNeighborList);
 
         try {
@@ -116,7 +112,6 @@ public class PeerLoggerTest{
         int optimisticallyUnchokedNeighbor = 2;
 
         // Act
-        logger.setup(PEER_ID);
         logger.changeOptimisticallyUnchockedNeighbor(peerID, optimisticallyUnchokedNeighbor);
 
         try {
@@ -143,7 +138,6 @@ public class PeerLoggerTest{
         int peerWhoUnchokes = 2;
 
         // Act
-        logger.setup(PEER_ID);
         logger.unchoking(peerUnchoked, peerWhoUnchokes);
 
         try {
@@ -170,7 +164,6 @@ public class PeerLoggerTest{
         int peerWhoChokes = 2;
 
         // Act
-        logger.setup(PEER_ID);
         logger.choking(peerChoked, peerWhoChokes);
 
         try {
@@ -198,7 +191,6 @@ public class PeerLoggerTest{
         int pieceIndex = 3;
 
         // Act
-        logger.setup(PEER_ID);
         logger.receivedHaveMessage(peerReceivedMessage, peerSentMessage, pieceIndex);
 
         try {
@@ -225,7 +217,6 @@ public class PeerLoggerTest{
         int peerSentMessage = 2;
 
         // Act
-        logger.setup(PEER_ID);
         logger.receivedInterestedMessage(peerReceivedMessage, peerSentMessage);
 
         try {
@@ -252,7 +243,6 @@ public class PeerLoggerTest{
         int peerSentMessage = 2;
 
         // Act
-        logger.setup(PEER_ID);
         logger.receivedNotInterestedMessage(peerReceivedMessage, peerSentMessage);
 
         try {
@@ -281,7 +271,6 @@ public class PeerLoggerTest{
         int numberOfPieces = 4;
 
         // Act
-        logger.setup(PEER_ID);
         logger.downloadingPiece(peerDownloadedPiece, peerSentPiece, pieceIndex, numberOfPieces);
 
         try {
@@ -308,7 +297,6 @@ public class PeerLoggerTest{
         int peerID = 1;
 
         // Act
-        logger.setup(PEER_ID);
         logger.completedDownload(peerID);
 
         try {

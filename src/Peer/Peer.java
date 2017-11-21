@@ -75,7 +75,7 @@ public class Peer extends Thread{
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
 
-    private PeerLogger peerLogger = new PeerLogger();
+    private PeerLogger peerLogger = PeerLogger.getLogger();
 
     private static FileHandler fileHandler;
 
@@ -163,8 +163,6 @@ public class Peer extends Thread{
         connections.add(peerConnection);
         peerConnection.sendMessage(messageToSend);
 
-        //setup the logger for use; need to have "true" to indicate that the file already exists
-        peerLogger.setup(peerConnection.getPeerInfo().getPeerID(), true);
         //Writes to log file: update the 1s with variables when they're known
         peerLogger.tcpConnection(peerConnection.getPeerInfo().getPeerID(), receivingPeerInfo.getPeerID());
         System.out.println("a: " + peerConnection.getPeerInfo().getPeerID());

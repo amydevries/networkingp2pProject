@@ -48,6 +48,8 @@ public class IntervalTimer implements Runnable {
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     public void run() {
+                        PeerLogger peerLogger = PeerLogger.getLogger();
+
                         if (programFinished) {
                             this.cancel();
                         }
@@ -88,13 +90,11 @@ public class IntervalTimer implements Runnable {
                             }
                         }
 
-                        PeerLogger peerLogger = new PeerLogger();
                         int[] neighbors = new int[comReader.getNumberPreferredNeighbors()];
                         for (int k = 0; k < Peer.connections.size() && k < comReader.getNumberPreferredNeighbors(); k++) {
                             neighbors[k] = Peer.connections.get(k).getPeerInfo().getPeerID();
                         }
                         //setup the logger for use; need to have "true" to indicate that the file already exists
-                        peerLogger.setup(peerID, true);
                         peerLogger.changePreferredNeighbors(peerID, neighbors);
 
                         if(Peer.connections.size()> 0){
@@ -142,6 +142,8 @@ public class IntervalTimer implements Runnable {
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     public void run() {
+                        PeerLogger peerLogger = PeerLogger.getLogger();
+
                         if (programFinished) {
                             this.cancel();
                         }
@@ -162,9 +164,7 @@ public class IntervalTimer implements Runnable {
                             System.out.println("$$unchoked ");
                             Peer.connections.get(randomNeighbor).sendUnchoke();
 
-                            PeerLogger peerLogger = new PeerLogger();
                             //setup the logger for use; need to have "true" to indicate that the file already exists
-                            peerLogger.setup(peerID, true);
                             peerLogger.changeOptimisticallyUnchockedNeighbor(peerID, randomNeighborID);
                         }
                     }

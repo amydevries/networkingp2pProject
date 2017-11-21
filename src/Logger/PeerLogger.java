@@ -1,6 +1,8 @@
 package Logger;
 
 
+import Peer.Peer;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -11,18 +13,23 @@ public class PeerLogger {
 
     private FileWriter logger;
 
-    public void setup(int peerID){
+    private static PeerLogger peerLogger = new PeerLogger();
 
+    public static PeerLogger getLogger(){
+        return peerLogger;
+    }
+
+    private PeerLogger(){
         try{
-            logger = new FileWriter("./peer_"+peerID+"/log_peer_"+peerID+".log");
+            logger = new FileWriter("./peer_"+Peer.getPeerInfo().getPeerID()+"/log_peer_"+Peer.getPeerInfo().getPeerID()+".log");
 
         }catch(Exception e) {}
     }
 
-    //if the file already exists, the FileWriter needs to append to the file not create a new one
-    public void setup(int peerID, boolean fileExists){
+    private void setup(int peerID){
+
         try{
-            logger = new FileWriter("./peer_"+peerID+"/log_peer_"+peerID+".log", true);
+            logger = new FileWriter("./peer_"+peerID+"/log_peer_"+peerID+".log");
 
         }catch(Exception e) {}
     }
