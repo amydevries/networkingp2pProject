@@ -110,7 +110,7 @@ public class IntervalTimer implements Runnable {
                                 PeerInfoReader peerReader = PeerInfoReader.getPeerInfoReader();
                                 for(int k = 0; k< peerReader.getNumberOfPeers(); k ++){
                                     System.out.println("checking peers from reader " + peerReader.getPeerIDS(k));
-                                    if(peerReader.getPeerFullFileOrNot(k) != 1){
+                                    if(peerReader.getPeerFullFileOrNot(k) != 1 && peerReader.getPeerIDS(k) == Peer.getPeerInfo().getPeerID()){
                                         System.out.println("Writing to non-original file");
                                         Peer.getFileHandler().writingFile();
                                     }
