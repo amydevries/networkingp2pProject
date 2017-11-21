@@ -109,6 +109,7 @@ public class FileHandler {
 
         byte[] finishedFile = new byte[totalFileSize];
         int currentLocation = 0;
+        System.out.println("##pieces.size: " + pieces.size());
         for(int i = 0; i < pieces.size(); i++){
             byte[] temp = pieces.get(i).getData();
             for(int j = 0; j < temp.length; j++){

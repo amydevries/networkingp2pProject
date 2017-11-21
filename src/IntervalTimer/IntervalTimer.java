@@ -135,13 +135,13 @@ public class IntervalTimer implements Runnable {
 
         System.out.println("Entering optimistic timer");
         //keep an array list of only the neighbors that are choked
-        ArrayList<Integer> potentialConnections = new ArrayList<Integer>();
 
         CommonReader comReader = CommonReader.getCommonReader();
 
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     public void run() {
+                        ArrayList<Integer> potentialConnections = new ArrayList<Integer>();
                         PeerLogger peerLogger = PeerLogger.getLogger();
 
                         if (programFinished) {
@@ -159,7 +159,11 @@ public class IntervalTimer implements Runnable {
                         int randomNeighborID = 0;
                         if (potentialConnections.size() > 0) {
                             //generate random number to select random neighbor
-                            int randomNeighbor = Math.abs(random.nextInt()) % potentialConnections.size();
+                            int randomNeighbor= Math.abs(random.nextInt(potentialConnections.size()));
+                            System.out.println("^^^randomNeighbor: " + randomNeighbor);
+                            if(randomNeighbor >= potentialConnections.size()){
+                                randomNeighbor = potentialConnections.size() - 1;
+                            }
                             Peer.connections.get(randomNeighbor).setChoked(false);
                             System.out.println("$$unchoked ");
                             Peer.connections.get(randomNeighbor).sendUnchoke();

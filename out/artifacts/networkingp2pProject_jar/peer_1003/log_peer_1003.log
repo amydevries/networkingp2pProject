@@ -1,0 +1,59 @@
+2017/11/21_13:49:35: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:49:38: Peer 1003 is unchoked by 1001
+2017/11/21_13:49:38: Peer 1003 has downloaded the piece 20 from 1001Now the number of pieces it has is 1
+2017/11/21_13:49:38: Peer 1003 received the ‘have’ message from 1002 for the piece 77
+2017/11/21_13:49:38: Peer 1003 received the ‘interested’ message from 1002
+2017/11/21_13:49:39: Peer 1003 received the ‘not interested’ message from 1001
+2017/11/21_13:49:39: Peer 1003 has downloaded the piece 75 from 1001Now the number of pieces it has is 2
+2017/11/21_13:49:39: Peer 1003 received the ‘have’ message from 1002 for the piece 37
+2017/11/21_13:49:39: Peer 1003 has downloaded the piece 120 from 1001Now the number of pieces it has is 3
+2017/11/21_13:49:39: Peer 1003 received the ‘have’ message from 1002 for the piece 26
+2017/11/21_13:49:39: Peer 1003 is unchoked by 1002
+2017/11/21_13:49:40: Peer 1003 has downloaded the piece 83 from 1001Now the number of pieces it has is 4
+2017/11/21_13:49:40: Peer 1003 received the ‘have’ message from 1002 for the piece 27
+2017/11/21_13:49:40: Peer 1003 has downloaded the piece 45 from 1001Now the number of pieces it has is 6
+2017/11/21_13:49:40: Peer 1003 has downloaded the piece 77 from 1002Now the number of pieces it has is 6
+2017/11/21_13:49:40: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:49:45: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:49:50: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:49:50: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:49:55: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:00: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:05: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:50:05: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:10: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:15: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:20: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:50:20: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:25: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:30: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:35: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:50:35: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:40: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:45: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:50: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:50:50: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:50:55: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:00: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:05: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:51:05: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:10: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:15: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:20: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:51:20: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:25: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:30: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:35: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:51:35: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:40: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:45: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:50: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:51:50: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:51:55: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:52:00: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:52:05: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:52:05: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:52:10: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:52:15: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/21_13:52:20: Peer 1003 has the optimistically unchoked neighbor 0
+2017/11/21_13:52:20: Peer 1003 has the preferred neighbors [1002, 1001]
