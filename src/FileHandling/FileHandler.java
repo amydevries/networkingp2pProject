@@ -104,7 +104,10 @@ public class FileHandler {
     }
 
     public void writingFile(){
-        byte[] finishedFile = new byte[commonReader.getFileSize()];
+        int numberOfPieces = pieces.size();
+        int totalFileSize = numberOfPieces * commonReader.getPieceSize();
+
+        byte[] finishedFile = new byte[totalFileSize];
         int currentLocation = 0;
         for(int i = 0; i < pieces.size(); i++){
             byte[] temp = pieces.get(i).getData();
