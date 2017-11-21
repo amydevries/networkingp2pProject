@@ -105,10 +105,12 @@ public class FileHandler {
 
     public void writingFile(){
         byte[] finishedFile = new byte[commonReader.getFileSize()];
+        int currentLocation = 0;
         for(int i = 0; i < pieces.size(); i++){
             byte[] temp = pieces.get(i).getData();
             for(int j = 0; j < temp.length; j++){
-                finishedFile[i+j] = temp[j];
+                finishedFile[currentLocation] = temp[j];
+                currentLocation++;
             }
         }
         try {
