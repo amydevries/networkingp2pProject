@@ -11,19 +11,23 @@ import java.util.Calendar;
 
 public class PeerLogger {
 
-    private FileWriter logger;
+    private FileWriter logger = new FileWriter("./peer_"+Peer.getPeerInfo().getPeerID()+"/log_peer_"+Peer.getPeerInfo().getPeerID()+".log");;
 
-    private static PeerLogger peerLogger = new PeerLogger();
+    private static PeerLogger peerLogger;
 
     public static PeerLogger getLogger(){
+        if(peerLogger == null){
+            try {
+                peerLogger = new PeerLogger();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         return peerLogger;
     }
 
-    private PeerLogger(){
-        try{
-            logger = new FileWriter("./peer_"+Peer.getPeerInfo().getPeerID()+"/log_peer_"+Peer.getPeerInfo().getPeerID()+".log");
+    private PeerLogger() throws IOException {
 
-        }catch(Exception e) {}
     }
 
     private void setup(int peerID){
