@@ -11,10 +11,6 @@ import java.util.Random;
 // a peerConnection wraps a socket with information about the peer the socket is connecting to
 public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
-    // peer connection now remembers what peer it is acting as a connection for so we can more easily access bitfield/other information
-    // idk if this is necessary it might need to be removed later
-    //parentPeer is the 'server' peer; the one that receives the messages
-    private Peer parentPeer;
     //peerInfo is the 'client' peer; the one that sends the messages
     private PeerInfo peerInfo;
     private BasicSocket bSocket;
@@ -31,7 +27,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     private boolean remotePeerChokingUs = true;
 
     public PeerConnection(Peer parentPeer, PeerInfo receivingPeerInfo){
-        this.parentPeer = parentPeer;
         this.peerInfo = receivingPeerInfo;
         try {
             bSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
@@ -49,7 +44,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     }
 
     public PeerConnection(Peer parentPeer, BasicSocket bSocket){
-        this.parentPeer = parentPeer;
         this.bSocket = bSocket;
     }
 
@@ -110,7 +104,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 remotePeerChokingUs = true;
                 //setup the logger for use; need to have "true" to indicate that the file already exists
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
-                peerLogger.choking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
+                peerLogger.choking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("choking");
             }
 
@@ -119,7 +113,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 remotePeerChokingUs = false;
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
-                peerLogger.unchoking(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
+                peerLogger.unchoking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("unchoking");
             }
             if (msg.getType() == 2){
@@ -128,7 +122,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 peerInfo.setInterested(true);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
-                peerLogger.receivedInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
+                peerLogger.receivedInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("interested");
             }
             if (msg.getType() == 3){
@@ -136,7 +130,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 peerInfo.setInterested(false);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
-                peerLogger.receivedNotInterestedMessage(getParentPeer().getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
+                peerLogger.receivedNotInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("uninterested");
             }
             if (msg.getType() == 4){
@@ -213,6 +207,8 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 System.out.println("index: " + index);
                 System.out.println("parentPeer.getBitField().getNumberOfPieces(): " + parentPeer.getBitField().getNumberOfPieces());
                 peerLogger.downloadingPiece(getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, parentPeer.getBitField().getNumberOfPieces());
+
+                peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.getPeerInfo().getBitField().getNumberOfPieces());
                 System.out.println("piece");
             }
 
@@ -223,10 +219,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     }
 
     public PeerInfo getPeerInfo() { return peerInfo; }
-
-    public Peer getParentPeer() {
-        return parentPeer;
-    }
 
     public void setConnectionEstablished(boolean isConnectionEstablished) { this.isConnectionEstablished = isConnectionEstablished; }
 
