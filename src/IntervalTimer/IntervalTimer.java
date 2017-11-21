@@ -67,6 +67,7 @@ public class IntervalTimer implements Runnable {
                                 //unchoke these peers. only send the unchoke message if they were choked previously
                                 Peer.connections.get(i).sendUnchoke();
                                 System.out.println("in the unchoking loop in interval timer");
+                                Peer.connections.get(i).setChoked(false);
                             }
 
                         }
@@ -76,7 +77,6 @@ public class IntervalTimer implements Runnable {
                             if (Peer.connections.get(i).getConnectionEstablished() && !Peer.connections.get(i).getPeerInfo().isChoked()) {
                                 //unchoke these peers
                                 Peer.connections.get(i).getPeerInfo().setIsChoked(true);
-                                Peer.connections.get(i).sendMessage(Message.createActualMessage("choke", new byte[0]));
                                 Peer.connections.get(i).sendChoke();
                                 System.out.println("in the choking loop in interval timer ");
                             }
@@ -159,6 +159,7 @@ public class IntervalTimer implements Runnable {
                             //generate random number to select random neighbor
                             int randomNeighbor = Math.abs(random.nextInt()) % potentialConnections.size();
                             Peer.connections.get(randomNeighbor).setChoked(false);
+                            System.out.println("$$unchoked ");
                             Peer.connections.get(randomNeighbor).sendUnchoke();
 
                             PeerLogger peerLogger = new PeerLogger();

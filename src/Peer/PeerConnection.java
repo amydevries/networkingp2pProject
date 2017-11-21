@@ -100,22 +100,24 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             msg = new Message(bSocket);
 
             if (msg.getType() == 0){
+                System.out.println("Received msg type = 0");
                 remotePeerChokingUs = true;
                 //setup the logger for use; need to have "true" to indicate that the file already exists
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.choking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("choking");
             }
-            System.out.println("Checked if msg type = 0");
+
             if (msg.getType() == 1){
+                System.out.println("Received msg type = 1");
                 remotePeerChokingUs = false;
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.unchoking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("unchoking");
             }
-            System.out.println("Checked if msg type = 1");
             if (msg.getType() == 2){
+                System.out.println("Received msg type = 2");
                 // the peer is now interested in some of the pieces we have
                 peerInfo.setInterested(true);
 
@@ -123,16 +125,16 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 peerLogger.receivedInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("interested");
             }
-            System.out.println("Checked if msg type = 2");
             if (msg.getType() == 3){
+                System.out.println("Received msg type = 3");
                 peerInfo.setInterested(false);
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 peerLogger.receivedNotInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("uninterested");
             }
-            System.out.println("Checked if msg type = 3");
             if (msg.getType() == 4){
+                System.out.println("Received msg type = 4");
                 int peerHasPieceIndex = Message.byteArrayToInt(msg.getData());
 
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
@@ -157,17 +159,17 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 }
                 System.out.println("have message");
             }
-            System.out.println("Checked if msg type = 4");
             if (msg.getType() == 6){
-
-                if(!peerInfo.isChoked()){
+                System.out.println("Received msg type = 6");
+                if(!isChoked()){
 
                     byte[] data = msg.getData();
 
                     int index = Message.byteArrayToInt(data);
-
+                    System.out.println("%%%%%% index: " + index);
+                    System.out.println("%bitfield: " + Peer.getFileHandler().getBitField().getBitField()[index]);
                     if(Peer.getFileHandler().getBitField().getBitField()[index] == (byte)1){
-
+                        System.out.println("%%Entered if statement");
                         byte[] dataToSend = Peer.getFileHandler().getPiece(index).getData();
                         SendingMessages.sendingPiece(bSocket, index, dataToSend);
                         System.out.println("~~~Sending piece: " + dataToSend);
@@ -176,8 +178,8 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 System.out.println("request");
 
             }
-            System.out.println("Checked if msg type = 6");
             if (msg.getType() == 7){
+                System.out.println("Received msg type = 7");
                 peerLogger.setup(getPeerInfo().getPeerID(), true);
                 byte[] data = msg.getData();
 
@@ -200,11 +202,15 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 if(Peer.getFileHandler().getBitField().isFull()){
 
                 }
+                System.out.println("getPeerInfo().getPeerID(): " + Peer.getPeerInfo().getPeerID());
+                System.out.println("getPeerInfo().getPeerID(): " + getPeerInfo().getPeerID());
+                System.out.println("index: " + index);
+                System.out.println("parentPeer.getBitField().getNumberOfPieces(): " + parentPeer.getBitField().getNumberOfPieces());
+                peerLogger.downloadingPiece(getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, parentPeer.getBitField().getNumberOfPieces());
 
                 peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.getPeerInfo().getBitField().getNumberOfPieces());
                 System.out.println("piece");
             }
-            System.out.println("Checked if msg type = 7");
 
         } catch (IOException e) {
                 e.printStackTrace();
