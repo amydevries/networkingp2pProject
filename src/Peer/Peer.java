@@ -75,7 +75,7 @@ public class Peer extends Thread{
 
     private PeerInfoReader peerReader = new PeerInfoReader("PeerInfo.cfg");
 
-    private PeerLogger peerLogger = PeerLogger.getLogger();
+    private PeerLogger peerLogger;
 
     private static FileHandler fileHandler;
 
@@ -90,7 +90,7 @@ public class Peer extends Thread{
         peers = peerInfo.getNeighborPeers(myID);
 
         fileHandler = new FileHandler();
-
+        peerLogger = PeerLogger.getLogger();
     }
 
     public void runFileSharing(){

@@ -11,7 +11,7 @@ import java.util.Calendar;
 
 public class PeerLogger {
 
-    private FileWriter logger = new FileWriter("./peer_"+Peer.getPeerInfo().getPeerID()+"/log_peer_"+Peer.getPeerInfo().getPeerID()+".log");;
+    private FileWriter logger = new FileWriter("./peer_"+Peer.getPeerInfo().getPeerID()+"/log_peer_"+Peer.getPeerInfo().getPeerID()+".log");
 
     private static PeerLogger peerLogger;
 
