@@ -3,11 +3,10 @@ package FileHandling;
 import DefaultProcesses.peerProcess;
 import Peer.BitField;
 import Peer.Peer;
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 
@@ -124,20 +123,7 @@ public class FileHandler {
     }
 
     private static void copyFile(File src, File dst) throws IOException {
-        InputStream is = null;
-        OutputStream os = null;
-        try {
-            is = new FileInputStream(src);
-            os = new FileOutputStream(dst);
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = is.read(buffer)) > 0) {
-                os.write(buffer, 0, length);
-            }
-        } finally {
-            is.close();
-            os.close();
-        }
+        Files.copy(src.toPath(), dst.toPath(), StandardCopyOption.REPLACE_EXISTING);
     }
     public ArrayList<Piece> getPieces() {
     return pieces;
