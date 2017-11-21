@@ -24,7 +24,6 @@ public class PeerInfo {
     private boolean interested;
 
     BitField bitField;
-    private PeerLogger peerLogger = PeerLogger.getLogger();
     private File peerLog;
 
     private ArrayList<Integer> piecesInterestedIn;   //stores the pieces that the peer is interested in
