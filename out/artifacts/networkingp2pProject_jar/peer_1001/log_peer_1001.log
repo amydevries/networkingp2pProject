@@ -1,1115 +1,176 @@
-2017/11/21_17:35:53: Peer 1001 has the preferred neighbors [0, 0]
-2017/11/21_17:35:55: Peer 1001 has the preferred neighbors [1002, 0]
-2017/11/21_17:35:55: Peer 1001 received the ‘have’ message from 1002 for the piece 46
-2017/11/21_17:35:56: Peer 1001 received the ‘have’ message from 1002 for the piece 1
-2017/11/21_17:35:56: Peer 1001 received the ‘have’ message from 1002 for the piece 6
-2017/11/21_17:35:56: Peer 1001 received the ‘have’ message from 1002 for the piece 5
-2017/11/21_17:35:56: Peer 1001 received the ‘have’ message from 1003 for the piece 1
-2017/11/21_17:35:57: Peer 1001 received the ‘have’ message from 1002 for the piece 50
-2017/11/21_17:35:57: Peer 1001 received the ‘have’ message from 1002 for the piece 22
-2017/11/21_17:35:57: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:35:57: Peer 1001 received the ‘have’ message from 1002 for the piece 64
-2017/11/21_17:35:57: Peer 1001 received the ‘have’ message from 1003 for the piece 6
-2017/11/21_17:35:57: Peer 1001 received the ‘have’ message from 1002 for the piece 126
-2017/11/21_17:35:57: Peer 1001 received the ‘have’ message from 1003 for the piece 5
-2017/11/21_17:35:58: Peer 1001 received the ‘have’ message from 1002 for the piece 74
-2017/11/21_17:35:58: Peer 1001 received the ‘have’ message from 1003 for the piece 6
-2017/11/21_17:35:58: Peer 1001 received the ‘have’ message from 1002 for the piece 130
-2017/11/21_17:35:58: Peer 1001 is unchoked by 1002
-2017/11/21_17:35:58: Peer 1001 received the ‘have’ message from 1002 for the piece 43
-2017/11/21_17:35:58: Peer 1001 received the ‘have’ message from 1003 for the piece 50
-2017/11/21_17:35:58: Peer 1001 received the ‘have’ message from 1002 for the piece 81
-2017/11/21_17:35:59: Peer 1001 received the ‘have’ message from 1002 for the piece 47
-2017/11/21_17:35:59: Peer 1001 received the ‘have’ message from 1002 for the piece 37
-2017/11/21_17:35:59: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:35:59: Peer 1001 received the ‘have’ message from 1003 for the piece 50
-2017/11/21_17:35:59: Peer 1001 received the ‘have’ message from 1002 for the piece 10
-2017/11/21_17:35:59: Peer 1001 received the ‘have’ message from 1002 for the piece 73
-2017/11/21_17:36:00: Peer 1001 received the ‘have’ message from 1003 for the piece 22
-2017/11/21_17:36:00: Peer 1001 received the ‘have’ message from 1002 for the piece 42
-2017/11/21_17:36:00: Peer 1001 received the ‘have’ message from 1002 for the piece 23
-2017/11/21_17:36:00: Peer 1001 received the ‘have’ message from 1003 for the piece 50
-2017/11/21_17:36:00: Peer 1001 received the ‘have’ message from 1002 for the piece 16
-2017/11/21_17:36:00: Peer 1001 received the ‘have’ message from 1002 for the piece 115
-2017/11/21_17:36:01: Peer 1001 received the ‘have’ message from 1003 for the piece 64
-2017/11/21_17:36:01: Peer 1001 received the ‘have’ message from 1002 for the piece 77
-2017/11/21_17:36:01: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:01: Peer 1001 received the ‘have’ message from 1002 for the piece 90
-2017/11/21_17:36:01: Peer 1001 received the ‘have’ message from 1003 for the piece 64
-2017/11/21_17:36:01: Peer 1001 received the ‘have’ message from 1002 for the piece 51
-2017/11/21_17:36:01: Peer 1001 received the ‘have’ message from 1002 for the piece 121
-2017/11/21_17:36:02: Peer 1001 received the ‘have’ message from 1003 for the piece 64
-2017/11/21_17:36:02: Peer 1001 received the ‘have’ message from 1002 for the piece 36
-2017/11/21_17:36:02: Peer 1001 received the ‘have’ message from 1002 for the piece 13
-2017/11/21_17:36:02: Peer 1001 received the ‘have’ message from 1003 for the piece 126
-2017/11/21_17:36:02: Peer 1001 received the ‘have’ message from 1002 for the piece 44
-2017/11/21_17:36:03: Peer 1001 received the ‘have’ message from 1002 for the piece 82
-2017/11/21_17:36:03: Peer 1001 received the ‘have’ message from 1003 for the piece 22
-2017/11/21_17:36:03: Peer 1001 received the ‘have’ message from 1002 for the piece 109
-2017/11/21_17:36:03: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:03: Peer 1001 received the ‘have’ message from 1002 for the piece 125
-2017/11/21_17:36:03: Peer 1001 received the ‘have’ message from 1002 for the piece 0
-2017/11/21_17:36:04: Peer 1001 received the ‘have’ message from 1003 for the piece 126
-2017/11/21_17:36:04: Peer 1001 received the ‘have’ message from 1002 for the piece 120
-2017/11/21_17:36:04: Peer 1001 received the ‘have’ message from 1002 for the piece 41
-2017/11/21_17:36:04: Peer 1001 received the ‘have’ message from 1003 for the piece 74
-2017/11/21_17:36:04: Peer 1001 received the ‘have’ message from 1002 for the piece 88
-2017/11/21_17:36:04: Peer 1001 received the ‘have’ message from 1002 for the piece 67
-2017/11/21_17:36:05: Peer 1001 received the ‘have’ message from 1003 for the piece 64
-2017/11/21_17:36:05: Peer 1001 received the ‘have’ message from 1002 for the piece 9
-2017/11/21_17:36:05: Peer 1001 received the ‘have’ message from 1002 for the piece 91
-2017/11/21_17:36:05: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:05: Peer 1001 received the ‘have’ message from 1003 for the piece 64
-2017/11/21_17:36:05: Peer 1001 received the ‘have’ message from 1002 for the piece 34
-2017/11/21_17:36:05: Peer 1001 received the ‘have’ message from 1002 for the piece 122
-2017/11/21_17:36:06: Peer 1001 received the ‘have’ message from 1003 for the piece 130
-2017/11/21_17:36:06: Peer 1001 received the ‘have’ message from 1002 for the piece 97
-2017/11/21_17:36:06: Peer 1001 received the ‘have’ message from 1002 for the piece 2
-2017/11/21_17:36:06: Peer 1001 received the ‘have’ message from 1003 for the piece 43
-2017/11/21_17:36:06: Peer 1001 received the ‘have’ message from 1002 for the piece 129
-2017/11/21_17:36:07: Peer 1001 received the ‘have’ message from 1002 for the piece 136
-2017/11/21_17:36:07: Peer 1001 received the ‘have’ message from 1003 for the piece 81
-2017/11/21_17:36:07: Peer 1001 received the ‘have’ message from 1002 for the piece 11
-2017/11/21_17:36:07: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:07: Peer 1001 received the ‘have’ message from 1002 for the piece 58
-2017/11/21_17:36:07: Peer 1001 received the ‘have’ message from 1003 for the piece 47
-2017/11/21_17:36:07: Peer 1001 received the ‘have’ message from 1002 for the piece 117
-2017/11/21_17:36:08: Peer 1001 received the ‘have’ message from 1002 for the piece 33
-2017/11/21_17:36:08: Peer 1001 received the ‘have’ message from 1003 for the piece 43
-2017/11/21_17:36:08: Peer 1001 received the ‘have’ message from 1002 for the piece 87
-2017/11/21_17:36:08: Peer 1001 received the ‘have’ message from 1002 for the piece 65
-2017/11/21_17:36:08: Peer 1001 received the ‘have’ message from 1003 for the piece 37
-2017/11/21_17:36:08: Peer 1001 received the ‘have’ message from 1002 for the piece 62
-2017/11/21_17:36:09: Peer 1001 received the ‘have’ message from 1002 for the piece 76
-2017/11/21_17:36:09: Peer 1001 received the ‘have’ message from 1003 for the piece 130
-2017/11/21_17:36:09: Peer 1001 received the ‘have’ message from 1002 for the piece 100
-2017/11/21_17:36:09: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:09: Peer 1001 received the ‘have’ message from 1002 for the piece 131
-2017/11/21_17:36:09: Peer 1001 received the ‘have’ message from 1003 for the piece 10
-2017/11/21_17:36:10: Peer 1001 received the ‘have’ message from 1003 for the piece 43
-2017/11/21_17:36:10: Peer 1001 received the ‘have’ message from 1003 for the piece 74
-2017/11/21_17:36:11: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:11: Peer 1001 received the ‘have’ message from 1003 for the piece 74
-2017/11/21_17:36:11: Peer 1001 received the ‘have’ message from 1002 for the piece 35
-2017/11/21_17:36:12: Peer 1001 received the ‘have’ message from 1002 for the piece 89
-2017/11/21_17:36:12: Peer 1001 received the ‘have’ message from 1003 for the piece 43
-2017/11/21_17:36:12: Peer 1001 received the ‘have’ message from 1002 for the piece 106
-2017/11/21_17:36:12: Peer 1001 received the ‘have’ message from 1003 for the piece 37
-2017/11/21_17:36:12: Peer 1001 received the ‘have’ message from 1002 for the piece 83
-2017/11/21_17:36:12: Peer 1001 received the ‘have’ message from 1002 for the piece 29
-2017/11/21_17:36:13: Peer 1001 received the ‘have’ message from 1002 for the piece 128
-2017/11/21_17:36:13: Peer 1001 received the ‘have’ message from 1003 for the piece 10
-2017/11/21_17:36:13: Peer 1001 received the ‘have’ message from 1002 for the piece 49
-2017/11/21_17:36:13: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:13: Peer 1001 received the ‘have’ message from 1002 for the piece 118
-2017/11/21_17:36:13: Peer 1001 received the ‘have’ message from 1003 for the piece 81
-2017/11/21_17:36:13: Peer 1001 received the ‘have’ message from 1002 for the piece 86
-2017/11/21_17:36:14: Peer 1001 received the ‘have’ message from 1002 for the piece 69
-2017/11/21_17:36:14: Peer 1001 received the ‘have’ message from 1003 for the piece 43
-2017/11/21_17:36:14: Peer 1001 received the ‘have’ message from 1002 for the piece 54
-2017/11/21_17:36:14: Peer 1001 received the ‘have’ message from 1002 for the piece 53
-2017/11/21_17:36:14: Peer 1001 received the ‘have’ message from 1003 for the piece 130
-2017/11/21_17:36:15: Peer 1001 received the ‘have’ message from 1002 for the piece 94
-2017/11/21_17:36:15: Peer 1001 received the ‘have’ message from 1002 for the piece 14
-2017/11/21_17:36:15: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:15: Peer 1001 received the ‘have’ message from 1003 for the piece 130
-2017/11/21_17:36:15: Peer 1001 received the ‘have’ message from 1002 for the piece 84
-2017/11/21_17:36:15: Peer 1001 received the ‘have’ message from 1002 for the piece 38
-2017/11/21_17:36:16: Peer 1001 received the ‘have’ message from 1003 for the piece 10
-2017/11/21_17:36:16: Peer 1001 received the ‘have’ message from 1003 for the piece 47
-2017/11/21_17:36:17: Peer 1001 received the ‘have’ message from 1003 for the piece 42
-2017/11/21_17:36:17: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:17: Peer 1001 received the ‘have’ message from 1003 for the piece 115
-2017/11/21_17:36:18: Peer 1001 received the ‘have’ message from 1003 for the piece 23
-2017/11/21_17:36:18: Peer 1001 received the ‘have’ message from 1003 for the piece 42
-2017/11/21_17:36:19: Peer 1001 received the ‘have’ message from 1003 for the piece 90
-2017/11/21_17:36:19: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:19: Peer 1001 received the ‘have’ message from 1003 for the piece 73
-2017/11/21_17:36:20: Peer 1001 received the ‘have’ message from 1003 for the piece 77
-2017/11/21_17:36:20: Peer 1001 received the ‘have’ message from 1003 for the piece 121
-2017/11/21_17:36:21: Peer 1001 received the ‘have’ message from 1003 for the piece 115
-2017/11/21_17:36:21: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:21: Peer 1001 received the ‘have’ message from 1002 for the piece 119
-2017/11/21_17:36:21: Peer 1001 received the ‘have’ message from 1003 for the piece 121
-2017/11/21_17:36:21: Peer 1001 received the ‘have’ message from 1002 for the piece 40
-2017/11/21_17:36:22: Peer 1001 received the ‘have’ message from 1002 for the piece 99
-2017/11/21_17:36:22: Peer 1001 received the ‘have’ message from 1002 for the piece 18
-2017/11/21_17:36:22: Peer 1001 received the ‘have’ message from 1003 for the piece 13
-2017/11/21_17:36:22: Peer 1001 received the ‘have’ message from 1002 for the piece 56
-2017/11/21_17:36:22: Peer 1001 received the ‘have’ message from 1002 for the piece 96
-2017/11/21_17:36:22: Peer 1001 received the ‘have’ message from 1003 for the piece 36
-2017/11/21_17:36:23: Peer 1001 received the ‘have’ message from 1002 for the piece 19
-2017/11/21_17:36:23: Peer 1001 received the ‘have’ message from 1003 for the piece 10
-2017/11/21_17:36:23: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:23: Peer 1001 received the ‘have’ message from 1002 for the piece 105
-2017/11/21_17:36:23: Peer 1001 received the ‘have’ message from 1002 for the piece 60
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1003 for the piece 44
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1002 for the piece 32
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1003 for the piece 36
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1002 for the piece 111
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1003 for the piece 82
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1002 for the piece 24
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1003 for the piece 36
-2017/11/21_17:36:24: Peer 1001 received the ‘have’ message from 1002 for the piece 114
-2017/11/21_17:36:25: Peer 1001 received the ‘have’ message from 1003 for the piece 16
-2017/11/21_17:36:25: Peer 1001 received the ‘have’ message from 1002 for the piece 113
-2017/11/21_17:36:25: Peer 1001 received the ‘have’ message from 1003 for the piece 125
-2017/11/21_17:36:25: Peer 1001 received the ‘have’ message from 1002 for the piece 55
-2017/11/21_17:36:25: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:25: Peer 1001 received the ‘have’ message from 1003 for the piece 82
-2017/11/21_17:36:25: Peer 1001 received the ‘have’ message from 1002 for the piece 104
-2017/11/21_17:36:25: Peer 1001 received the ‘have’ message from 1002 for the piece 78
-2017/11/21_17:36:26: Peer 1001 received the ‘have’ message from 1003 for the piece 36
-2017/11/21_17:36:26: Peer 1001 received the ‘have’ message from 1002 for the piece 30
-2017/11/21_17:36:26: Peer 1001 received the ‘have’ message from 1002 for the piece 45
-2017/11/21_17:36:26: Peer 1001 received the ‘have’ message from 1003 for the piece 16
-2017/11/21_17:36:26: Peer 1001 received the ‘have’ message from 1002 for the piece 66
-2017/11/21_17:36:26: Peer 1001 received the ‘have’ message from 1003 for the piece 125
-2017/11/21_17:36:27: Peer 1001 received the ‘have’ message from 1002 for the piece 7
-2017/11/21_17:36:27: Peer 1001 received the ‘have’ message from 1002 for the piece 103
-2017/11/21_17:36:27: Peer 1001 received the ‘have’ message from 1003 for the piece 73
-2017/11/21_17:36:27: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:27: Peer 1001 received the ‘have’ message from 1002 for the piece 3
-2017/11/21_17:36:28: Peer 1001 received the ‘have’ message from 1003 for the piece 23
-2017/11/21_17:36:28: Peer 1001 received the ‘have’ message from 1003 for the piece 16
-2017/11/21_17:36:28: Peer 1001 received the ‘have’ message from 1002 for the piece 101
-2017/11/21_17:36:29: Peer 1001 received the ‘have’ message from 1002 for the piece 12
-2017/11/21_17:36:29: Peer 1001 received the ‘have’ message from 1003 for the piece 44
-2017/11/21_17:36:29: Peer 1001 received the ‘have’ message from 1002 for the piece 8
-2017/11/21_17:36:29: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:29: Peer 1001 received the ‘have’ message from 1003 for the piece 42
-2017/11/21_17:36:29: Peer 1001 received the ‘have’ message from 1002 for the piece 107
-2017/11/21_17:36:29: Peer 1001 received the ‘have’ message from 1002 for the piece 15
-2017/11/21_17:36:30: Peer 1001 received the ‘have’ message from 1002 for the piece 25
-2017/11/21_17:36:30: Peer 1001 received the ‘have’ message from 1003 for the piece 120
-2017/11/21_17:36:30: Peer 1001 received the ‘have’ message from 1002 for the piece 28
-2017/11/21_17:36:30: Peer 1001 received the ‘have’ message from 1002 for the piece 57
-2017/11/21_17:36:30: Peer 1001 received the ‘have’ message from 1003 for the piece 82
-2017/11/21_17:36:31: Peer 1001 received the ‘have’ message from 1002 for the piece 133
-2017/11/21_17:36:31: Peer 1001 received the ‘have’ message from 1002 for the piece 63
-2017/11/21_17:36:31: Peer 1001 received the ‘have’ message from 1003 for the piece 121
-2017/11/21_17:36:31: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:31: Peer 1001 received the ‘have’ message from 1002 for the piece 71
-2017/11/21_17:36:31: Peer 1001 received the ‘have’ message from 1002 for the piece 80
-2017/11/21_17:36:32: Peer 1001 received the ‘have’ message from 1003 for the piece 13
-2017/11/21_17:36:32: Peer 1001 received the ‘have’ message from 1002 for the piece 110
-2017/11/21_17:36:32: Peer 1001 received the ‘have’ message from 1002 for the piece 132
-2017/11/21_17:36:32: Peer 1001 received the ‘have’ message from 1003 for the piece 51
-2017/11/21_17:36:33: Peer 1001 received the ‘have’ message from 1003 for the piece 91
-2017/11/21_17:36:33: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:33: Peer 1001 received the ‘have’ message from 1003 for the piece 13
-2017/11/21_17:36:34: Peer 1001 received the ‘have’ message from 1003 for the piece 121
-2017/11/21_17:36:34: Peer 1001 received the ‘have’ message from 1003 for the piece 109
-2017/11/21_17:36:35: Peer 1001 received the ‘have’ message from 1003 for the piece 44
-2017/11/21_17:36:35: Peer 1001 received the ‘have’ message from 1003 for the piece 13
-2017/11/21_17:36:35: Peer 1001 received the ‘have’ message from 1003 for the piece 73
-2017/11/21_17:36:35: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:35: Peer 1001 received the ‘have’ message from 1003 for the piece 34
-2017/11/21_17:36:36: Peer 1001 received the ‘have’ message from 1003 for the piece 115
-2017/11/21_17:36:36: Peer 1001 received the ‘have’ message from 1003 for the piece 34
-2017/11/21_17:36:36: Peer 1001 received the ‘have’ message from 1003 for the piece 91
-2017/11/21_17:36:36: Peer 1001 received the ‘have’ message from 1002 for the piece 52
-2017/11/21_17:36:36: Peer 1001 received the ‘have’ message from 1003 for the piece 97
-2017/11/21_17:36:37: Peer 1001 received the ‘have’ message from 1003 for the piece 2
-2017/11/21_17:36:37: Peer 1001 received the ‘have’ message from 1002 for the piece 20
-2017/11/21_17:36:37: Peer 1001 received the ‘have’ message from 1003 for the piece 9
-2017/11/21_17:36:37: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:37: Peer 1001 received the ‘have’ message from 1003 for the piece 36
-2017/11/21_17:36:37: Peer 1001 received the ‘have’ message from 1003 for the piece 13
-2017/11/21_17:36:38: Peer 1001 received the ‘have’ message from 1003 for the piece 73
-2017/11/21_17:36:38: Peer 1001 received the ‘have’ message from 1003 for the piece 44
-2017/11/21_17:36:38: Peer 1001 received the ‘have’ message from 1003 for the piece 34
-2017/11/21_17:36:39: Peer 1001 received the ‘have’ message from 1003 for the piece 121
-2017/11/21_17:36:39: Peer 1001 received the ‘have’ message from 1003 for the piece 33
-2017/11/21_17:36:39: Peer 1001 received the ‘have’ message from 1003 for the piece 129
-2017/11/21_17:36:39: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:39: Peer 1001 received the ‘have’ message from 1003 for the piece 88
-2017/11/21_17:36:40: Peer 1001 received the ‘have’ message from 1003 for the piece 97
-2017/11/21_17:36:40: Peer 1001 received the ‘have’ message from 1003 for the piece 41
-2017/11/21_17:36:41: Peer 1001 received the ‘have’ message from 1003 for the piece 58
-2017/11/21_17:36:41: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:41: Peer 1001 received the ‘have’ message from 1003 for the piece 129
-2017/11/21_17:36:42: Peer 1001 received the ‘have’ message from 1003 for the piece 51
-2017/11/21_17:36:42: Peer 1001 received the ‘have’ message from 1002 for the piece 68
-2017/11/21_17:36:42: Peer 1001 received the ‘have’ message from 1003 for the piece 11
-2017/11/21_17:36:43: Peer 1001 received the ‘have’ message from 1003 for the piece 9
-2017/11/21_17:36:43: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:43: Peer 1001 received the ‘have’ message from 1003 for the piece 0
-2017/11/21_17:36:44: Peer 1001 received the ‘have’ message from 1003 for the piece 11
-2017/11/21_17:36:44: Peer 1001 received the ‘have’ message from 1003 for the piece 34
-2017/11/21_17:36:45: Peer 1001 received the ‘have’ message from 1003 for the piece 97
-2017/11/21_17:36:45: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:45: Peer 1001 received the ‘have’ message from 1003 for the piece 100
-2017/11/21_17:36:46: Peer 1001 received the ‘have’ message from 1003 for the piece 65
-2017/11/21_17:36:46: Peer 1001 received the ‘have’ message from 1003 for the piece 131
-2017/11/21_17:36:47: Peer 1001 received the ‘have’ message from 1003 for the piece 88
-2017/11/21_17:36:47: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:47: Peer 1001 received the ‘have’ message from 1003 for the piece 41
-2017/11/21_17:36:48: Peer 1001 received the ‘have’ message from 1003 for the piece 41
-2017/11/21_17:36:48: Peer 1001 received the ‘have’ message from 1003 for the piece 88
-2017/11/21_17:36:49: Peer 1001 received the ‘have’ message from 1003 for the piece 87
-2017/11/21_17:36:49: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:49: Peer 1001 received the ‘have’ message from 1003 for the piece 109
-2017/11/21_17:36:50: Peer 1001 received the ‘have’ message from 1003 for the piece 33
-2017/11/21_17:36:50: Peer 1001 received the ‘have’ message from 1003 for the piece 122
-2017/11/21_17:36:51: Peer 1001 received the ‘have’ message from 1003 for the piece 89
-2017/11/21_17:36:51: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:51: Peer 1001 received the ‘have’ message from 1002 for the piece 123
-2017/11/21_17:36:51: Peer 1001 received the ‘have’ message from 1003 for the piece 65
-2017/11/21_17:36:52: Peer 1001 received the ‘have’ message from 1003 for the piece 87
-2017/11/21_17:36:52: Peer 1001 received the ‘have’ message from 1003 for the piece 76
-2017/11/21_17:36:53: Peer 1001 received the ‘have’ message from 1003 for the piece 76
-2017/11/21_17:36:53: Peer 1001 received the ‘have’ message from 1003 for the piece 122
-2017/11/21_17:36:53: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:53: Peer 1001 received the ‘have’ message from 1003 for the piece 91
-2017/11/21_17:36:54: Peer 1001 received the ‘have’ message from 1003 for the piece 87
-2017/11/21_17:36:54: Peer 1001 received the ‘have’ message from 1003 for the piece 91
-2017/11/21_17:36:55: Peer 1001 received the ‘have’ message from 1003 for the piece 100
-2017/11/21_17:36:55: Peer 1001 received the ‘have’ message from 1003 for the piece 83
-2017/11/21_17:36:55: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:56: Peer 1001 received the ‘have’ message from 1003 for the piece 51
-2017/11/21_17:36:56: Peer 1001 received the ‘have’ message from 1003 for the piece 29
-2017/11/21_17:36:57: Peer 1001 received the ‘have’ message from 1003 for the piece 62
-2017/11/21_17:36:57: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:58: Peer 1001 received the ‘have’ message from 1003 for the piece 67
-2017/11/21_17:36:58: Peer 1001 received the ‘have’ message from 1003 for the piece 58
-2017/11/21_17:36:59: Peer 1001 received the ‘have’ message from 1003 for the piece 106
-2017/11/21_17:36:59: Peer 1001 received the ‘have’ message from 1003 for the piece 136
-2017/11/21_17:36:59: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:36:59: Peer 1001 received the ‘have’ message from 1002 for the piece 61
-2017/11/21_17:37:00: Peer 1001 received the ‘have’ message from 1003 for the piece 91
-2017/11/21_17:37:00: Peer 1001 received the ‘have’ message from 1003 for the piece 69
-2017/11/21_17:37:01: Peer 1001 received the ‘have’ message from 1003 for the piece 122
-2017/11/21_17:37:01: Peer 1001 received the ‘have’ message from 1003 for the piece 91
-2017/11/21_17:37:01: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:01: Peer 1001 received the ‘have’ message from 1003 for the piece 58
-2017/11/21_17:37:01: Peer 1001 received the ‘have’ message from 1003 for the piece 122
-2017/11/21_17:37:02: Peer 1001 received the ‘have’ message from 1003 for the piece 89
-2017/11/21_17:37:02: Peer 1001 received the ‘have’ message from 1003 for the piece 49
-2017/11/21_17:37:02: Peer 1001 received the ‘have’ message from 1003 for the piece 11
-2017/11/21_17:37:03: Peer 1001 received the ‘have’ message from 1003 for the piece 2
-2017/11/21_17:37:03: Peer 1001 received the ‘have’ message from 1003 for the piece 84
-2017/11/21_17:37:03: Peer 1001 received the ‘have’ message from 1003 for the piece 41
-2017/11/21_17:37:03: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:03: Peer 1001 received the ‘have’ message from 1003 for the piece 35
-2017/11/21_17:37:04: Peer 1001 received the ‘have’ message from 1003 for the piece 87
-2017/11/21_17:37:04: Peer 1001 received the ‘have’ message from 1003 for the piece 58
-2017/11/21_17:37:04: Peer 1001 received the ‘have’ message from 1003 for the piece 76
-2017/11/21_17:37:04: Peer 1001 received the ‘have’ message from 1003 for the piece 65
-2017/11/21_17:37:05: Peer 1001 received the ‘have’ message from 1003 for the piece 129
-2017/11/21_17:37:05: Peer 1001 received the ‘have’ message from 1002 for the piece 98
-2017/11/21_17:37:05: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:05: Peer 1001 received the ‘have’ message from 1003 for the piece 69
-2017/11/21_17:37:06: Peer 1001 received the ‘have’ message from 1003 for the piece 14
-2017/11/21_17:37:06: Peer 1001 received the ‘have’ message from 1003 for the piece 53
-2017/11/21_17:37:06: Peer 1001 received the ‘have’ message from 1003 for the piece 76
-2017/11/21_17:37:07: Peer 1001 received the ‘have’ message from 1003 for the piece 29
-2017/11/21_17:37:07: Peer 1001 received the ‘have’ message from 1003 for the piece 69
-2017/11/21_17:37:07: Peer 1001 received the ‘have’ message from 1003 for the piece 58
-2017/11/21_17:37:07: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:07: Peer 1001 received the ‘have’ message from 1003 for the piece 106
-2017/11/21_17:37:08: Peer 1001 received the ‘have’ message from 1003 for the piece 118
-2017/11/21_17:37:08: Peer 1001 received the ‘have’ message from 1003 for the piece 69
-2017/11/21_17:37:08: Peer 1001 received the ‘have’ message from 1003 for the piece 86
-2017/11/21_17:37:08: Peer 1001 received the ‘have’ message from 1003 for the piece 106
-2017/11/21_17:37:09: Peer 1001 received the ‘have’ message from 1003 for the piece 0
-2017/11/21_17:37:09: Peer 1001 received the ‘have’ message from 1003 for the piece 53
-2017/11/21_17:37:09: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:09: Peer 1001 received the ‘have’ message from 1003 for the piece 86
-2017/11/21_17:37:10: Peer 1001 received the ‘have’ message from 1003 for the piece 35
-2017/11/21_17:37:10: Peer 1001 received the ‘have’ message from 1003 for the piece 118
-2017/11/21_17:37:10: Peer 1001 received the ‘have’ message from 1003 for the piece 69
-2017/11/21_17:37:10: Peer 1001 received the ‘have’ message from 1002 for the piece 17
-2017/11/21_17:37:10: Peer 1001 received the ‘have’ message from 1003 for the piece 38
-2017/11/21_17:37:11: Peer 1001 received the ‘have’ message from 1003 for the piece 18
-2017/11/21_17:37:11: Peer 1001 received the ‘have’ message from 1003 for the piece 14
-2017/11/21_17:37:11: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:11: Peer 1001 received the ‘have’ message from 1003 for the piece 119
-2017/11/21_17:37:12: Peer 1001 received the ‘have’ message from 1003 for the piece 89
-2017/11/21_17:37:12: Peer 1001 received the ‘have’ message from 1003 for the piece 38
-2017/11/21_17:37:12: Peer 1001 received the ‘have’ message from 1003 for the piece 56
-2017/11/21_17:37:12: Peer 1001 received the ‘have’ message from 1003 for the piece 96
-2017/11/21_17:37:13: Peer 1001 received the ‘have’ message from 1003 for the piece 19
-2017/11/21_17:37:13: Peer 1001 received the ‘have’ message from 1003 for the piece 53
-2017/11/21_17:37:13: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:13: Peer 1001 received the ‘have’ message from 1003 for the piece 29
-2017/11/21_17:37:14: Peer 1001 received the ‘have’ message from 1003 for the piece 76
-2017/11/21_17:37:14: Peer 1001 received the ‘have’ message from 1003 for the piece 131
-2017/11/21_17:37:14: Peer 1001 received the ‘have’ message from 1003 for the piece 86
-2017/11/21_17:37:14: Peer 1001 received the ‘have’ message from 1003 for the piece 83
-2017/11/21_17:37:15: Peer 1001 received the ‘have’ message from 1003 for the piece 19
-2017/11/21_17:37:15: Peer 1001 received the ‘have’ message from 1003 for the piece 119
-2017/11/21_17:37:15: Peer 1001 received the ‘have’ message from 1003 for the piece 99
-2017/11/21_17:37:15: Peer 1001 received the ‘have’ message from 1002 for the piece 4
-2017/11/21_17:37:15: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:15: Peer 1001 received the ‘have’ message from 1003 for the piece 136
-2017/11/21_17:37:16: Peer 1001 received the ‘have’ message from 1003 for the piece 119
-2017/11/21_17:37:16: Peer 1001 received the ‘have’ message from 1003 for the piece 111
-2017/11/21_17:37:17: Peer 1001 received the ‘have’ message from 1003 for the piece 19
-2017/11/21_17:37:17: Peer 1001 received the ‘have’ message from 1003 for the piece 54
-2017/11/21_17:37:17: Peer 1001 received the ‘have’ message from 1003 for the piece 136
-2017/11/21_17:37:17: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:17: Peer 1001 received the ‘have’ message from 1003 for the piece 40
-2017/11/21_17:37:18: Peer 1001 received the ‘have’ message from 1003 for the piece 122
-2017/11/21_17:37:18: Peer 1001 received the ‘have’ message from 1003 for the piece 84
-2017/11/21_17:37:18: Peer 1001 received the ‘have’ message from 1003 for the piece 38
-2017/11/21_17:37:18: Peer 1001 received the ‘have’ message from 1003 for the piece 117
-2017/11/21_17:37:19: Peer 1001 received the ‘have’ message from 1003 for the piece 136
-2017/11/21_17:37:19: Peer 1001 received the ‘have’ message from 1003 for the piece 86
-2017/11/21_17:37:19: Peer 1001 received the ‘have’ message from 1003 for the piece 60
-2017/11/21_17:37:19: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:19: Peer 1001 received the ‘have’ message from 1003 for the piece 99
-2017/11/21_17:37:20: Peer 1001 received the ‘have’ message from 1003 for the piece 106
-2017/11/21_17:37:20: Peer 1001 received the ‘have’ message from 1002 for the piece 108
-2017/11/21_17:37:20: Peer 1001 received the ‘have’ message from 1003 for the piece 114
-2017/11/21_17:37:20: Peer 1001 received the ‘have’ message from 1003 for the piece 128
-2017/11/21_17:37:20: Peer 1001 received the ‘have’ message from 1003 for the piece 78
-2017/11/21_17:37:21: Peer 1001 received the ‘have’ message from 1003 for the piece 117
-2017/11/21_17:37:21: Peer 1001 received the ‘have’ message from 1003 for the piece 117
-2017/11/21_17:37:21: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:22: Peer 1001 received the ‘have’ message from 1003 for the piece 84
-2017/11/21_17:37:22: Peer 1001 received the ‘have’ message from 1003 for the piece 38
-2017/11/21_17:37:22: Peer 1001 received the ‘have’ message from 1003 for the piece 114
-2017/11/21_17:37:22: Peer 1001 received the ‘have’ message from 1003 for the piece 104
-2017/11/21_17:37:23: Peer 1001 received the ‘have’ message from 1003 for the piece 84
-2017/11/21_17:37:23: Peer 1001 received the ‘have’ message from 1003 for the piece 29
-2017/11/21_17:37:23: Peer 1001 received the ‘have’ message from 1003 for the piece 53
-2017/11/21_17:37:23: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:23: Peer 1001 received the ‘have’ message from 1003 for the piece 114
-2017/11/21_17:37:24: Peer 1001 received the ‘have’ message from 1003 for the piece 104
-2017/11/21_17:37:24: Peer 1001 received the ‘have’ message from 1003 for the piece 7
-2017/11/21_17:37:24: Peer 1001 received the ‘have’ message from 1003 for the piece 7
-2017/11/21_17:37:25: Peer 1001 received the ‘have’ message from 1003 for the piece 12
-2017/11/21_17:37:25: Peer 1001 received the ‘have’ message from 1003 for the piece 30
-2017/11/21_17:37:25: Peer 1001 received the ‘have’ message from 1003 for the piece 83
-2017/11/21_17:37:25: Peer 1001 received the ‘have’ message from 1002 for the piece 75
-2017/11/21_17:37:25: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:25: Peer 1001 received the ‘have’ message from 1003 for the piece 67
-2017/11/21_17:37:26: Peer 1001 received the ‘have’ message from 1003 for the piece 84
-2017/11/21_17:37:26: Peer 1001 received the ‘have’ message from 1003 for the piece 107
-2017/11/21_17:37:26: Peer 1001 received the ‘have’ message from 1003 for the piece 96
-2017/11/21_17:37:27: Peer 1001 received the ‘have’ message from 1003 for the piece 18
-2017/11/21_17:37:27: Peer 1001 received the ‘have’ message from 1003 for the piece 7
-2017/11/21_17:37:27: Peer 1001 received the ‘have’ message from 1003 for the piece 107
-2017/11/21_17:37:27: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:27: Peer 1001 received the ‘have’ message from 1003 for the piece 40
-2017/11/21_17:37:28: Peer 1001 received the ‘have’ message from 1003 for the piece 86
-2017/11/21_17:37:28: Peer 1001 received the ‘have’ message from 1003 for the piece 66
-2017/11/21_17:37:28: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:37:29: Peer 1001 received the ‘have’ message from 1003 for the piece 49
-2017/11/21_17:37:29: Peer 1001 received the ‘have’ message from 1003 for the piece 57
-2017/11/21_17:37:29: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:29: Peer 1001 received the ‘have’ message from 1003 for the piece 53
-2017/11/21_17:37:30: Peer 1001 received the ‘have’ message from 1003 for the piece 49
-2017/11/21_17:37:30: Peer 1001 received the ‘have’ message from 1003 for the piece 86
-2017/11/21_17:37:30: Peer 1001 received the ‘have’ message from 1003 for the piece 35
-2017/11/21_17:37:30: Peer 1001 received the ‘have’ message from 1002 for the piece 102
-2017/11/21_17:37:30: Peer 1001 received the ‘have’ message from 1003 for the piece 78
-2017/11/21_17:37:31: Peer 1001 received the ‘have’ message from 1003 for the piece 14
-2017/11/21_17:37:31: Peer 1001 received the ‘have’ message from 1003 for the piece 40
-2017/11/21_17:37:31: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:31: Peer 1001 received the ‘have’ message from 1003 for the piece 117
-2017/11/21_17:37:32: Peer 1001 received the ‘have’ message from 1003 for the piece 32
-2017/11/21_17:37:32: Peer 1001 received the ‘have’ message from 1003 for the piece 35
-2017/11/21_17:37:32: Peer 1001 received the ‘have’ message from 1003 for the piece 45
-2017/11/21_17:37:33: Peer 1001 received the ‘have’ message from 1003 for the piece 8
-2017/11/21_17:37:33: Peer 1001 received the ‘have’ message from 1003 for the piece 28
-2017/11/21_17:37:33: Peer 1001 received the ‘have’ message from 1003 for the piece 30
-2017/11/21_17:37:33: Peer 1001 received the ‘have’ message from 1003 for the piece 119
-2017/11/21_17:37:33: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:34: Peer 1001 received the ‘have’ message from 1003 for the piece 57
-2017/11/21_17:37:34: Peer 1001 received the ‘have’ message from 1003 for the piece 104
-2017/11/21_17:37:34: Peer 1001 received the ‘have’ message from 1003 for the piece 55
-2017/11/21_17:37:34: Peer 1001 received the ‘have’ message from 1003 for the piece 118
-2017/11/21_17:37:35: Peer 1001 received the ‘have’ message from 1003 for the piece 119
-2017/11/21_17:37:35: Peer 1001 received the ‘have’ message from 1003 for the piece 71
-2017/11/21_17:37:35: Peer 1001 received the ‘have’ message from 1002 for the piece 112
-2017/11/21_17:37:35: Peer 1001 received the ‘have’ message from 1003 for the piece 40
-2017/11/21_17:37:35: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:35: Peer 1001 received the ‘have’ message from 1003 for the piece 3
-2017/11/21_17:37:36: Peer 1001 received the ‘have’ message from 1003 for the piece 7
-2017/11/21_17:37:36: Peer 1001 received the ‘have’ message from 1003 for the piece 54
-2017/11/21_17:37:36: Peer 1001 received the ‘have’ message from 1003 for the piece 45
-2017/11/21_17:37:37: Peer 1001 received the ‘have’ message from 1003 for the piece 63
-2017/11/21_17:37:37: Peer 1001 received the ‘have’ message from 1003 for the piece 128
-2017/11/21_17:37:37: Peer 1001 received the ‘have’ message from 1003 for the piece 118
-2017/11/21_17:37:37: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:37: Peer 1001 received the ‘have’ message from 1003 for the piece 94
-2017/11/21_17:37:38: Peer 1001 received the ‘have’ message from 1003 for the piece 107
-2017/11/21_17:37:38: Peer 1001 received the ‘have’ message from 1003 for the piece 105
-2017/11/21_17:37:38: Peer 1001 received the ‘have’ message from 1003 for the piece 117
-2017/11/21_17:37:39: Peer 1001 received the ‘have’ message from 1003 for the piece 57
-2017/11/21_17:37:39: Peer 1001 received the ‘have’ message from 1003 for the piece 117
-2017/11/21_17:37:39: Peer 1001 received the ‘have’ message from 1003 for the piece 113
-2017/11/21_17:37:39: Peer 1001 received the ‘have’ message from 1003 for the piece 55
-2017/11/21_17:37:39: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:40: Peer 1001 received the ‘have’ message from 1003 for the piece 19
-2017/11/21_17:37:40: Peer 1001 received the ‘have’ message from 1003 for the piece 96
-2017/11/21_17:37:40: Peer 1001 received the ‘have’ message from 1002 for the piece 70
-2017/11/21_17:37:40: Peer 1001 received the ‘have’ message from 1002 for the piece 116
-2017/11/21_17:37:40: Peer 1001 received the ‘have’ message from 1003 for the piece 71
-2017/11/21_17:37:40: Peer 1001 received the ‘have’ message from 1003 for the piece 71
-2017/11/21_17:37:41: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:37:41: Peer 1001 received the ‘have’ message from 1003 for the piece 128
-2017/11/21_17:37:41: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:41: Peer 1001 received the ‘have’ message from 1003 for the piece 96
-2017/11/21_17:37:42: Peer 1001 received the ‘have’ message from 1003 for the piece 40
-2017/11/21_17:37:42: Peer 1001 received the ‘have’ message from 1003 for the piece 78
-2017/11/21_17:37:42: Peer 1001 received the ‘have’ message from 1003 for the piece 110
-2017/11/21_17:37:42: Peer 1001 received the ‘have’ message from 1003 for the piece 66
-2017/11/21_17:37:43: Peer 1001 received the ‘have’ message from 1003 for the piece 20
-2017/11/21_17:37:43: Peer 1001 received the ‘have’ message from 1003 for the piece 107
-2017/11/21_17:37:43: Peer 1001 received the ‘have’ message from 1003 for the piece 54
-2017/11/21_17:37:43: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:44: Peer 1001 received the ‘have’ message from 1003 for the piece 8
-2017/11/21_17:37:44: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:37:44: Peer 1001 received the ‘have’ message from 1003 for the piece 7
-2017/11/21_17:37:44: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:37:45: Peer 1001 received the ‘have’ message from 1003 for the piece 114
-2017/11/21_17:37:45: Peer 1001 received the ‘have’ message from 1002 for the piece 95
-2017/11/21_17:37:45: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:37:45: Peer 1001 received the ‘have’ message from 1003 for the piece 32
-2017/11/21_17:37:45: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:46: Peer 1001 received the ‘have’ message from 1003 for the piece 71
-2017/11/21_17:37:46: Peer 1001 received the ‘have’ message from 1003 for the piece 71
-2017/11/21_17:37:46: Peer 1001 received the ‘have’ message from 1003 for the piece 111
-2017/11/21_17:37:46: Peer 1001 received the ‘have’ message from 1003 for the piece 54
-2017/11/21_17:37:47: Peer 1001 received the ‘have’ message from 1003 for the piece 32
-2017/11/21_17:37:47: Peer 1001 received the ‘have’ message from 1003 for the piece 94
-2017/11/21_17:37:47: Peer 1001 received the ‘have’ message from 1003 for the piece 8
-2017/11/21_17:37:47: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:48: Peer 1001 received the ‘have’ message from 1003 for the piece 20
-2017/11/21_17:37:48: Peer 1001 received the ‘have’ message from 1003 for the piece 105
-2017/11/21_17:37:48: Peer 1001 received the ‘have’ message from 1003 for the piece 80
-2017/11/21_17:37:48: Peer 1001 received the ‘have’ message from 1003 for the piece 113
-2017/11/21_17:37:49: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:37:49: Peer 1001 received the ‘have’ message from 1003 for the piece 110
-2017/11/21_17:37:49: Peer 1001 received the ‘have’ message from 1003 for the piece 128
-2017/11/21_17:37:49: Peer 1001 received the ‘have’ message from 1003 for the piece 107
-2017/11/21_17:37:49: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:50: Peer 1001 received the ‘have’ message from 1002 for the piece 124
-2017/11/21_17:37:50: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:37:50: Peer 1001 received the ‘have’ message from 1003 for the piece 128
-2017/11/21_17:37:50: Peer 1001 received the ‘have’ message from 1003 for the piece 133
-2017/11/21_17:37:51: Peer 1001 received the ‘have’ message from 1003 for the piece 94
-2017/11/21_17:37:51: Peer 1001 received the ‘have’ message from 1003 for the piece 7
-2017/11/21_17:37:51: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:37:51: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:51: Peer 1001 received the ‘have’ message from 1003 for the piece 114
-2017/11/21_17:37:52: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:37:52: Peer 1001 received the ‘have’ message from 1003 for the piece 103
-2017/11/21_17:37:52: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:37:53: Peer 1001 received the ‘have’ message from 1003 for the piece 80
-2017/11/21_17:37:53: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:37:53: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:37:53: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:37:53: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:54: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:37:54: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:37:54: Peer 1001 received the ‘have’ message from 1003 for the piece 66
-2017/11/21_17:37:54: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:37:55: Peer 1001 received the ‘have’ message from 1002 for the piece 135
-2017/11/21_17:37:55: Peer 1001 received the ‘have’ message from 1003 for the piece 133
-2017/11/21_17:37:55: Peer 1001 received the ‘have’ message from 1003 for the piece 113
-2017/11/21_17:37:55: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:37:55: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:56: Peer 1001 received the ‘have’ message from 1003 for the piece 80
-2017/11/21_17:37:56: Peer 1001 received the ‘have’ message from 1003 for the piece 20
-2017/11/21_17:37:56: Peer 1001 received the ‘have’ message from 1003 for the piece 66
-2017/11/21_17:37:56: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:37:57: Peer 1001 received the ‘have’ message from 1003 for the piece 55
-2017/11/21_17:37:57: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:37:57: Peer 1001 received the ‘have’ message from 1003 for the piece 8
-2017/11/21_17:37:57: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:37:58: Peer 1001 received the ‘have’ message from 1003 for the piece 28
-2017/11/21_17:37:58: Peer 1001 received the ‘have’ message from 1003 for the piece 24
-2017/11/21_17:37:58: Peer 1001 received the ‘have’ message from 1003 for the piece 55
-2017/11/21_17:37:58: Peer 1001 received the ‘have’ message from 1003 for the piece 57
-2017/11/21_17:37:59: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:37:59: Peer 1001 received the ‘have’ message from 1003 for the piece 28
-2017/11/21_17:37:59: Peer 1001 received the ‘have’ message from 1003 for the piece 57
-2017/11/21_17:37:59: Peer 1001 received the ‘have’ message from 1003 for the piece 55
-2017/11/21_17:37:59: Peer 1001 received the ‘have’ message from 1002 for the piece 21
-2017/11/21_17:37:59: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:00: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:38:00: Peer 1001 received the ‘have’ message from 1003 for the piece 25
-2017/11/21_17:38:01: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:01: Peer 1001 received the ‘have’ message from 1003 for the piece 57
-2017/11/21_17:38:01: Peer 1001 received the ‘have’ message from 1003 for the piece 103
-2017/11/21_17:38:01: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:01: Peer 1001 received the ‘have’ message from 1003 for the piece 80
-2017/11/21_17:38:02: Peer 1001 received the ‘have’ message from 1003 for the piece 80
-2017/11/21_17:38:02: Peer 1001 received the ‘have’ message from 1003 for the piece 32
-2017/11/21_17:38:02: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:03: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:03: Peer 1001 received the ‘have’ message from 1003 for the piece 55
-2017/11/21_17:38:03: Peer 1001 received the ‘have’ message from 1003 for the piece 105
-2017/11/21_17:38:03: Peer 1001 received the ‘have’ message from 1003 for the piece 63
-2017/11/21_17:38:03: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:04: Peer 1001 received the ‘have’ message from 1003 for the piece 133
-2017/11/21_17:38:04: Peer 1001 received the ‘have’ message from 1003 for the piece 103
-2017/11/21_17:38:04: Peer 1001 received the ‘have’ message from 1003 for the piece 3
-2017/11/21_17:38:05: Peer 1001 received the ‘have’ message from 1003 for the piece 103
-2017/11/21_17:38:05: Peer 1001 received the ‘have’ message from 1002 for the piece 79
-2017/11/21_17:38:05: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:38:05: Peer 1001 received the ‘have’ message from 1003 for the piece 20
-2017/11/21_17:38:05: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:06: Peer 1001 received the ‘have’ message from 1003 for the piece 3
-2017/11/21_17:38:06: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:06: Peer 1001 received the ‘have’ message from 1003 for the piece 113
-2017/11/21_17:38:06: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:07: Peer 1001 received the ‘have’ message from 1003 for the piece 63
-2017/11/21_17:38:07: Peer 1001 received the ‘have’ message from 1003 for the piece 3
-2017/11/21_17:38:07: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:07: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:08: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:08: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:08: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:38:08: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:09: Peer 1001 received the ‘have’ message from 1003 for the piece 98
-2017/11/21_17:38:09: Peer 1001 received the ‘have’ message from 1003 for the piece 63
-2017/11/21_17:38:09: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:38:09: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:38:09: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:10: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:10: Peer 1001 received the ‘have’ message from 1002 for the piece 59
-2017/11/21_17:38:10: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:10: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:11: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:11: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:38:11: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:11: Peer 1001 received the ‘have’ message from 1003 for the piece 24
-2017/11/21_17:38:11: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 110
-2017/11/21_17:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 20
-2017/11/21_17:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:38:13: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:13: Peer 1001 received the ‘have’ message from 1003 for the piece 24
-2017/11/21_17:38:13: Peer 1001 received the ‘have’ message from 1003 for the piece 80
-2017/11/21_17:38:13: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:13: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:14: Peer 1001 received the ‘have’ message from 1003 for the piece 20
-2017/11/21_17:38:14: Peer 1001 received the ‘have’ message from 1003 for the piece 133
-2017/11/21_17:38:14: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:14: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:15: Peer 1001 received the ‘have’ message from 1002 for the piece 39
-2017/11/21_17:38:15: Peer 1001 received the ‘have’ message from 1003 for the piece 68
-2017/11/21_17:38:15: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:15: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:15: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:16: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:16: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:38:16: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:16: Peer 1001 received the ‘have’ message from 1003 for the piece 98
-2017/11/21_17:38:17: Peer 1001 received the ‘have’ message from 1003 for the piece 133
-2017/11/21_17:38:17: Peer 1001 received the ‘have’ message from 1003 for the piece 133
-2017/11/21_17:38:17: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:17: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:17: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:18: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:38:18: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:38:18: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:19: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:19: Peer 1001 received the ‘have’ message from 1003 for the piece 98
-2017/11/21_17:38:19: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:19: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:19: Peer 1001 received the ‘have’ message from 1002 for the piece 27
-2017/11/21_17:38:19: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:20: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:38:20: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:20: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:21: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:38:21: Peer 1001 received the ‘have’ message from 1003 for the piece 15
-2017/11/21_17:38:21: Peer 1001 received the ‘have’ message from 1003 for the piece 80
-2017/11/21_17:38:21: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:21: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:22: Peer 1001 received the ‘have’ message from 1003 for the piece 132
-2017/11/21_17:38:22: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:22: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:22: Peer 1001 received the ‘have’ message from 1003 for the piece 24
-2017/11/21_17:38:23: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:23: Peer 1001 received the ‘have’ message from 1003 for the piece 103
-2017/11/21_17:38:23: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:23: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 101
-2017/11/21_17:38:24: Peer 1001 received the ‘have’ message from 1002 for the piece 134
-2017/11/21_17:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:25: Peer 1001 received the ‘have’ message from 1003 for the piece 98
-2017/11/21_17:38:25: Peer 1001 received the ‘have’ message from 1002 for the piece 93
-2017/11/21_17:38:25: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:25: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:25: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:26: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:26: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:26: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:26: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:27: Peer 1001 received the ‘have’ message from 1003 for the piece 98
-2017/11/21_17:38:27: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:27: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:27: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:28: Peer 1001 received the ‘have’ message from 1003 for the piece 52
-2017/11/21_17:38:28: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:28: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:28: Peer 1001 received the ‘have’ message from 1003 for the piece 98
-2017/11/21_17:38:29: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:29: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:29: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:29: Peer 1001 received the ‘have’ message from 1002 for the piece 127
-2017/11/21_17:38:29: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:29: Peer 1001 received the ‘have’ message from 1002 for the piece 48
-2017/11/21_17:38:29: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:30: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:30: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:30: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:31: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:31: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:31: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:31: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:31: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:32: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:32: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:32: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:32: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:33: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:33: Peer 1001 received the ‘have’ message from 1003 for the piece 61
-2017/11/21_17:38:33: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:33: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:34: Peer 1001 received the ‘have’ message from 1003 for the piece 123
-2017/11/21_17:38:34: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:34: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:34: Peer 1001 received the ‘have’ message from 1002 for the piece 85
-2017/11/21_17:38:34: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:35: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:38:35: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:35: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:36: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:36: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:36: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:36: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:36: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:37: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:37: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:37: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:38: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:38: Peer 1001 received the ‘have’ message from 1003 for the piece 98
-2017/11/21_17:38:38: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:38: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:38: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:39: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:39: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:39: Peer 1001 received the ‘have’ message from 1002 for the piece 72
-2017/11/21_17:38:39: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:39: Peer 1001 received the ‘have’ message from 1002 for the piece 92
-2017/11/21_17:38:40: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:40: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:40: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:40: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:41: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:41: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:41: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:41: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:38:42: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:42: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:42: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:42: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:43: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:43: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:43: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:44: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:44: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:44: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:44: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:44: Peer 1001 received the ‘have’ message from 1002 for the piece 31
-2017/11/21_17:38:44: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:45: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:45: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:45: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:46: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:46: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:46: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:38:46: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:38:47: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:47: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:38:47: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:47: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:38:48: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:48: Peer 1001 received the ‘have’ message from 1003 for the piece 17
-2017/11/21_17:38:48: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:38:48: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:49: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:49: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:49: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:49: Peer 1001 received the ‘have’ message from 1002 for the piece 26
-2017/11/21_17:38:49: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:50: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:50: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:50: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:51: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:51: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:51: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:38:51: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:38:52: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:52: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:38:52: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:52: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:38:52: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:53: Peer 1001 received the ‘have’ message from 1003 for the piece 75
-2017/11/21_17:38:53: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:53: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:38:53: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:54: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:54: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:38:54: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:38:54: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:38:55: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:55: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:55: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:38:56: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:56: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:56: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:56: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:56: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:57: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:57: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:38:57: Peer 1001 received the ‘have’ message from 1003 for the piece 4
-2017/11/21_17:38:57: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:58: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:38:58: Peer 1001 received the ‘have’ message from 1003 for the piece 108
-2017/11/21_17:38:58: Peer 1001 received the ‘have’ message from 1003 for the piece 102
-2017/11/21_17:38:59: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:38:59: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:38:59: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:38:59: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:00: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:39:00: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:00: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:39:00: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:01: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:01: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:39:01: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:01: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:02: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:02: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:39:02: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:02: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:03: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:03: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:03: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:39:03: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:39:04: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:39:04: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:04: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:04: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:39:04: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:39:05: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:05: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:05: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:39:06: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:06: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:06: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:06: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:39:07: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:39:07: Peer 1001 received the ‘have’ message from 1003 for the piece 112
-2017/11/21_17:39:07: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:08: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:08: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:08: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:08: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:08: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:39:09: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:09: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:09: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:09: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:10: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:10: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:10: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:10: Peer 1001 received the ‘have’ message from 1003 for the piece 70
-2017/11/21_17:39:10: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:11: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:11: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:11: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:11: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:12: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:12: Peer 1001 received the ‘have’ message from 1003 for the piece 116
-2017/11/21_17:39:12: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:12: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:13: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:13: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:13: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:13: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:14: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:14: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:14: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:14: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:14: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:15: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:15: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:15: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:15: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:16: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:16: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:16: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:16: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:16: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:17: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:17: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:17: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:18: Peer 1001 received the ‘have’ message from 1003 for the piece 124
-2017/11/21_17:39:18: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:18: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:18: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:18: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:19: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:19: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:19: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:19: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:20: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:20: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:20: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:20: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:20: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:21: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:21: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:22: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:22: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:22: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:22: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:22: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:23: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:23: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:23: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:23: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:24: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:24: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:24: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:24: Peer 1001 received the ‘have’ message from 1003 for the piece 95
-2017/11/21_17:39:24: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:25: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:25: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:25: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:26: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:26: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:26: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:26: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:26: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:27: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:27: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:27: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:27: Peer 1001 received the ‘have’ message from 1003 for the piece 135
-2017/11/21_17:39:28: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:28: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:28: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:28: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:28: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:29: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:29: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:29: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:30: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:30: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:30: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:30: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:30: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:31: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:31: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:31: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:31: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:32: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:32: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:32: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:32: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:32: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:33: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:33: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:33: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:33: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:34: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:34: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:34: Peer 1001 received the ‘have’ message from 1003 for the piece 21
-2017/11/21_17:39:34: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:35: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:35: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:35: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:35: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:36: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:36: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:36: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:36: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:36: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:37: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:37: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:37: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:37: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:38: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:38: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:38: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:38: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:38: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:39: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:39: Peer 1001 received the ‘have’ message from 1003 for the piece 79
-2017/11/21_17:39:39: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:40: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:40: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:40: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:40: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:40: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 31
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 26
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 59
-2017/11/21_17:39:41: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 39
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 27
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 134
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 93
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 127
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 48
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 85
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 92
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:42: Peer 1001 received the ‘have’ message from 1003 for the piece 72
-2017/11/21_17:39:44: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:46: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:48: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:50: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:52: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:54: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:56: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:39:58: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:40:00: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:40:02: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:40:04: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:40:06: Peer 1001 has the preferred neighbors [1002, 1003]
-2017/11/21_17:40:08: Peer 1001 has the preferred neighbors [1002, 1003]
+2017/11/22_12:36:59: Peer 1001 has the preferred neighbors [0, 0]
+2017/11/22_12:37:49: Peer 1001 received the ‘have’ message from 1002 for the piece 10
+2017/11/22_12:37:49: Peer 1001 received the ‘have’ message from 1003 for the piece 60
+2017/11/22_12:37:49: Peer 1001 received the ‘have’ message from 1003 for the piece 37
+2017/11/22_12:37:49: Peer 1001 received the ‘have’ message from 1002 for the piece 49
+2017/11/22_12:37:50: Peer 1001 received the ‘have’ message from 1002 for the piece 85
+2017/11/22_12:37:50: Peer 1001 received the ‘have’ message from 1003 for the piece 129
+2017/11/22_12:37:50: Peer 1001 received the ‘have’ message from 1003 for the piece 49
+2017/11/22_12:37:50: Peer 1001 received the ‘have’ message from 1002 for the piece 90
+2017/11/22_12:37:50: Peer 1001 received the ‘have’ message from 1003 for the piece 22
+2017/11/22_12:37:51: Peer 1001 received the ‘have’ message from 1002 for the piece 61
+2017/11/22_12:37:51: Peer 1001 received the ‘have’ message from 1003 for the piece 10
+2017/11/22_12:37:51: Peer 1001 received the ‘have’ message from 1003 for the piece 64
+2017/11/22_12:37:51: Peer 1001 received the ‘have’ message from 1002 for the piece 141
+2017/11/22_12:37:51: Peer 1001 received the ‘have’ message from 1003 for the piece 85
+2017/11/22_12:37:51: Peer 1001 received the ‘have’ message from 1002 for the piece 52
+2017/11/22_12:37:52: Peer 1001 received the ‘have’ message from 1003 for the piece 85
+2017/11/22_12:37:52: Peer 1001 received the ‘have’ message from 1003 for the piece 108
+2017/11/22_12:37:52: Peer 1001 received the ‘have’ message from 1002 for the piece 173
+2017/11/22_12:37:52: Peer 1001 received the ‘have’ message from 1003 for the piece 10
+2017/11/22_12:37:52: Peer 1001 received the ‘have’ message from 1002 for the piece 9
+2017/11/22_12:37:52: Peer 1001 received the ‘have’ message from 1003 for the piece 91
+2017/11/22_12:37:53: Peer 1001 received the ‘have’ message from 1003 for the piece 85
+2017/11/22_12:37:53: Peer 1001 received the ‘have’ message from 1002 for the piece 79
+2017/11/22_12:37:53: Peer 1001 received the ‘have’ message from 1003 for the piece 164
+2017/11/22_12:37:53: Peer 1001 received the ‘have’ message from 1002 for the piece 178
+2017/11/22_12:37:54: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:37:54: Peer 1001 received the ‘have’ message from 1003 for the piece 27
+2017/11/22_12:37:54: Peer 1001 received the ‘have’ message from 1002 for the piece 35
+2017/11/22_12:37:54: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:37:55: Peer 1001 received the ‘have’ message from 1003 for the piece 127
+2017/11/22_12:37:55: Peer 1001 received the ‘have’ message from 1002 for the piece 56
+2017/11/22_12:37:55: Peer 1001 received the ‘have’ message from 1002 for the piece 128
+2017/11/22_12:37:56: Peer 1001 received the ‘have’ message from 1003 for the piece 153
+2017/11/22_12:37:56: Peer 1001 received the ‘have’ message from 1002 for the piece 60
+2017/11/22_12:37:56: Peer 1001 received the ‘have’ message from 1002 for the piece 0
+2017/11/22_12:37:56: Peer 1001 received the ‘have’ message from 1003 for the piece 51
+2017/11/22_12:37:56: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:37:57: Peer 1001 received the ‘have’ message from 1002 for the piece 189
+2017/11/22_12:37:57: Peer 1001 received the ‘have’ message from 1003 for the piece 190
+2017/11/22_12:37:57: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:37:57: Peer 1001 received the ‘have’ message from 1002 for the piece 165
+2017/11/22_12:37:58: Peer 1001 received the ‘have’ message from 1002 for the piece 37
+2017/11/22_12:37:58: Peer 1001 received the ‘have’ message from 1003 for the piece 106
+2017/11/22_12:37:58: Peer 1001 received the ‘have’ message from 1002 for the piece 81
+2017/11/22_12:37:58: Peer 1001 received the ‘have’ message from 1003 for the piece 61
+2017/11/22_12:37:59: Peer 1001 received the ‘have’ message from 1002 for the piece 193
+2017/11/22_12:37:59: Peer 1001 received the ‘have’ message from 1003 for the piece 119
+2017/11/22_12:37:59: Peer 1001 received the ‘have’ message from 1003 for the piece 184
+2017/11/22_12:37:59: Peer 1001 received the ‘have’ message from 1002 for the piece 138
+2017/11/22_12:38:00: Peer 1001 received the ‘have’ message from 1002 for the piece 60
+2017/11/22_12:38:00: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:38:00: Peer 1001 received the ‘have’ message from 1002 for the piece 188
+2017/11/22_12:38:00: Peer 1001 received the ‘have’ message from 1003 for the piece 61
+2017/11/22_12:38:00: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:38:00: Peer 1001 received the ‘have’ message from 1002 for the piece 109
+2017/11/22_12:38:01: Peer 1001 received the ‘have’ message from 1002 for the piece 22
+2017/11/22_12:38:01: Peer 1001 received the ‘have’ message from 1003 for the piece 186
+2017/11/22_12:38:01: Peer 1001 received the ‘have’ message from 1002 for the piece 179
+2017/11/22_12:38:01: Peer 1001 received the ‘have’ message from 1002 for the piece 47
+2017/11/22_12:38:01: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:38:01: Peer 1001 received the ‘have’ message from 1003 for the piece 0
+2017/11/22_12:38:02: Peer 1001 received the ‘have’ message from 1003 for the piece 105
+2017/11/22_12:38:02: Peer 1001 received the ‘have’ message from 1002 for the piece 1
+2017/11/22_12:38:02: Peer 1001 received the ‘have’ message from 1003 for the piece 185
+2017/11/22_12:38:03: Peer 1001 received the ‘have’ message from 1002 for the piece 37
+2017/11/22_12:38:03: Peer 1001 received the ‘have’ message from 1002 for the piece 172
+2017/11/22_12:38:03: Peer 1001 received the ‘have’ message from 1003 for the piece 141
+2017/11/22_12:38:03: Peer 1001 received the ‘have’ message from 1003 for the piece 124
+2017/11/22_12:38:03: Peer 1001 received the ‘have’ message from 1002 for the piece 86
+2017/11/22_12:38:03: Peer 1001 received the ‘have’ message from 1002 for the piece 60
+2017/11/22_12:38:03: Peer 1001 received the ‘have’ message from 1003 for the piece 144
+2017/11/22_12:38:04: Peer 1001 received the ‘have’ message from 1003 for the piece 90
+2017/11/22_12:38:04: Peer 1001 received the ‘have’ message from 1002 for the piece 177
+2017/11/22_12:38:04: Peer 1001 received the ‘have’ message from 1003 for the piece 125
+2017/11/22_12:38:05: Peer 1001 received the ‘have’ message from 1002 for the piece 2
+2017/11/22_12:38:05: Peer 1001 received the ‘have’ message from 1002 for the piece 37
+2017/11/22_12:38:05: Peer 1001 received the ‘have’ message from 1003 for the piece 57
+2017/11/22_12:38:05: Peer 1001 received the ‘have’ message from 1003 for the piece 141
+2017/11/22_12:38:05: Peer 1001 received the ‘have’ message from 1003 for the piece 140
+2017/11/22_12:38:06: Peer 1001 received the ‘have’ message from 1002 for the piece 105
+2017/11/22_12:38:06: Peer 1001 received the ‘have’ message from 1002 for the piece 60
+2017/11/22_12:38:06: Peer 1001 received the ‘have’ message from 1003 for the piece 141
+2017/11/22_12:38:06: Peer 1001 received the ‘have’ message from 1003 for the piece 80
+2017/11/22_12:38:06: Peer 1001 received the ‘have’ message from 1002 for the piece 29
+2017/11/22_12:38:07: Peer 1001 received the ‘have’ message from 1002 for the piece 191
+2017/11/22_12:38:07: Peer 1001 received the ‘have’ message from 1003 for the piece 50
+2017/11/22_12:38:07: Peer 1001 received the ‘have’ message from 1002 for the piece 129
+2017/11/22_12:38:07: Peer 1001 received the ‘have’ message from 1003 for the piece 113
+2017/11/22_12:38:07: Peer 1001 received the ‘have’ message from 1002 for the piece 185
+2017/11/22_12:38:07: Peer 1001 received the ‘have’ message from 1003 for the piece 141
+2017/11/22_12:38:08: Peer 1001 received the ‘have’ message from 1003 for the piece 131
+2017/11/22_12:38:08: Peer 1001 received the ‘have’ message from 1002 for the piece 103
+2017/11/22_12:38:09: Peer 1001 received the ‘have’ message from 1002 for the piece 182
+2017/11/22_12:38:09: Peer 1001 received the ‘have’ message from 1002 for the piece 37
+2017/11/22_12:38:09: Peer 1001 received the ‘have’ message from 1003 for the piece 82
+2017/11/22_12:38:09: Peer 1001 received the ‘have’ message from 1002 for the piece 125
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 141
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 8
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 181
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 52
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 5
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 173
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 194
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1002 for the piece 37
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1002 for the piece 2
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1002 for the piece 37
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1002 for the piece 105
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1002 for the piece 98
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1003 for the piece 61
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1002 for the piece 13
+2017/11/22_12:38:12: Peer 1001 received the ‘have’ message from 1002 for the piece 108
+2017/11/22_12:38:13: Peer 1001 received the ‘have’ message from 1003 for the piece 126
+2017/11/22_12:38:13: Peer 1001 received the ‘have’ message from 1002 for the piece 155
+2017/11/22_12:38:13: Peer 1001 received the ‘have’ message from 1003 for the piece 86
+2017/11/22_12:38:13: Peer 1001 received the ‘have’ message from 1002 for the piece 43
+2017/11/22_12:38:14: Peer 1001 received the ‘have’ message from 1003 for the piece 173
+2017/11/22_12:38:14: Peer 1001 received the ‘have’ message from 1002 for the piece 129
+2017/11/22_12:38:14: Peer 1001 received the ‘have’ message from 1002 for the piece 115
+2017/11/22_12:38:14: Peer 1001 received the ‘have’ message from 1003 for the piece 136
+2017/11/22_12:38:15: Peer 1001 received the ‘have’ message from 1003 for the piece 173
+2017/11/22_12:38:15: Peer 1001 received the ‘have’ message from 1002 for the piece 34
+2017/11/22_12:38:15: Peer 1001 received the ‘have’ message from 1002 for the piece 108
+2017/11/22_12:38:15: Peer 1001 received the ‘have’ message from 1003 for the piece 176
+2017/11/22_12:38:15: Peer 1001 received the ‘have’ message from 1003 for the piece 193
+2017/11/22_12:38:15: Peer 1001 received the ‘have’ message from 1002 for the piece 14
+2017/11/22_12:38:16: Peer 1001 received the ‘have’ message from 1003 for the piece 194
+2017/11/22_12:38:16: Peer 1001 received the ‘have’ message from 1002 for the piece 129
+2017/11/22_12:38:16: Peer 1001 received the ‘have’ message from 1003 for the piece 141
+2017/11/22_12:38:16: Peer 1001 received the ‘have’ message from 1002 for the piece 163
+2017/11/22_12:38:17: Peer 1001 received the ‘have’ message from 1003 for the piece 1
+2017/11/22_12:38:17: Peer 1001 received the ‘have’ message from 1002 for the piece 5
+2017/11/22_12:38:17: Peer 1001 received the ‘have’ message from 1003 for the piece 61
+2017/11/22_12:38:18: Peer 1001 received the ‘have’ message from 1003 for the piece 58
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 23
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 83
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 173
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 148
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 158
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 173
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 21
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 141
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 44
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 135
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 52
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 76
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 41
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 61
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1003 for the piece 131
+2017/11/22_12:38:24: Peer 1001 received the ‘have’ message from 1002 for the piece 129
+2017/11/22_12:38:25: Peer 1001 received the ‘have’ message from 1002 for the piece 162
+2017/11/22_12:38:25: Peer 1001 received the ‘have’ message from 1003 for the piece 67
+2017/11/22_12:38:26: Peer 1001 received the ‘have’ message from 1002 for the piece 186
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 169
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 129
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 118
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 64
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 89
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 153
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 60
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 145
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 65
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 37
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 42
+2017/11/22_12:38:31: Peer 1001 received the ‘have’ message from 1002 for the piece 71
+2017/11/22_12:38:32: Peer 1001 received the ‘have’ message from 1002 for the piece 69
+2017/11/22_12:38:32: Peer 1001 received the ‘have’ message from 1002 for the piece 64
+2017/11/22_12:38:32: Peer 1001 received the ‘have’ message from 1002 for the piece 16
+2017/11/22_12:38:33: Peer 1001 received the ‘have’ message from 1002 for the piece 12
+2017/11/22_12:38:33: Peer 1001 received the ‘have’ message from 1002 for the piece 93
+2017/11/22_12:38:34: Peer 1001 received the ‘have’ message from 1002 for the piece 108
+2017/11/22_12:38:34: Peer 1001 received the ‘have’ message from 1002 for the piece 114
+2017/11/22_12:38:35: Peer 1001 received the ‘have’ message from 1002 for the piece 76
+2017/11/22_12:38:35: Peer 1001 received the ‘have’ message from 1002 for the piece 22
+2017/11/22_12:38:35: Peer 1001 received the ‘have’ message from 1002 for the piece 55
+2017/11/22_12:39:31: Peer 1001 is unchoked by 1003

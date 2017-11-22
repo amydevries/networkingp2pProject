@@ -43,9 +43,9 @@ public class SendingMessages {
             if (!Peer.getFileHandler().getPiece(index).hasBeenRequested()) {
                 Peer.getFileHandler().getPiece(index).request();
 
-                for (int i = 0; i < Peer.getConnections().size(); i++) {
-                    synchronized (Peer.getConnections().get(i).getInterestingPieces()) {
-                        Peer.getConnections().get(i).getInterestingPieces().remove(new Integer(index));
+                for (int i = 0; i < Peer.connections.size(); i++) {
+                    synchronized (Peer.connections.get(i).getInterestingPieces()) {
+                        Peer.connections.get(i).getInterestingPieces().remove(new Integer(index));
                     }
                 }
             }
