@@ -246,6 +246,9 @@ public class Peer extends Thread{
             }
             if(programFinished){
                 System.out.println("!Program finished!");
+                for(int k =0; k < connections.size(); k++){
+                    connections.get(k).setCloseConnection(true);
+                }
                 PeerInfoReader peerReader = PeerInfoReader.getPeerInfoReader();
                 for(int k = 0; k< peerReader.getNumberOfPeers(); k ++){
                     System.out.println("checking peers from reader " + peerReader.getPeerIDS(k));
@@ -265,14 +268,14 @@ public class Peer extends Thread{
     private void optimisticUnchokingInterval(){
         ArrayList<Integer> potentialConnections = new ArrayList<Integer>();
         PeerLogger peerLogger = PeerLogger.getLogger();
-
+        System.out.println("Entered optimistic unchoking timer");
         for (int i = 0; i < connections.size(); i++) {
             //check to see if it is unchoked AND we are interested in it
             if (connections.get(i).getConnectionEstablished() && connections.get(i).getPeerInfo() != null && connections.get(i).isChoked() && connections.get(i).getPeerInfo().isInterested()) {
                 potentialConnections.add(connections.get(i).getPeerInfo().getPeerID());
             }
         }
-
+        System.out.println("$%$#%^%$^ this many potential connections: " + potentialConnections.size());
         Random random = new Random();
         int randomNeighborID = 0;
         if (potentialConnections.size() > 0) {
@@ -282,9 +285,9 @@ public class Peer extends Thread{
             System.out.println("^^^randomNeighbor: " + randomNeighbor);
             for(int i = 0; i < connections.size(); ++i){
                 if(potentialConnections.get(randomNeighbor) == connections.get(i).getPeerInfo().getPeerID()){
+                    connections.get(i).sendUnchoke();
                     connections.get(i).setChoked(false);
                     System.out.println("$$unchoked ");
-                    connections.get(i).sendUnchoke();
                     //setup the logger for use; need to have "true" to indicate that the file already exists
                     peerLogger.changeOptimisticallyUnchockedNeighbor(peerInfo.getPeerID(), potentialConnections.get(randomNeighborID));
                 }
