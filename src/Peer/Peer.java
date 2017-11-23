@@ -229,7 +229,7 @@ public class Peer extends Thread{
         }
         if(connections.size()> 0){
             programFinished = true;
-            if(!Peer.getPeerInfo().getBitField().isFull()) programFinished = false;
+            if(!peerInfo.getBitField().isFull()) programFinished = false;
             for(int k =0; k < connections.size(); k++){
                 if(!connections.get(k).getPeerInfo().getBitField().isFull()){
                     programFinished = false;
@@ -240,13 +240,13 @@ public class Peer extends Thread{
                 PeerInfoReader peerReader = PeerInfoReader.getPeerInfoReader();
                 for(int k = 0; k< peerReader.getNumberOfPeers(); k ++){
                     System.out.println("checking peers from reader " + peerReader.getPeerIDS(k));
-                    if(peerReader.getPeerFullFileOrNot(k) != 1 && peerReader.getPeerIDS(k) == Peer.getPeerInfo().getPeerID()){
+                    if(peerReader.getPeerFullFileOrNot(k) != 1 && peerReader.getPeerIDS(k) == peerInfo.getPeerID()){
                         System.out.println("Writing to non-original file");
                         fileHandler.writingFile();
                     }
                 }
 
-                Peer.executorService.shutdownNow();
+                executorService.shutdownNow();
                 exit(0);
             }
         }
