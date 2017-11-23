@@ -1,0 +1,25 @@
+2017/11/23_12:29:52: Peer 1003 has the preferred neighbors [1002, 1001]
+2017/11/23_12:29:56: Peer 1003 is unchoked by 1001
+2017/11/23_12:29:56: Peer 1003 received the ‘have’ message from 1002 for the piece 0
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1002
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1005
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1004
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1006
+2017/11/23_12:29:57: Peer 1003 has downloaded the piece 1 from 1001Now the number of pieces it has is 1
+2017/11/23_12:29:57: Peer 1003 is unchoked by 1002
+2017/11/23_12:29:57: Peer 1003 received the ‘not interested’ message from 1001
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1002
+2017/11/23_12:29:57: Peer 1003 has downloaded the piece 0 from 1001Now the number of pieces it has is 2
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1006
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1004
+2017/11/23_12:29:57: Peer 1003 received the ‘interested’ message from 1005
+2017/11/23_12:29:57: Peer 1003 received the ‘not interested’ message from 1001
+2017/11/23_12:29:57: Peer 1003 received the ‘have’ message from 1004 for the piece 0
+2017/11/23_12:29:57: Peer 1003 received the ‘have’ message from 1002 for the piece 1
+2017/11/23_12:29:57: Peer 1003 received the ‘have’ message from 1002 for the piece 1
+2017/11/23_12:29:57: Peer 1003 received the ‘have’ message from 1004 for the piece 1
+2017/11/23_12:29:58: Peer 1003 received the ‘have’ message from 1005 for the piece 0
+2017/11/23_12:29:58: Peer 1003 received the ‘have’ message from 1006 for the piece 0
+2017/11/23_12:29:58: Peer 1003 received the ‘have’ message from 1005 for the piece 1
+2017/11/23_12:29:58: Peer 1003 received the ‘have’ message from 1006 for the piece 1
+2017/11/23_12:30:01: Peer 1003 is unchoked by 1001

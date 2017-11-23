@@ -158,19 +158,22 @@ public class Peer extends Thread{
         System.out.println("************* peerFileHandler Full status: "+ fileHandler.isFull());
         if(fileHandler.isFull() && connections.size() > 0){
 
+            ArrayList<Integer> interestedConnections = new ArrayList<>();
             for(int i = 0; i < connections.size(); ++i){
+                if(connections.get(i).getPeerInfo().isInterested()) interestedConnections.add(connections.get(i).getPeerInfo().getPeerID());
                 connections.get(i).sendChoke();
                 connections.get(i).setChoked(true);
             }
 
-            for(int i = 0; i < connections.size() && i < commonReader.getNumberPreferredNeighbors(); ++i){
-                Random random = new Random();
-                int randomNeighbor= Math.abs(random.nextInt(connections.size()));
-                System.out.println("!!!!!!!!! peer: "+ connections.get(i).getPeerInfo().getPeerID()+" interested status: " + connections.get(i).getPeerInfo().isInterested());
-                if(connections.get(randomNeighbor).getPeerInfo().isInterested()){
-                    connections.get(i).sendUnchoke();
-                    System.out.println("^^^^^^^^^^^^^^^^^ full and sending unchoke");
-                    connections.get(i).setChoked(false);
+            int preferredNeighbor = 0;
+            for(int interestedConnection = 0; interestedConnection < interestedConnections.size() && preferredNeighbor < commonReader.getNumberPreferredNeighbors(); ++interestedConnection){
+                for(int  connection = 0; connection < connections.size(); ++connection){
+                    if(connections.get(connection).getPeerInfo().getPeerID() == interestedConnections.get(interestedConnection)){
+                        connections.get(connection).sendUnchoke();
+                        System.out.println("^^^^^^^^^^^^^^^^^ full and sending unchoke");
+                        connections.get(connection).setChoked(false);
+                        preferredNeighbor++;
+                    }
                 }
             }
 
