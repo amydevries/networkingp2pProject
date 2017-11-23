@@ -100,7 +100,7 @@ public class PeerLogger {
     public void downloadingPiece(int peerDownloadedPiece, int peerSentPiece, int pieceIndex, int numberOfPieces){
         String timeStamp= getTimeStamp();
         printToFile(timeStamp+": Peer " + peerDownloadedPiece + " has downloaded the piece " + pieceIndex + " from " +
-                peerSentPiece + "Now the number of pieces it has is " + numberOfPieces);
+                peerSentPiece + " Now the number of pieces it has is " + numberOfPieces);
     }
 
     public void completedDownload(int peerID){
