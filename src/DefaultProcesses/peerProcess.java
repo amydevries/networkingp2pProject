@@ -2,7 +2,6 @@ package DefaultProcesses;
 
 import FileHandling.CommonReader;
 import Peer.Peer;
-import IntervalTimer.IntervalTimer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -16,12 +15,9 @@ public class peerProcess{
         if(args.length != 1){
             throw new IllegalArgumentException("Peer ID must be specified.");
         }
-
         int peerID = Integer.parseInt(args[0]);
 
         new peerProcess(peerID);
-
-
     }
 
     public peerProcess(int peerID){

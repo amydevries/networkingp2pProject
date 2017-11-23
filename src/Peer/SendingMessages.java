@@ -13,7 +13,7 @@ public class SendingMessages {
 
     public static void sendingChoke(BasicSocket socket){
        byte [] message = Message.createActualMessage("choke", new byte[0] );
-        socket.write(message);
+       // socket.write(message);
     }
 
     public static void sendingUnChoke(BasicSocket socket){

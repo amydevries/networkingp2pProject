@@ -55,6 +55,8 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         this.peerInfo = peerInfo;
         Peer.connections.add(this);
         try {
+            System.out.println("******* getHostID " + peerInfo.getHostID());
+            System.out.println("***getPort "+ peerInfo.getPort());
             this.bSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
         } catch (IOException e) {
             e.printStackTrace();
