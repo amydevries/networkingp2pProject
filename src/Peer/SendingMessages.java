@@ -39,9 +39,9 @@ public class SendingMessages {
         socket.write(message);
     }
     public static void sendingRequest(BasicSocket socket, int index){
-        synchronized(Peer.getFileHandler().getPiece(index)) {
-            if (!Peer.getFileHandler().getPiece(index).hasBeenRequested()) {
-                Peer.getFileHandler().getPiece(index).request();
+        synchronized(Peer.fileHandler.getPiece(index)) {
+            if (!Peer.fileHandler.getPiece(index).hasBeenRequested()) {
+                Peer.fileHandler.getPiece(index).request();
 
                 for (int i = 0; i < Peer.connections.size(); i++) {
                     synchronized (Peer.connections.get(i).getInterestingPieces()) {

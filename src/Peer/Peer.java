@@ -65,12 +65,7 @@ public class Peer extends Thread{
     private CommonReader commonReader = CommonReader.getCommonReader();
     private PeerLogger peerLogger;
 
-    private static FileHandler fileHandler;
-
-    public BitField getBitField() {
-        return peerInfo.getBitField();
-    }
-
+    public static FileHandler fileHandler;
 
     public Peer(int myID){
         peerInfo = new PeerInfo(myID);
@@ -146,10 +141,6 @@ public class Peer extends Thread{
         return null;
     }
 
-    public static FileHandler getFileHandler() {
-        return fileHandler;
-    }
-
     public static Hashtable<Integer, PeerInfo> getPeers() {
         return peers;
     }
@@ -169,15 +160,21 @@ public class Peer extends Thread{
 
             int preferredNeighbor = 0;
             Random random = new Random();
-            for(int interestedConnection = 0; interestedConnection < interestedConnections.size() && preferredNeighbor < commonReader.getNumberPreferredNeighbors(); ++interestedConnection){
-                int randomNeighbor= Math.abs(random.nextInt(interestedConnections.size()));
-                for(int  connection = 0; connection < connections.size(); ++connection){
-                    if(connections.get(connection).getPeerInfo().getPeerID() == interestedConnections.get(randomNeighbor)){
-                        connections.get(connection).sendUnchoke();
-                        System.out.println("^^^^^^^^^^^^^^^^^ full and sending unchoke");
-                        connections.get(connection).setChoked(false);
-                        preferredNeighbor++;
-                        interestedConnections.remove(randomNeighbor);
+            if(interestedConnections.size()> 0) {
+                System.out.println("%^$%^$%#^%$#^ interested connections size: " + interestedConnections.size());
+                for (int interestedConnection = 0; interestedConnection < interestedConnections.size() && preferredNeighbor < commonReader.getNumberPreferredNeighbors(); ++interestedConnection) {
+                    for (int connection = 0; connection < connections.size(); ++connection) {
+                        if(interestedConnections.size() <= 0) break;
+                        int randomNeighbor = Math.abs(random.nextInt(interestedConnections.size()));
+                        System.out.println("$#%$#%#$% connections size: " + connections.size());
+                        System.out.println("43535435%#$% interestedConnections size: " + interestedConnections.size());
+                        if (connections.get(connection).getPeerInfo().getPeerID() == interestedConnections.get(randomNeighbor)) {
+                            connections.get(connection).sendUnchoke();
+                            System.out.println("^^^^^^^^^^^^^^^^^ full and sending unchoke");
+                            connections.get(connection).setChoked(false);
+                            preferredNeighbor++;
+                            interestedConnections.remove(randomNeighbor);
+                        }
                     }
                 }
             }
@@ -238,28 +235,14 @@ public class Peer extends Thread{
         System.out.println("%$%$%$%$%$%$% before checking shutdown");
         if(connections.size()> 0){
             programFinished = true;
-            if(!peerInfo.getBitField().isFull()) programFinished = false;
+            if(!fileHandler.getBitField().isFull()) programFinished = false;
             for(int k =0; k < connections.size(); k++){
-                if(!connections.get(k).getPeerInfo().getBitField().isFull()){
+                if(!connections.get(k).getPeerInfo().getBitFieldOfRemotePeer().isFull()){
                     programFinished = false;
                 }
             }
             if(programFinished){
-                System.out.println("!Program finished!");
-                for(int k =0; k < connections.size(); k++){
-                    connections.get(k).setCloseConnection(true);
-                }
-                PeerInfoReader peerReader = PeerInfoReader.getPeerInfoReader();
-                for(int k = 0; k< peerReader.getNumberOfPeers(); k ++){
-                    System.out.println("checking peers from reader " + peerReader.getPeerIDS(k));
-                    if(peerReader.getPeerFullFileOrNot(k) != 1 && peerReader.getPeerIDS(k) == peerInfo.getPeerID()){
-                        System.out.println("Writing to non-original file");
-                        fileHandler.writingFile();
-                    }
-                }
-
-                executorService.shutdownNow();
-                exit(0);
+                finishProgram();
             }
         }
         System.out.println("finished with normal timer");
@@ -295,6 +278,24 @@ public class Peer extends Thread{
 
         }
         System.out.println("finished with optimistic timer");
+    }
+
+    public static void finishProgram(){
+        System.out.println("!Program finished!");
+        for(int k =0; k < connections.size(); k++){
+            connections.get(k).setCloseConnection(true);
+        }
+        PeerInfoReader peerReader = PeerInfoReader.getPeerInfoReader();
+        for(int k = 0; k< peerReader.getNumberOfPeers(); k ++){
+            System.out.println("checking peers from reader " + peerReader.getPeerIDS(k));
+            if(peerReader.getPeerFullFileOrNot(k) != 1 && peerReader.getPeerIDS(k) == peerInfo.getPeerID()){
+                System.out.println("Writing to non-original file");
+                fileHandler.writingFile();
+            }
+        }
+
+        executorService.shutdownNow();
+        exit(0);
     }
 
 }

@@ -91,12 +91,17 @@ public class FileHandler {
         synchronized (pieces.get(index)){
             pieces.get(index).setData(data);
             bitField.setPiece(index);
-            Peer.getPeerInfo().getBitField().setPiece(index);
             for(int i=0; i<Peer.connections.size();i++){
                 if(Peer.connections.get(i).getConnectionEstablished()) {
+                    System.out.println("Sending Have to: " + Peer.connections.get(i).getPeerInfo().getPeerID());
                     Peer.connections.get(i).sendHave(index);
                     synchronized (Peer.connections.get(i).getInterestingPieces()) {
-                        Peer.connections.get(i).getInterestingPieces().remove(new Integer(index));
+                        for(int j = 0; j < Peer.connections.get(i).getInterestingPieces().size(); ++j){
+                            if(Peer.connections.get(i).getInterestingPieces().get(j) == index){
+                                Peer.connections.get(i).getInterestingPieces().remove(j);
+                                break;
+                            }
+                        }
                     }
                 }
             }

@@ -1,5 +1,7 @@
 package Sockets;
 
+import Peer.Peer;
+
 import java.net.*;
 import java.io.*;
 import java.nio.*;
@@ -31,24 +33,15 @@ public class BasicSocket {
             out.write(bytes);
             out.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+           Peer.finishProgram();
         }
-    }
-
-    public int read() {
-        try {
-            return in.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     public int read(byte[] bytes) {
         try {
             return in.read(bytes);
         } catch (IOException e) {
-            e.printStackTrace();
+            Peer.finishProgram();
         }
         return 0;
     }

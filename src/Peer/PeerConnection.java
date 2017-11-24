@@ -26,26 +26,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
     private boolean remotePeerChokingUs = true;
 
-    public PeerConnection(Peer parentPeer, PeerInfo receivingPeerInfo){
-        this.peerInfo = receivingPeerInfo;
-        try {
-            bSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
-
-            //setup the logger for use; need to have "true" to indicate that the file already exists
-            //Writes to log file
-            peerLogger.tcpConnection(Peer.getPeerInfo().getPeerID(), receivingPeerInfo.getPeerID());
-            System.out.println("c: " + Peer.getPeerInfo().getPeerID());
-            System.out.println("d: " + receivingPeerInfo.getPeerID());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public PeerConnection(Peer parentPeer, BasicSocket bSocket){
-        this.bSocket = bSocket;
-    }
-
     public PeerConnection(BasicSocket basicSocket){
         this.bSocket = basicSocket;
         Peer.connections.add(this);
@@ -63,17 +43,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         }
     }
 
-    public void close(){
-        if(bSocket != null){
-            bSocket.close();
-        }
-        bSocket = null;
-    }
-
-    public void sendMessage(byte[] bytes){
-        bSocket.write(bytes);
-    }
-
     public void sendHave(int index){
         SendingMessages.sendingHave(bSocket, index);
     }
@@ -82,10 +51,10 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         System.out.println("entered receieveData");
         synchronized(interestingPieces){
             System.out.println("@@@@@@@@@interesting pieces size: " + interestingPieces.size()+ " from "+ peerInfo.getPeerID());
-            System.out.println("isChoked: " + isChoked());
+            System.out.println("isChoked: " + remotePeerChokingUs);
             if(interestingPieces.size() > 0 && !remotePeerChokingUs){
                 Random random = new Random();
-                int reqPieceIndex = Math.abs(random.nextInt()) % interestingPieces.size();
+                int reqPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
                 SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
                 try{
                     Thread.sleep(250);
@@ -141,7 +110,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
                 // check our bit field to see if the new piece is a piece we are interested in
                 synchronized(interestingPieces){
-                    interestingPieces = Peer.getFileHandler().getBitField().getInterestingBits(peerInfo.getBitField());
+                    interestingPieces = Peer.fileHandler.getBitField().getInterestingBits(peerInfo.getBitFieldOfRemotePeer());
 
                     if(interestingPieces.size() > 0){
                         SendingMessages.sendingInterested(bSocket);
@@ -160,10 +129,10 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
                     int index = Message.byteArrayToInt(data);
                     System.out.println("%%%%%% index: " + index);
-                    System.out.println("%bitfield: " + Peer.getFileHandler().getBitField().getBitField()[index]);
-                    if(Peer.getFileHandler().getBitField().getBitField()[index] == (byte)1){
+                    System.out.println("%bitfield: " + Peer.fileHandler.getBitField().getBitField()[index]);
+                    if(Peer.fileHandler.getBitField().getBitField()[index] == (byte)1){
                         System.out.println("%%Entered if statement");
-                        byte[] dataToSend = Peer.getFileHandler().getPiece(index).getData();
+                        byte[] dataToSend = Peer.fileHandler.getPiece(index).getData();
                         SendingMessages.sendingPiece(bSocket, index, dataToSend);
                         System.out.println("~~~Sending piece: " + dataToSend);
                     }
@@ -185,22 +154,19 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     pieceData[i] = byteBuffer.get();
                 }
 
-                Peer.getFileHandler().receive(index, pieceData);
+                Peer.fileHandler.receive(index, pieceData);
 
                 peerInfo.setDownloadRate(peerInfo.getDownloadRate() + 1);
 
-                Peer.getFileHandler().increaseNumberOfPiecesDownloaded();
+                Peer.fileHandler.increaseNumberOfPiecesDownloaded();
                 incrementPiecesReceived();
 
-                if(Peer.getFileHandler().getBitField().isFull()){
-
-                }
                 System.out.println("getPeerInfo().getPeerID(): " + Peer.getPeerInfo().getPeerID());
                 System.out.println("getPeerInfo().getPeerID(): " + getPeerInfo().getPeerID());
                 System.out.println("index: " + index);
-                System.out.println("parentPeer.getBitField().getNumberOfPieces(): " + Peer.getPeerInfo().getBitField().getNumberOfPieces());
+                System.out.println(" Peer.fileHandler.getBitField().getNumberOfPieces(): " + Peer.fileHandler.getBitField().getNumberOfPieces());
 
-                peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.getPeerInfo().getBitField().getNumberOfPieces());
+                peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.fileHandler.getBitField().getNumberOfPieces());
                 System.out.println("piece");
             }
 
@@ -246,7 +212,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
     public ArrayList<Integer> getInterestingPieces() {
         synchronized(interestingPieces) {
-            interestingPieces = Peer.getFileHandler().getBitField().getInterestingBits(peerInfo.getBitField());
+            interestingPieces = Peer.fileHandler.getBitField().getInterestingBits(peerInfo.getBitFieldOfRemotePeer());
             return interestingPieces;
         }
     }
@@ -284,7 +250,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             break;
         }
 
-        SendingMessages.sendingBitField(bSocket, Peer.getFileHandler().getBitField().getBitField());
+        SendingMessages.sendingBitField(bSocket, Peer.fileHandler.getBitField().getBitField());
         Message bitFieldMessage = null;
 
         try {
@@ -293,12 +259,12 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             e.printStackTrace();
         }
         if (bitFieldMessage.getType() == 5){
-            peerInfo.getBitField().setBitField(bitFieldMessage.getData());
+            peerInfo.getBitFieldOfRemotePeer().setBitField(bitFieldMessage.getData());
         }
 
         synchronized (interestingPieces){
 
-            interestingPieces = Peer.getFileHandler().getBitField().getInterestingBits(peerInfo.getBitField());
+            interestingPieces = Peer.fileHandler.getBitField().getInterestingBits(peerInfo.getBitFieldOfRemotePeer());
 
             if(interestingPieces.size()>0){
                 SendingMessages.sendingInterested(bSocket);

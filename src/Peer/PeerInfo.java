@@ -28,7 +28,7 @@ public class PeerInfo {
 
     private ArrayList<Integer> piecesInterestedIn;   //stores the pieces that the peer is interested in
 
-    public BitField getBitField() {
+    public BitField getBitFieldOfRemotePeer() {
         return bitField;
     }
 
