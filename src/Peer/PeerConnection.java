@@ -57,12 +57,12 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 int reqPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
 
                 SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
-                /*try{
-                    Thread.sleep(250);
+                try{
+                    Thread.sleep(50);
                 }
                 catch(InterruptedException e){
                     e.printStackTrace();
-                }*/
+                }
             }
         }
         System.out.println("Getting type of message");
@@ -311,5 +311,9 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     public void sendChoke() {
         System.out.println("sending choke in peerConnection");
         SendingMessages.sendingChoke(bSocket);
+    }
+
+    public void sendNotInterested(){
+        SendingMessages.sendingNotInterested(bSocket);
     }
 }

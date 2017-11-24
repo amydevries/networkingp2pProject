@@ -156,6 +156,7 @@ public class Peer extends Thread{
                 if(connections.get(i).getPeerInfo().isInterested()) interestedConnections.add(connections.get(i).getPeerInfo().getPeerID());
                 connections.get(i).sendChoke();
                 connections.get(i).setChoked(true);
+                connections.get(i).sendNotInterested();
             }
 
             int preferredNeighbor = 0;
@@ -260,7 +261,6 @@ public class Peer extends Thread{
         }
         System.out.println("$%$#%^%$^ this many potential connections: " + potentialConnections.size());
         Random random = new Random();
-        int randomNeighborID = 0;
         if (potentialConnections.size() > 0) {
 
             //generate random number to select random neighbor
@@ -272,7 +272,8 @@ public class Peer extends Thread{
                     connections.get(i).setChoked(false);
                     System.out.println("$$unchoked ");
                     //setup the logger for use; need to have "true" to indicate that the file already exists
-                    peerLogger.changeOptimisticallyUnchockedNeighbor(peerInfo.getPeerID(), potentialConnections.get(randomNeighborID));
+                    peerLogger.changeOptimisticallyUnchockedNeighbor(peerInfo.getPeerID(), potentialConnections.get(randomNeighbor));
+                    break;
                 }
             }
 
