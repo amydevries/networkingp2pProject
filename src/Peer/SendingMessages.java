@@ -13,49 +13,43 @@ public class SendingMessages {
 
     public static void sendingChoke(BasicSocket socket){
        byte [] message = Message.createActualMessage("choke", new byte[0] );
-       // socket.write(message);
+        socket.write(message);
     }
 
     public static void sendingUnChoke(BasicSocket socket){
         byte [] message = Message.createActualMessage("unchoke", new byte[0] );
         socket.write(message);
     }
+
     public static void sendingInterested(BasicSocket socket){
         byte [] message = Message.createActualMessage("interested", new byte[0] );
         socket.write(message);
     }
+
     public static void sendingNotInterested(BasicSocket socket){
         byte [] message = Message.createActualMessage("not interested", new byte[0] );
         socket.write(message);
     }
+
     public static void sendingHave(BasicSocket socket, int messagePayload){
         ByteBuffer indexBuffer = ByteBuffer.allocate(4);
         indexBuffer.putInt(messagePayload);
         byte [] message = Message.createActualMessage("have", indexBuffer.array());
         socket.write(message);
     }
+
     public static void sendingBitField(BasicSocket socket, byte[] bitfield){
-        byte [] message = Message.createActualMessage("butfield", bitfield );
+        byte [] message = Message.createActualMessage("bitfield", bitfield );
         socket.write(message);
     }
+
     public static void sendingRequest(BasicSocket socket, int index){
-        synchronized(Peer.fileHandler.getPiece(index)) {
-            if (!Peer.fileHandler.getPiece(index).hasBeenRequested()) {
-                Peer.fileHandler.getPiece(index).request();
-
-                for (int i = 0; i < Peer.connections.size(); i++) {
-                    synchronized (Peer.connections.get(i).getInterestingPieces()) {
-                        Peer.connections.get(i).getInterestingPieces().remove(new Integer(index));
-                    }
-                }
-            }
-
             ByteBuffer indexBuffer = ByteBuffer.allocate(4);
             indexBuffer.putInt(index);
             byte[] message = Message.createActualMessage("request", indexBuffer.array());
             socket.write(message);
-        }
     }
+
     public static void sendingPiece(BasicSocket socket,int index, byte[] messagePayload) {
         ByteBuffer indexBuffer = ByteBuffer.allocate(messagePayload.length + 4);
         indexBuffer.putInt(index);

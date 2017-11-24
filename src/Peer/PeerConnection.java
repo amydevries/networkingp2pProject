@@ -55,13 +55,14 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             if(interestingPieces.size() > 0 && !remotePeerChokingUs){
                 Random random = new Random();
                 int reqPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
+
                 SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
-                try{
+                /*try{
                     Thread.sleep(250);
                 }
                 catch(InterruptedException e){
                     e.printStackTrace();
-                }
+                }*/
             }
         }
         System.out.println("Getting type of message");
@@ -212,7 +213,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
     public ArrayList<Integer> getInterestingPieces() {
         synchronized(interestingPieces) {
-            interestingPieces = Peer.fileHandler.getBitField().getInterestingBits(peerInfo.getBitFieldOfRemotePeer());
             return interestingPieces;
         }
     }

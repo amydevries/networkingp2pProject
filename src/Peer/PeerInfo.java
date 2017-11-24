@@ -147,7 +147,11 @@ public class PeerInfo {
         }
     }
 
-    public void setIsChoked(boolean isChoked){ this.isChoked = isChoked; }
+    public void setIsChoked(boolean isChoked){
+        synchronized (this){
+            this.isChoked = isChoked;
+        }
+    }
 
     public int getDownloadRate() {
         return downloadRate;

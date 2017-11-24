@@ -30,8 +30,6 @@ public class Message {
 
     public int getPeerID() {return byteArrayToInt(peerID); }
 
-    public Message() {}
-
     public Message(BasicSocket socket) throws IOException {
         header = new byte[4];
         peerID = new byte[4];
@@ -83,7 +81,7 @@ public class Message {
             data = new byte[length-1];
 
             if (length > 0) {
-                if (socket.read(data) != length-1) {
+                if (socket.read(data) > length-1) {
                     throw new IOException("EOF in Message constructor: " +
                             "Unexpected message data getNumberOfBits");
                 }
