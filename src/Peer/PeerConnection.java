@@ -54,6 +54,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         synchronized(interestingPieces){
             System.out.println("@@@@@@@@@interesting pieces size: " + interestingPieces.size()+ " from "+ peerInfo.getPeerID());
             System.out.println("isChoked: " + remotePeerChokingUs);
+            System.out.println("()()()()numPiecesDownloaded: " + Peer.fileHandler.getNumberOfPiecesDownloaded());
             if(interestingPieces.size() > 0 && !remotePeerChokingUs){
                 Random random = new Random();
                 int reqPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
@@ -83,6 +84,9 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             if (msg.getType() == 1){
                 System.out.println("Received msg type = 1");
                 remotePeerChokingUs = false;
+
+                //peer is unchoked. send request message back to this peer right away
+                sendRequest();
 
                 peerLogger.unchoking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("unchoking");
@@ -303,6 +307,13 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     public void sendUnchoke(){
         System.out.println("sending unchoke in peerConnection to: " + peerInfo.getPeerID());
         SendingMessages.sendingUnChoke(bSocket);
+    }
+
+    public void sendRequest(){
+        System.out.println("sending request in peerConnection to: " + peerInfo.getPeerID());
+        Random random = new Random();
+        int requestedPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
+        SendingMessages.sendingRequest(bSocket, requestedPieceIndex);
     }
 
     public void setCloseConnection(boolean closeConnection){
