@@ -154,9 +154,11 @@ public class Peer extends Thread{
             ArrayList<Integer> interestedConnections = new ArrayList<>();
             for(int i = 0; i < connections.size(); ++i){
                 if(connections.get(i).getPeerInfo().isInterested()) interestedConnections.add(connections.get(i).getPeerInfo().getPeerID());
-                connections.get(i).sendChoke();
-                connections.get(i).setChoked(true);
-                connections.get(i).sendNotInterested();
+                if(!connections.get(i).isChoked()){
+                    connections.get(i).sendChoke();
+                    connections.get(i).setChoked(true);
+                }
+                if(connections.get(i).doesPeerThinkWereInterested()) connections.get(i).sendNotInterested();
             }
 
             int preferredNeighbor = 0;
@@ -183,40 +185,53 @@ public class Peer extends Thread{
         }
         else {
 
-            Collections.sort(connections);
+            ArrayList<DownloadPerPeer> downloadPerPeers = new ArrayList<DownloadPerPeer>();
+
+            for(PeerConnection connection : connections){
+                downloadPerPeers.add(new DownloadPerPeer(connection.getPeerInfo().getPeerID(), connection.getPiecesReceived()));
+            }
+
+            Collections.sort(downloadPerPeers);
             System.out.println("collections sorted");
-            System.out.println("connections.size: " + connections.size());
+            System.out.println("connections.size: " + downloadPerPeers.size());
             for (int i = 0; i < connections.size(); i++) {
                 System.out.println("***Peer id " + i + " : " + connections.get(i).getPeerInfo().getPeerID() + " interested status: " + connections.get(i).getPeerInfo().isInterested() +
                 " interesting status: " + (connections.get(i).getInterestingPieces().size() > 0));
             }
 
             //for the top n peers, unchoke the n that have uploaded the most
-            int i;
-            int neighborsSendingTo = 0;
-            for (i = 0; i < connections.size() && neighborsSendingTo < commonReader.getNumberPreferredNeighbors(); i++) {
-                if (connections.get(i).getConnectionEstablished() && connections.get(i).getPeerInfo().isChoked() &&
-                        connections.get(i).getPeerInfo().isInterested()) {
-                    //unchoke these peers. only send the unchoke message if they were choked previously
-                    connections.get(i).sendUnchoke();
-                    System.out.println("in the unchoking loop in interval timer");
-                    connections.get(i).setChoked(false);
-                    neighborsSendingTo++;
-                }
-                else if(connections.get(i).getConnectionEstablished() && !connections.get(i).getPeerInfo().isChoked()){
-                    connections.get(i).getPeerInfo().setIsChoked(true);
-                    connections.get(i).sendChoke();
-                }
 
+            int neighborsSendingTo = 0;
+            int[] neighbors = new int[commonReader.getNumberPreferredNeighbors()];
+            for(DownloadPerPeer downloadPerPeer: downloadPerPeers){
+                for(PeerConnection connection: connections){
+                    if(connection.getPeerInfo().getPeerID() == downloadPerPeer.getPeerID() &&
+                            connection.getConnectionEstablished() &&
+                            connection.getPeerInfo().isInterested() &&
+                            neighborsSendingTo < commonReader.getNumberPreferredNeighbors()){
+                        if(connection.getPeerInfo().isChoked()){
+                            connection.sendUnchoke();
+                            System.out.println("in the unchoking loop in interval timer");
+                            connection.setChoked(false);
+                        }
+                        neighbors[neighborsSendingTo] = connection.getPeerInfo().getPeerID();
+                        neighborsSendingTo++;
+                        downloadPerPeer.setUsed(true);
+                    }
+                }
             }
 
-            for (; i < connections.size(); i++) {
-                //choke the remaining peers
-                if (connections.get(i).getConnectionEstablished() && !connections.get(i).getPeerInfo().isChoked()) {
-                    //unchoke these peers
-                    connections.get(i).getPeerInfo().setIsChoked(true);
-                    connections.get(i).sendChoke();
-                    System.out.println("in the choking loop in interval timer ");
+            for(DownloadPerPeer downloadPerPeer: downloadPerPeers){
+                if(!downloadPerPeer.isUsed()){
+                    for(PeerConnection peerConnection: connections){
+                        if(peerConnection.getPeerInfo().getPeerID() == downloadPerPeer.getPeerID() &&
+                                peerConnection.getConnectionEstablished() &&
+                                !peerConnection.getPeerInfo().isChoked()){
+                            peerConnection.setChoked(true);
+                            peerConnection.sendChoke();
+                            System.out.println("in the choking loop in interval timer ");
+                        }
+                    }
                 }
             }
 
@@ -226,10 +241,6 @@ public class Peer extends Thread{
                 }
             }
 
-            int[] neighbors = new int[commonReader.getNumberPreferredNeighbors()];
-            for (int k = 0; k < connections.size() && k < commonReader.getNumberPreferredNeighbors(); k++) {
-                neighbors[k] = connections.get(k).getPeerInfo().getPeerID();
-            }
             //setup the logger for use; need to have "true" to indicate that the file already exists
             peerLogger.changePreferredNeighbors(peerInfo.getPeerID(), neighbors);
         }

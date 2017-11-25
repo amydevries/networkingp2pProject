@@ -26,6 +26,8 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
     private boolean remotePeerChokingUs = true;
 
+    private boolean peerThinksWereInterested = false;
+
     public PeerConnection(BasicSocket basicSocket){
         this.bSocket = basicSocket;
         Peer.connections.add(this);
@@ -114,9 +116,9 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     interestingPieces = Peer.fileHandler.getBitField().getInterestingBits(peerInfo.getBitFieldOfRemotePeer());
 
                     if(interestingPieces.size() > 0){
-                        SendingMessages.sendingInterested(bSocket);
+                        sendInterested();
                     }else{
-                        SendingMessages.sendingNotInterested(bSocket);
+                        sendNotInterested();
                     }
                 }
                 System.out.println("number of interesting pieces from: " + peerInfo.getPeerID()+ " is " + interestingPieces.size());
@@ -267,10 +269,10 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             interestingPieces = Peer.fileHandler.getBitField().getInterestingBits(peerInfo.getBitFieldOfRemotePeer());
 
             if(interestingPieces.size()>0){
-                SendingMessages.sendingInterested(bSocket);
+                sendInterested();
             }
             else{
-                SendingMessages.sendingNotInterested(bSocket);
+                sendNotInterested();
             }
         }
 
@@ -313,7 +315,17 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         SendingMessages.sendingChoke(bSocket);
     }
 
+    public boolean doesPeerThinkWereInterested(){
+        return peerThinksWereInterested;
+    }
+
+    public void sendInterested(){
+        peerThinksWereInterested = true;
+        SendingMessages.sendingInterested(bSocket);
+    }
+
     public void sendNotInterested(){
+        peerThinksWereInterested = false;
         SendingMessages.sendingNotInterested(bSocket);
     }
 }
