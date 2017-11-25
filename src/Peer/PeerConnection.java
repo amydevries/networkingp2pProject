@@ -162,7 +162,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 for(int i = 0; i < data.length - 4; ++i){
                     pieceData[i] = byteBuffer.get();
                 }
-
+                System.out.println("---Sending index: " + index);
                 Peer.fileHandler.receive(index, pieceData);
 
                 peerInfo.setDownloadRate(peerInfo.getDownloadRate() + 1);
