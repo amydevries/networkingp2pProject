@@ -96,9 +96,13 @@ public class FileHandler {
                     System.out.println("Sending Have to: " + Peer.connections.get(i).getPeerInfo().getPeerID());
                     Peer.connections.get(i).sendHave(index);
                     synchronized (Peer.connections.get(i).getInterestingPieces()) {
-                        for(int j = 0; j < Peer.connections.get(i).getInterestingPieces().size(); ++j){
+                        for(int j = 0; j < Peer.connections.get(i).getInterestingPieces().size(); j++){
+                            System.out.println("@@@Interesting pieces: " + Peer.connections.get(i).getInterestingPieces().get(j));
+                            System.out.println("@@@Index: " + index);
                             if(Peer.connections.get(i).getInterestingPieces().get(j) == index){
+                                System.out.println("@@Before interensingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
                                 Peer.connections.get(i).getInterestingPieces().remove(j);
+                                System.out.println("@@After interensingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
                                 break;
                             }
                         }

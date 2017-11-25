@@ -60,12 +60,12 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 int reqPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
 
                 SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
-                /*try{
+                try{
                     Thread.sleep(250);
                 }
                 catch(InterruptedException e){
                     e.printStackTrace();
-                }*/
+                }
             }
         }
         System.out.println("Getting type of message");
@@ -86,7 +86,9 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 remotePeerChokingUs = false;
 
                 //peer is unchoked. send request message back to this peer right away
-                sendRequest();
+                //check to make sure the size is greater than zero, otherwise there's an error for generating the random number for the index
+                if(interestingPieces.size() > 0)
+                    sendRequest();
 
                 peerLogger.unchoking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
                 System.out.println("unchoking");
