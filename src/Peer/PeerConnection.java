@@ -8,6 +8,8 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static java.lang.System.exit;
+
 // a peerConnection wraps a socket with information about the peer the socket is connecting to
 public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
@@ -158,26 +160,38 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 byteBuffer.position(0);
 
                 int index = byteBuffer.getInt();
-                byte[] pieceData = new byte[data.length - 4];
-                for(int i = 0; i < data.length - 4; ++i){
-                    pieceData[i] = byteBuffer.get();
-                }
-                System.out.println("---Sending index: " + index);
-                synchronized(Peer.fileHandler){
-                    Peer.fileHandler.receive(index, pieceData);
+
+                if(Peer.fileHandler.getPiece(index) == null){
+                    System.out.println("!!!!!!!!!!!!!!!!!!! we already have this piece " + index);
+                    exit(1);
                 }
 
-                peerInfo.setDownloadRate(peerInfo.getDownloadRate() + 1);
+                else{
+                    System.out.println("{{{{{{{{{{{{{{{{{{{{ we don't already have this piece, continue on " + index);
 
-                Peer.fileHandler.increaseNumberOfPiecesDownloaded();
-                incrementPiecesReceived();
+                    byte[] pieceData = new byte[data.length - 4];
+                    for(int i = 0; i < data.length - 4; ++i){
+                        pieceData[i] = byteBuffer.get();
+                    }
+                    System.out.println("---Sending index: " + index);
+                    synchronized(Peer.fileHandler){
+                        Peer.fileHandler.receive(index, pieceData);
+                    }
 
-                System.out.println("getPeerInfo().getPeerID(): " + Peer.getPeerInfo().getPeerID());
-                System.out.println("getPeerInfo().getPeerID(): " + getPeerInfo().getPeerID());
-                System.out.println("index: " + index);
-                System.out.println(" Peer.fileHandler.getBitField().getNumberOfPieces(): " + Peer.fileHandler.getBitField().getNumberOfPieces());
+                    peerInfo.setDownloadRate(peerInfo.getDownloadRate() + 1);
 
-                peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.fileHandler.getBitField().getNumberOfPieces());
+                    Peer.fileHandler.increaseNumberOfPiecesDownloaded();
+                    incrementPiecesReceived();
+
+                    System.out.println("getPeerInfo().getPeerID(): " + Peer.getPeerInfo().getPeerID());
+                    System.out.println("getPeerInfo().getPeerID(): " + getPeerInfo().getPeerID());
+                    System.out.println("index: " + index);
+                    System.out.println(" Peer.fileHandler.getBitField().getNumberOfPieces(): " + Peer.fileHandler.getBitField().getNumberOfPieces());
+
+                    peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.fileHandler.getBitField().getNumberOfPieces());
+                }
+
+
                 System.out.println("piece");
             }
 
