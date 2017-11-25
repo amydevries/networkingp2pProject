@@ -87,7 +87,7 @@ public class FileHandler {
         }
     }
 
-    public synchronized receive(int index, byte[]data){
+    public synchronized void receive(int index, byte[]data){
         System.out.println("---received index: " + index);
         synchronized (pieces.get(index)){
             pieces.get(index).setData(data);
@@ -101,9 +101,9 @@ public class FileHandler {
                             System.out.println("@@@Interesting pieces: " + Peer.connections.get(i).getInterestingPieces().get(j));
                             System.out.println("@@@Index: " + index);
                             if(Peer.connections.get(i).getInterestingPieces().get(j) == index){
-                                System.out.println("@@Before interestingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
+                                System.out.println("------------------Before interestingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
                                 Peer.connections.get(i).getInterestingPieces().remove(j);
-                                System.out.println("@@After interestingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
+                                System.out.println("------------------After interestingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
                                 break;
                             }
                         }

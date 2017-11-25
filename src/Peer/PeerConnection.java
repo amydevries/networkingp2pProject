@@ -59,7 +59,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 Random random = new Random();
                 int reqPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
 
-                SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
+                synchronized (SendingMessages.class){SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));}
                 try{
                     Thread.sleep(250);
                 }
@@ -163,7 +163,9 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     pieceData[i] = byteBuffer.get();
                 }
                 System.out.println("---Sending index: " + index);
-                Peer.fileHandler.receive(index, pieceData);
+                synchronized(Peer.fileHandler){
+                    Peer.fileHandler.receive(index, pieceData);
+                }
 
                 peerInfo.setDownloadRate(peerInfo.getDownloadRate() + 1);
 
@@ -315,7 +317,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         System.out.println("sending request in peerConnection to: " + peerInfo.getPeerID());
         Random random = new Random();
         int requestedPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
-        SendingMessages.sendingRequest(bSocket, requestedPieceIndex);
+        synchronized (SendingMessages.class){SendingMessages.sendingRequest(bSocket, requestedPieceIndex);}
     }
 
     public void setCloseConnection(boolean closeConnection){

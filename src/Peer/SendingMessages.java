@@ -43,7 +43,7 @@ public class SendingMessages {
         socket.write(message);
     }
 
-    public static void sendingRequest(BasicSocket socket, int index){
+    public synchronized static void sendingRequest(BasicSocket socket, int index){
             ByteBuffer indexBuffer = ByteBuffer.allocate(4);
             indexBuffer.putInt(index);
             byte[] message = Message.createActualMessage("request", indexBuffer.array());
