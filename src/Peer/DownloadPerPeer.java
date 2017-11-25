@@ -34,4 +34,8 @@ public class DownloadPerPeer implements Comparable<DownloadPerPeer>{
     public void setUsed(boolean used) {
         this.used = used;
     }
+
+    public int getDownloadAmount(){
+        return downloadAmount;
+    }
 }

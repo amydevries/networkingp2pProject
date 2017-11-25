@@ -49,7 +49,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         SendingMessages.sendingHave(bSocket, index);
     }
 
-    public Message receiveData(){
+    public void receiveData(){
         System.out.println("entered receieveData");
         synchronized(interestingPieces){
             System.out.println("@@@@@@@@@interesting pieces size: " + interestingPieces.size()+ " from "+ peerInfo.getPeerID());
@@ -59,12 +59,12 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 int reqPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
 
                 SendingMessages.sendingRequest(bSocket, interestingPieces.get(reqPieceIndex));
-                try{
-                    Thread.sleep(50);
+                /*try{
+                    Thread.sleep(250);
                 }
                 catch(InterruptedException e){
                     e.printStackTrace();
-                }
+                }*/
             }
         }
         System.out.println("Getting type of message");
@@ -176,7 +176,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         } catch (IOException e) {
                 e.printStackTrace();
             }
-        return msg;
     }
 
     public PeerInfo getPeerInfo() { return peerInfo; }

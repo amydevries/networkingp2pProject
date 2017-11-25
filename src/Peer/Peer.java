@@ -192,6 +192,7 @@ public class Peer extends Thread{
             }
 
             Collections.sort(downloadPerPeers);
+
             System.out.println("collections sorted");
             System.out.println("connections.size: " + downloadPerPeers.size());
             for (int i = 0; i < connections.size(); i++) {
