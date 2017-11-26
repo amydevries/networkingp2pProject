@@ -77,7 +77,7 @@ public class Message {
             type = new byte[1];
             length = byteArrayToInt(header);
             socket.read(type);
-
+            System.out.println(length);
             data = new byte[length-1];
 
             if (length > 0) {
@@ -112,7 +112,10 @@ public class Message {
 
         //the size of the actual message is the payload + 1 for type + 4 for message getNumberOfBits
         byte[] length = intToByteArray(messagePayload.length + 1);
-
+        if(Message.byteArrayToInt(length) < 0){
+            System.out.println(type);
+            System.exit(0);
+        }
 
         ByteBuffer actualMsgBuffer = ByteBuffer.allocate(Message.byteArrayToInt(length)+4);
         actualMsgBuffer.put(length);

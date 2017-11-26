@@ -37,4 +37,8 @@ public class Piece {
     public void request(){
         requested = true;
     }
+
+    public boolean isFull() {
+        return full;
+    }
 }

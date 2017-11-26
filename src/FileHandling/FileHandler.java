@@ -90,28 +90,10 @@ public class FileHandler {
     public synchronized void receive(int index, byte[]data){
         System.out.println("---received index: " + index);
         synchronized (pieces.get(index)){
-            if(pieces.get(index).getData() != null){
+            if(!pieces.get(index).isFull()){
                 System.out.println("oooooooooooooooooooo piece is not null- index: " + index);
                 pieces.get(index).setData(data);
                 bitField.setPiece(index);
-                for(int i=0; i<Peer.connections.size();i++){
-                    if(Peer.connections.get(i).getConnectionEstablished()) {
-                        System.out.println("Sending Have to: " + Peer.connections.get(i).getPeerInfo().getPeerID());
-                        Peer.connections.get(i).sendHave(index);
-                        synchronized (Peer.connections.get(i).getInterestingPieces()) {
-                            for(int j = 0; j < Peer.connections.get(i).getInterestingPieces().size(); j++){
-                                System.out.println("@@@Interesting pieces: " + Peer.connections.get(i).getInterestingPieces().get(j));
-                                System.out.println("@@@Index: " + index);
-                                if(Peer.connections.get(i).getInterestingPieces().get(j) == index){
-                                    System.out.println("------------------Before interestingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
-                                    Peer.connections.get(i).getInterestingPieces().remove(j);
-                                    System.out.println("------------------After interestingPieces.size: " + Peer.connections.get(i).getInterestingPieces().size());
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
             }
             else
                 System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnn piece IS null");
