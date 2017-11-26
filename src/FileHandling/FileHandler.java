@@ -88,15 +88,11 @@ public class FileHandler {
     }
 
     public synchronized void receive(int index, byte[]data){
-        System.out.println("---received index: " + index);
         synchronized (pieces.get(index)){
             if(!pieces.get(index).isFull()){
-                System.out.println("oooooooooooooooooooo piece is not null- index: " + index);
                 pieces.get(index).setData(data);
                 bitField.setPiece(index);
             }
-            else
-                System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnn piece IS null");
         }
     }
 
@@ -106,8 +102,6 @@ public class FileHandler {
 
         byte[] finishedFile = new byte[totalFileSize];
         int currentLocation = 0;
-        System.out.println("##pieces.size: " + pieces.size());
-        System.out.println("##piecesDownloaded: "+ getNumberOfPiecesDownloaded());
         for(int i = 0; i < pieces.size(); i++){
             byte[] temp = pieces.get(i).getData();
             for(int j = 0; j < temp.length; j++){
