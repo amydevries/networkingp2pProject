@@ -1,9 +1,11 @@
 package FileHandling;
 
 import DefaultProcesses.peerProcess;
+import Logger.PeerLogger;
 import Peer.BitField;
 import Peer.Peer;
 import org.apache.commons.io.IOUtils;
+import Logger.PeerLogger;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -15,6 +17,7 @@ public class FileHandler {
     private int numberOfPiecesDownloaded = 0;
     private BitField bitField;
     private ArrayList<Piece> pieces;
+    private PeerLogger peerLogger = PeerLogger.getLogger();
 
     private CommonReader commonReader = CommonReader.getCommonReader();
 
@@ -113,6 +116,7 @@ public class FileHandler {
             FileOutputStream fileOutputStream = new FileOutputStream("./peer_"+Peer.getPeerInfo().getPeerID()+"/"+commonReader.getFileName());
             fileOutputStream.write(finishedFile);
             fileOutputStream.close();
+            peerLogger.completedDownload(Peer.getPeerInfo().getPeerID());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
