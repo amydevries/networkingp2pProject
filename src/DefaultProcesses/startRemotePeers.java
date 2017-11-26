@@ -27,12 +27,13 @@ public class startRemotePeers {
 
 
         public static void main (String [] args) throws Exception {
-            for(int i = 1001; i < 1007; i++) {
+            PeerInfoReader infoReader = PeerInfoReader.getPeerInfoReader();
+            for(int i = 0; i < infoReader.getNumberOfPeers(); i++) {
 
                 String filename = "peerProcess.jar";
-                Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -jar " + filename + " " + i});
+                Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -jar " + filename + " " + infoReader.getPeerIDS(i)});
 
-                TimeUnit.MILLISECONDS.sleep(2000);
+                TimeUnit.MILLISECONDS.sleep(2400);
 
             }
         }
