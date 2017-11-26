@@ -323,9 +323,9 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
         while(true){
             receiveData();
-            if(closeConnection){
+           /* if(closeConnection){
                 break;
-            }
+            }*/
         }
     }
 
