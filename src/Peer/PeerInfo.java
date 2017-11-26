@@ -55,7 +55,6 @@ public class PeerInfo {
             numPieces++;
         }
         this.bitField = new BitField(numPieces, fileFinished != 0);
-        System.out.println(bitField);
     }
 
     public PeerInfo(int myID){
@@ -75,7 +74,6 @@ public class PeerInfo {
                     numPieces++;
                 }
                 this.bitField = new BitField(numPieces, fileFinished != 0);
-                System.out.println(bitField);
 
                 //setup the file writer for the peer and create the log file
 
