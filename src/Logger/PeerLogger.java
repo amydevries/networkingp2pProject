@@ -1,6 +1,8 @@
 package Logger;
 
 
+import Peer.Peer;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -9,12 +11,29 @@ import java.util.Calendar;
 
 public class PeerLogger {
 
-    private FileWriter logger;
+    private FileWriter logger = new FileWriter("./peer_"+Peer.getPeerInfo().getPeerID()+"/log_peer_"+Peer.getPeerInfo().getPeerID()+".log");
 
-    public void setup(int peerID){
+    private static PeerLogger peerLogger;
+
+    public static PeerLogger getLogger(){
+        if(peerLogger == null){
+            try {
+                peerLogger = new PeerLogger();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return peerLogger;
+    }
+
+    private PeerLogger() throws IOException {
+
+    }
+
+    private void setup(int peerID){
 
         try{
-            logger = new FileWriter("log_peer_"+peerID+".log");
+            logger = new FileWriter("./peer_"+peerID+"/log_peer_"+peerID+".log");
 
         }catch(Exception e) {}
     }
@@ -81,7 +100,7 @@ public class PeerLogger {
     public void downloadingPiece(int peerDownloadedPiece, int peerSentPiece, int pieceIndex, int numberOfPieces){
         String timeStamp= getTimeStamp();
         printToFile(timeStamp+": Peer " + peerDownloadedPiece + " has downloaded the piece " + pieceIndex + " from " +
-                peerSentPiece + "Now the number of pieces it has is " + numberOfPieces);
+                peerSentPiece + " Now the number of pieces it has is " + numberOfPieces);
     }
 
     public void completedDownload(int peerID){

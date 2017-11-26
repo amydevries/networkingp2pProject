@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/out/artifacts/networkingp2pProject_jar/peer_1001/log_peer_1001.log" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/out/artifacts/networkingp2pProject_jar/peer_1002/log_peer_1002.log" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/out/artifacts/networkingp2pProject_jar/peer_1003/log_peer_1003.log" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/out/artifacts/networkingp2pProject_jar/peer_1004/log_peer_1004.log" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/out/artifacts/networkingp2pProject_jar/peer_1005/log_peer_1005.log" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/out/artifacts/networkingp2pProject_jar/peer_1006/log_peer_1006.log" charset="windows-1252" />
+  </component>
+</project>
