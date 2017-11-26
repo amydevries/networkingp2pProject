@@ -26,7 +26,7 @@ public class StartRemotePeersTest {
         System.out.println(expectedOutput + "\n");
 
         //Act
-        startRemotePeers.main(new String[] {});
+        //startRemotePeers.main(new String[] {});
 
         //Assert
 

@@ -13,16 +13,63 @@ import FileHandling.PeerInfoReader;
 import Peer.Peer;
 import Sockets.BasicSocket;
 
+import java.util.concurrent.TimeUnit;
+import java.io.*;
+import java.awt.GraphicsEnvironment;
+import java.net.URISyntaxException;
+
 /*
  * The StartRemotePeers class begins remote peer processes.
  * It reads configuration file PeerInfo.cfg and starts remote peer processes.
  */
 public class startRemotePeers {
 
+
+
+        public static void main (String [] args) throws Exception {
+            for(int i = 1001; i < 1007; i++) {
+                Console console = System.console();
+                if (console == null && !GraphicsEnvironment.isHeadless()) {
+                    String filename = startRemotePeers.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
+                    Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -jar \"" + filename + "\""});
+                } else {
+                    String[] arguments = new String[1];
+                    arguments[0] = Integer.toString(i);
+                    peerProcess.main(arguments);
+                    System.out.println("Program has ended, please type 'exit' to close the console");
+                }
+                try{
+                    TimeUnit.MILLISECONDS.sleep(2000);
+                }catch (Exception e){
+
+                }
+            }
+        }
+
+
+    /*public static void main(String[] args){
+        for(int i = 1001; i < 1007; i++){
+            String[] arguments = new String[1];
+            arguments[0] = Integer.toString(i);
+            new Thread(() -> {
+                try {
+                    peerProcess.main(arguments);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+            try{
+                TimeUnit.MILLISECONDS.sleep(1000);
+            }catch (Exception e){
+
+            }
+        }
+    }*/
+
     /**
      * @param args
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         try {
             PeerInfoReader peerInfoReader = new PeerInfoReader();
             peerInfoReader.parse();
@@ -35,24 +82,10 @@ public class startRemotePeers {
             for (int i = 0; i < numPeers; i++) {
                 System.out.println("Start remote peer " + peerInfoReader.getPeerIDS(i) +  " at " + peerInfoReader.getPeerHostNames(i) );
 
-                String[] argumentsToPass = new String[1];
-                argumentsToPass[0] = Integer.toString(peerInfoReader.getPeerIDS(i));
-                System.out.println("peer id: " + peerInfoReader.getPeerIDS(i));
-                peerProcess.main(argumentsToPass);
 
                 //the line below is what is supposed to work to connect to ssh
-                //Runtime.getRuntime().exec("ssh " + peerInfoReader.getPeerHostNames(i) + " cd " + path + "; java peerProcess " + peerInfoReader.getPeerIDS(i));
-
-                //the lines below is playing with stuff to see if I can get it to just run on our machines for the time being
-                //Runtime.getRuntime().exec("java peerProcess " + peerInfoReader.getPeerIDS(i));
-                /*ProcessBuilder pb = new ProcessBuilder("cmd.exe", "java peerProcess " + peerInfoReader.getPeerIDS(i));
-                Process process = pb.start();
-                process.waitFor();*/
-
+                Runtime.getRuntime().exec("ssh " + peerInfoReader.getPeerHostNames(i) + " cd " + path + "; java peerProcess " + peerInfoReader.getPeerIDS(i));
             }
-
-            //peerProcess thePeer = new peerProcess(1001);
-            //peerProcess thePeer2 = new peerProcess(1002);
 
             System.out.println("All remote peers started." );
 
@@ -60,6 +93,6 @@ public class startRemotePeers {
         catch (Exception ex) {
             System.out.println(ex);
         }
-    }
+    }*/
 
 }
