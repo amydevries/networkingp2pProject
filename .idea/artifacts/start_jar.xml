@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="start:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/networkingProject</output-path>
+    <root id="archive" name="start.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="networkingp2pProject" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/peerbase-java.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/out/artifacts/networkingp2pProject_jar/commons-io-2.6.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
