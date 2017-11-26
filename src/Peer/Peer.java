@@ -280,7 +280,6 @@ public class Peer extends Thread{
             for(int i = 0; i < connections.size(); ++i){
                 if(potentialConnections.get(randomNeighbor) == connections.get(i).getPeerInfo().getPeerID()){
                     connections.get(i).sendUnchoke();
-                    connections.get(i).setChoked(false);
                     System.out.println("$$unchoked ");
                     //setup the logger for use; need to have "true" to indicate that the file already exists
                     peerLogger.changeOptimisticallyUnchockedNeighbor(peerInfo.getPeerID(), potentialConnections.get(randomNeighbor));

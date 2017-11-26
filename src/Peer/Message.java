@@ -31,61 +31,68 @@ public class Message {
     public int getPeerID() {return byteArrayToInt(peerID); }
 
     public Message(BasicSocket socket) throws IOException {
-        header = new byte[4];
-        peerID = new byte[4];
-                    System.out.println("Here1");
-        int length;
+        synchronized (this) {
+            header = new byte[4];
+            peerID = new byte[4];
+            System.out.println("Here1");
+            int length;
             System.out.println("before socket read");
-        socket.read(header);
+            socket.read(header);
             System.out.println("after socket read");
-        String header_str = new String(header, Charset.forName("US-ASCII"));
-                    System.out.println(header_str);
+            String header_str = new String(header, Charset.forName("US-ASCII"));
+            System.out.println(header_str);
 
-        if (header_str.equals("P2PF")) {
-                byte [] header_cont = new byte[14];
-                byte [] zeros = new byte[10];
+            if (header_str.equals("P2PF")) {
+                byte[] header_cont = new byte[14];
+                byte[] zeros = new byte[10];
 
                 peerID = new byte[4];
-                        System.out.println("Here2");
+                System.out.println("Here2");
                 //type = intToByteArray(99);
-                        System.out.println("Here3");
+                System.out.println("Here3");
                 socket.read(header_cont);  // TODO: check that we read 14 bytes and if not throw the exception
                 String header_cont_str = new String(header_cont, Charset.forName("US-ASCII"));
-                        System.out.println("Here4");
-                if(!header_cont_str.equals("ILESHARINGPROJ")) {
+                System.out.println("Here4");
+                if (!header_cont_str.equals("ILESHARINGPROJ")) {
                     // TODO: throw exception
-                        System.out.println("Here5");
+                    System.out.println("Here5");
                     return;
                 }
-                    System.out.println("Here6");
+                System.out.println("Here6");
                 int size = socket.read(zeros);
-                    if(size != 10){
-                        System.out.println("nope");
-                    }
-                    System.out.println("Here7");
-                    System.out.println("zeros: " + byteArrayToInt(zeros));
+                if (size != 10) {
+                    System.out.println("nope");
+                }
+                System.out.println("Here7");
+                System.out.println("zeros: " + byteArrayToInt(zeros));
 
-                    System.out.println("Here8");
+                System.out.println("Here8");
 
                 int size2 = socket.read(peerID);
-                if(size2 != 4){
+                if (size2 != 4) {
                     System.out.println("nope2");
                 }
 
-                    System.out.println("bytePeerId: " + byteArrayToInt(peerID));
-        } else {
-            type = new byte[1];
-            length = byteArrayToInt(header);
-            socket.read(type);
-            System.out.println(length);
-            data = new byte[length-1];
-
-            if (length > 0) {
-                if (socket.read(data) > length-1) {
-                    throw new IOException("EOF in Message constructor: " +
-                            "Unexpected message data getNumberOfBits");
+                System.out.println("bytePeerId: " + byteArrayToInt(peerID));
+            } else {
+                type = new byte[1];
+                length = byteArrayToInt(header);
+                socket.read(type);
+                System.out.println("type: " + (int) type[0]);
+                System.out.println("length: " + length);
+                if (length <= 0) {
+                    System.out.println("Message line 86");
+                    //System.exit(1);
                 }
 
+                if (length > 0) {
+                    data = new byte[length - 1];
+                    if (socket.read(data) > length - 1) {
+                        throw new IOException("EOF in Message constructor: " +
+                                "Unexpected message data getNumberOfBits");
+                    }
+
+                }
             }
         }
     }
@@ -113,6 +120,7 @@ public class Message {
         //the size of the actual message is the payload + 1 for type + 4 for message getNumberOfBits
         byte[] length = intToByteArray(messagePayload.length + 1);
         if(Message.byteArrayToInt(length) < 0){
+            System.out.println("create actual message");
             System.out.println(type);
             System.exit(0);
         }

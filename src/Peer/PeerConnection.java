@@ -59,12 +59,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             System.out.println("()()()()numPiecesDownloaded: " + Peer.fileHandler.getNumberOfPiecesDownloaded());
             if(interestingPieces.size() > 0 && !remotePeerChokingUs){
                 sendRequest();
-                /*try{
-                    Thread.sleep(250);
-                }
-                catch(InterruptedException e){
-                    e.printStackTrace();
-                }*/
             }
         }
         System.out.println("Getting type of message");
