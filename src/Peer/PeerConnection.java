@@ -39,8 +39,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
         this.peerInfo = peerInfo;
         Peer.connections.add(this);
         try {
-            System.out.println("******* getHostID " + peerInfo.getHostID());
-            System.out.println("***getPort "+ peerInfo.getPort());
             this.bSocket = new BasicSocket(peerInfo.getHostID(), peerInfo.getPort());
         } catch (IOException e) {
             e.printStackTrace();
@@ -52,30 +50,22 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
     }
 
     public void receiveData(){
-        System.out.println("entered receieveData");
         synchronized(interestingPieces){
-            System.out.println("@@@@@@@@@interesting pieces size: " + interestingPieces.size()+ " from "+ peerInfo.getPeerID());
-            System.out.println("isChoked: " + remotePeerChokingUs);
-            System.out.println("()()()()numPiecesDownloaded: " + Peer.fileHandler.getNumberOfPiecesDownloaded());
             if(interestingPieces.size() > 0 && !remotePeerChokingUs){
                 sendRequest();
             }
         }
-        System.out.println("Getting type of message");
         Message msg = null;
         try {
             msg = new Message(bSocket);
 
             if (msg.getType() == 0){
-                System.out.println("Received msg type = 0");
                 remotePeerChokingUs = true;
                 //setup the logger for use; need to have "true" to indicate that the file already exists
                 peerLogger.choking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
-                System.out.println("choking");
             }
 
             if (msg.getType() == 1){
-                System.out.println("Received msg type = 1");
                 remotePeerChokingUs = false;
 
                 //peer is unchoked. send request message back to this peer right away
@@ -84,25 +74,19 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     sendRequest();
 
                 peerLogger.unchoking(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
-                System.out.println("unchoking");
             }
             if (msg.getType() == 2){
-                System.out.println("Received msg type = 2");
                 // the peer is now interested in some of the pieces we have
                 peerInfo.setInterested(true);
 
                 peerLogger.receivedInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
-                System.out.println("interested");
             }
             if (msg.getType() == 3){
-                System.out.println("Received msg type = 3");
                 peerInfo.setInterested(false);
 
                 peerLogger.receivedNotInterestedMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID());
-                System.out.println("uninterested");
             }
             if (msg.getType() == 4){
-                System.out.println("Received msg type = 4");
                 int peerHasPieceIndex = Message.byteArrayToInt(msg.getData());
 
                 peerLogger.receivedHaveMessage(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), peerHasPieceIndex);
@@ -118,30 +102,21 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                         sendInterested();
                     }
                 }
-                System.out.println("number of interesting pieces from: " + peerInfo.getPeerID()+ " is " + interestingPieces.size());
-                System.out.println("have message");
             }
             if (msg.getType() == 6){
-                System.out.println("Received msg type = 6");
                 if(!isChoked()){
 
                     byte[] data = msg.getData();
 
                     int index = Message.byteArrayToInt(data);
-                    System.out.println("%%%%%% index: " + index);
-                    System.out.println("%bitfield: " + Peer.fileHandler.getBitField().getBitField()[index]);
                     if(Peer.fileHandler.getBitField().getBitField()[index] == (byte)1){
-                        System.out.println("%%Entered if statement");
                         byte[] dataToSend = Peer.fileHandler.getPiece(index).getData();
                         SendingMessages.sendingPiece(bSocket, index, dataToSend);
-                        System.out.println("~~~Sending piece: " + dataToSend);
                     }
                 }
-                System.out.println("request");
 
             }
             if (msg.getType() == 7){
-                System.out.println("Received msg type = 7");
                 byte[] data = msg.getData();
 
                 ByteBuffer byteBuffer = ByteBuffer.allocate(data.length);
@@ -153,7 +128,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
                 if(Peer.fileHandler.getPiece(index).isFull()){
                     synchronized(this) {
-                        System.out.println("!!!!!!!!!!!!!!!!!!! we already have this piece " + index);
                         for (int i = 0; i < Peer.connections.size(); i++) {
                             for (int j = 0; j < Peer.connections.get(i).interestingPieces.size(); ++j) {
                                 if (Peer.connections.get(i).interestingPieces.get(j) == index)
@@ -164,13 +138,11 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                 }
 
                 else{
-                    System.out.println("{{{{{{{{{{{{{{{{{{{{ we don't already have this piece, continue on " + index);
 
                     byte[] pieceData = new byte[data.length - 4];
                     for(int i = 0; i < data.length - 4; ++i){
                         pieceData[i] = byteBuffer.get();
                     }
-                    System.out.println("---Sending index: " + index);
                     synchronized(Peer.fileHandler){
                         Peer.fileHandler.receive(index, pieceData);
                     }
@@ -178,7 +150,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     // send have messages and fix interesting pieces
                     for(int i=0; i<Peer.connections.size();i++){
                         if(Peer.connections.get(i).getConnectionEstablished()) {
-                            System.out.println("Sending Have to: " + Peer.connections.get(i).getPeerInfo().getPeerID());
                             Peer.connections.get(i).sendHave(index);
                         }
                     }
@@ -190,16 +161,11 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
                     Peer.fileHandler.increaseNumberOfPiecesDownloaded();
                     incrementPiecesReceived();
 
-                    System.out.println("getPeerInfo().getPeerID(): " + Peer.getPeerInfo().getPeerID());
-                    System.out.println("getPeerInfo().getPeerID(): " + getPeerInfo().getPeerID());
-                    System.out.println("index: " + index);
-                    System.out.println(" Peer.fileHandler.getBitField().getNumberOfPieces(): " + Peer.fileHandler.getBitField().getNumberOfPieces());
 
                     peerLogger.downloadingPiece(Peer.getPeerInfo().getPeerID(), getPeerInfo().getPeerID(), index, Peer.fileHandler.getBitField().getNumberOfPieces());
                 }
 
 
-                System.out.println("piece");
             }
 
         } catch (IOException e) {
@@ -259,7 +225,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println("message type (hopefully 99)))))))) " + handshakeMesage.getType());
             if(handshakeMesage.getType() == 99){
               if(peerInfo != null)  {
                   if(peerInfo.getPeerID() == handshakeMesage.getPeerID()){
@@ -323,20 +288,18 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
         while(true){
             receiveData();
-            if(closeConnection){
+           /* if(closeConnection){
                 break;
-            }
+            }*/
         }
     }
 
     public void sendUnchoke(){
         peerInfo.setIsChoked(false);
-        System.out.println("sending unchoke in peerConnection to: " + peerInfo.getPeerID());
         SendingMessages.sendingUnChoke(bSocket);
     }
 
     public void sendRequest(){
-        System.out.println("sending request in peerConnection to: " + peerInfo.getPeerID());
         Random random = new Random();
         int requestedPieceIndex =  Math.abs(random.nextInt(interestingPieces.size()));
         synchronized (SendingMessages.class){SendingMessages.sendingRequest(bSocket, interestingPieces.get(requestedPieceIndex));}
@@ -349,7 +312,6 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
 
     public void sendChoke() {
         peerInfo.setIsChoked(true);
-        System.out.println("sending choke in peerConnection");
         SendingMessages.sendingChoke(bSocket);
     }
 
