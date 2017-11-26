@@ -28,21 +28,12 @@ public class startRemotePeers {
 
         public static void main (String [] args) throws Exception {
             for(int i = 1001; i < 1007; i++) {
-                Console console = System.console();
-                if (console == null && !GraphicsEnvironment.isHeadless()) {
-                    String filename = startRemotePeers.class.getProtectionDomain().getCodeSource().getLocation().toString().substring(6);
-                    Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -jar \"" + filename + "\""});
-                } else {
-                    String[] arguments = new String[1];
-                    arguments[0] = Integer.toString(i);
-                    peerProcess.main(arguments);
-                    System.out.println("Program has ended, please type 'exit' to close the console");
-                }
-                try{
-                    TimeUnit.MILLISECONDS.sleep(2000);
-                }catch (Exception e){
 
-                }
+                String filename = "peerProcess.jar";
+                Runtime.getRuntime().exec(new String[]{"cmd", "/c", "start", "cmd", "/k", "java -jar " + filename + " " + i});
+
+                TimeUnit.MILLISECONDS.sleep(2000);
+
             }
         }
 
