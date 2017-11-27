@@ -115,7 +115,7 @@ public class PeerLogger {
 
     public void completedDownload(int peerID){
         String timeStamp= getTimeStamp();
-        printToFile(timeStamp+": Peer " + peerID + "has downloaded the complete file.");
-        System.out.println(timeStamp+": Peer " + peerID + "has downloaded the complete file.");
+        printToFile(timeStamp+": Peer " + peerID + " has downloaded the complete file.");
+        System.out.println(timeStamp+": Peer " + peerID + " has downloaded the complete file.");
     }
 }
