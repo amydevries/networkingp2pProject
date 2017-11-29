@@ -116,7 +116,6 @@ public class FileHandler {
             FileOutputStream fileOutputStream = new FileOutputStream("./peer_"+Peer.getPeerInfo().getPeerID()+"/"+commonReader.getFileName());
             fileOutputStream.write(finishedFile);
             fileOutputStream.close();
-            peerLogger.completedDownload(Peer.getPeerInfo().getPeerID());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

@@ -1,6 +1,7 @@
 package Logger;
 
 
+import FileHandling.CommonReader;
 import Peer.Peer;
 
 import java.io.FileWriter;
@@ -14,6 +15,7 @@ public class PeerLogger {
     private FileWriter logger = new FileWriter("./peer_"+Peer.getPeerInfo().getPeerID()+"/log_peer_"+Peer.getPeerInfo().getPeerID()+".log");
 
     private static PeerLogger peerLogger;
+    private CommonReader comReader = CommonReader.getCommonReader();
 
     public static PeerLogger getLogger(){
         if(peerLogger == null){
@@ -111,6 +113,10 @@ public class PeerLogger {
                 peerSentPiece + " Now the number of pieces it has is " + numberOfPieces);
         System.out.println(timeStamp+": Peer " + peerDownloadedPiece + " has downloaded the piece " + pieceIndex + " from " +
                 peerSentPiece + " Now the number of pieces it has is " + numberOfPieces);
+
+        int numPiecesForFile = comReader.getFileSize() / comReader.getPieceSize();
+        if(numberOfPieces == numPiecesForFile)
+           completedDownload(peerDownloadedPiece);
     }
 
     public void completedDownload(int peerID){
