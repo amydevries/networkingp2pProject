@@ -1,7 +1,7 @@
 package Sockets;
 
 import Peer.Peer;
-
+import Peer.Message;
 import java.net.*;
 import java.io.*;
 import java.nio.*;
@@ -11,8 +11,8 @@ import java.util.*;
 public class BasicSocket {
 
     Socket socket;           //socket connect to the server
-    OutputStream out;         //stream write to the socket
-    InputStream in;          //stream read from the socket
+    ObjectOutputStream out;         //stream write to the socket
+    ObjectInputStream in;          //stream read from the socket
 
     public BasicSocket(String host, int port) throws IOException {
         this(new Socket(host, port));
@@ -21,29 +21,31 @@ public class BasicSocket {
     public BasicSocket(Socket socket) {
         this.socket = socket;
         try {
-            out = socket.getOutputStream();
-            in = socket.getInputStream();
+            out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream(socket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void write(byte[] bytes) {
+    public void write(Message message) {
         try {
-            out.write(bytes);
+            out.writeObject(message);
             out.flush();
         } catch (IOException e) {
            Peer.finishProgram();
         }
     }
 
-    public int read(byte[] bytes) {
+    public Message read() {
         try {
-            return in.read(bytes);
+            return (Message)in.readObject();
         } catch (IOException e) {
             Peer.finishProgram();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
-        return 0;
+        return null;
     }
 
     public void close() {
