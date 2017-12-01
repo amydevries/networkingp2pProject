@@ -242,6 +242,7 @@ public class PeerConnection implements Runnable, Comparable<PeerConnection>{
               }
             }
             isConnectionEstablished = true;
+            peerLogger.tcpConnection(Peer.getPeerInfo().getPeerID(), peerInfo.getPeerID());
             break;
         }
 
